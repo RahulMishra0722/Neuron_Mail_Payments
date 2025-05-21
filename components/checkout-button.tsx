@@ -7,8 +7,8 @@ import { createCheckout, type PaddleCheckoutOptions } from "@/lib/paddle"
 import { config } from "@/lib/config"
 
 interface CheckoutButtonProps {
-  email?: string
-  userId?: string
+  email: string
+  userId: string
   className?: string
 }
 
@@ -29,21 +29,11 @@ export default function CheckoutButton({ email, userId, className }: CheckoutBut
         ],
         successUrl: `${config.app.url}/dashboard?checkout_success=true`,
         cancelUrl: `${config.app.url}/pricing?checkout_canceled=true`,
-      }
-
-      // Add customer info if available
-      if (userId) {
-        checkoutOptions.customer = {
-          id: userId, // Use this if it's an existing customer
-        }
-      } else if (email) {
-        checkoutOptions.customer = {
+        customer: {
+          id: userId,
           email,
         }
       }
-
-      // Open Paddle checkout
-      checkoutOptions.popup = true
       await createCheckout(checkoutOptions)
     } catch (error) {
       console.error("Checkout error:", error)

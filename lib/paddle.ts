@@ -3,14 +3,13 @@ import { toast } from "@/hooks/use-toast"; // Make sure to import your toast com
 import { initializePaddle, type Paddle } from "@paddle/paddle-js";
 // Types for Paddle SDK
 export type PaddleCheckoutOptions = {
-  popup?: boolean;
   items: Array<{
     priceId: string;
     quantity: number;
   }>;
-  customer?: {
-    email?: string;
-    id?: string;
+  customer: {
+    email: string;
+    id: string;
   };
   successUrl?: string;
   cancelUrl?: string;
@@ -57,24 +56,18 @@ export const createCheckout = async (options: PaddleCheckoutOptions) => {
             quantity: 1,
           },
         ],
+        customer: {
+          email: options.customer.email ?? "", // Add the user's email
+          // Optionally add the user ID if you have a Paddle customer ID already
+        },
+        customData: {
+          userId: options.customer.id, // This is the key part - pass the user ID
+        },
         settings: {
           displayMode: "popup", // Always use popup mode to avoid DOM issues
           theme: "light",
           successUrl: `${window.location.origin}/success`,
           locale: "en",
-        },
-        onEvent: (event) => {
-          console.log(`Checkout event: ${event.name}`, event);
-          if (event.name === "checkout.completed") {
-            toast({
-              title: "Payment successful!",
-              description: "Thank you for your purchase.",
-            });
-            // Redirect to success page after a short delay
-            setTimeout(() => {
-              console.log({ event });
-            }, 1500);
-          }
         },
       });
       console.log({ checkout });
