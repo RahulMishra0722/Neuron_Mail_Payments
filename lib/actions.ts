@@ -100,68 +100,9 @@ export async function signup(formData: FormData) {
       };
     }
 
-    console.log("User created successfully, creating profile...");
-
-    // Create profile record if user was created successfully
-    try {
-      const profileData = {
-        id: signUpData.user.id,
-        email: email.toLowerCase().trim(),
-        subscription_active: false,
-        is_on_free_trial: false,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-      };
-
-      console.log("Inserting profile data:", profileData);
-
-      const { error: profileError } = await supabase
-        .from("profiles")
-        .insert(profileData);
-
-      if (profileError) {
-        console.error("Profile creation error:", profileError);
-
-        // Handle specific profile creation errors
-        if (profileError.code === "23505") {
-          // Duplicate key - profile already exists
-          console.log("Profile already exists for user, continuing...");
-        } else if (profileError.code === "42P01") {
-          // Table doesn't exist
-          console.error("Profiles table doesn't exist");
-          return {
-            error: "Database configuration error. Please contact support.",
-          };
-        } else if (profileError.code === "42703") {
-          // Column doesn't exist
-          console.error(
-            "Column doesn't exist in profiles table:",
-            profileError.message
-          );
-          return {
-            error: "Database schema error. Please contact support.",
-          };
-        } else {
-          console.error("Failed to create profile:", profileError);
-          // For now, don't fail the entire signup process
-          // The user account was created successfully
-          console.log("Continuing despite profile creation error...");
-        }
-      } else {
-        console.log("Profile created successfully");
-      }
-    } catch (profileErr: any) {
-      console.error("Profile creation exception:", profileErr);
-      console.error("Profile error details:", {
-        message: profileErr?.message,
-        code: profileErr?.code,
-        details: profileErr?.details,
-        hint: profileErr?.hint,
-      });
-
-      // Don't fail the signup - user account was created successfully
-      console.log("Continuing despite profile creation exception...");
-    }
+    console.log(
+      "User created successfully! Profile will be created by database trigger."
+    );
 
     console.log("Revalidating path and determining response...");
     revalidatePath("/", "layout");
