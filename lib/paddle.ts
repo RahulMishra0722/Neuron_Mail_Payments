@@ -1,4 +1,3 @@
-import { config } from "./config";
 import { toast } from "@/hooks/use-toast"; // Make sure to import your toast component
 import { initializePaddle, type Paddle } from "@paddle/paddle-js";
 // Types for Paddle SDK
@@ -24,6 +23,36 @@ export const initPaddle = async () => {
           | "sandbox"
           | "production") || "sandbox",
       token: process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN!,
+      eventCallback: (event) => {
+        // This is the correct way to handle events in the current Paddle SDK
+        console.log("Paddle event received:", event);
+
+        // Check for checkout completion event
+        if (event.name === "checkout.completed") {
+          console.log("Checkout completed event received:");
+          console.log(event);
+
+          // Here you can implement your success handling logic
+          // For example, redirect to success page or update UI
+          const transactionData = event.data;
+          console.log("Payment successful!", transactionData);
+
+          // You might want to call your backend to verify the transaction
+          // and update user subscription status
+
+          // If you need to redirect programmatically:
+          // window.location.href = `${window.location.origin}/success`;
+        }
+
+        // Log other events as needed
+        if (event) {
+          console.log("Checkout opened");
+        }
+
+        if (event.name === "checkout.closed") {
+          console.log("Checkout closed");
+        }
+      },
     });
     if (paddleInstance) Paddle = paddleInstance;
     console.log("Paddle initialized successfully");
@@ -37,7 +66,6 @@ export const initPaddle = async () => {
   }
 };
 
-// Create a checkout with Paddle
 export const createCheckout = async (options: PaddleCheckoutOptions) => {
   if (typeof window === "undefined") return null;
 
@@ -48,6 +76,7 @@ export const createCheckout = async (options: PaddleCheckoutOptions) => {
     if (!priceId) {
       throw new Error("Paddle price ID is not configured");
     }
+
     if (Paddle) {
       const checkout = Paddle.Checkout.open({
         items: [
@@ -57,20 +86,20 @@ export const createCheckout = async (options: PaddleCheckoutOptions) => {
           },
         ],
         customer: {
-          email: options.customer.email ?? "", // Add the user's email
-          // Optionally add the user ID if you have a Paddle customer ID already
+          email: options.customer.email ?? "",
         },
         customData: {
-          userId: options.customer.id, // This is the key part - pass the user ID
+          userId: options.customer.id,
         },
         settings: {
-          displayMode: "popup", // Always use popup mode to avoid DOM issues
+          displayMode: "popup",
           theme: "light",
           successUrl: `${window.location.origin}/success`,
           locale: "en",
         },
       });
-      console.log({ checkout });
+
+      return checkout;
     }
   } catch (error) {
     console.error("Paddle checkout error:", error);

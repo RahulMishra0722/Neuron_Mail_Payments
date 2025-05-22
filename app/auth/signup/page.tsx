@@ -1,22 +1,18 @@
 import { createClient } from "@/lib/supabase/server"
 import { redirect } from "next/navigation"
-import LoginForm from "@/components/login-form"
+import SignUpForm from "@/components/signup-form"
 
-export default async function LoginPage() {
-
-
-  // Check if user is already logged in
+export default async function SignUpPage() {
   const supabase = await createClient()
   const {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // If user is logged in, redirect to home page
   if (user) {
     redirect("/")
   }
 
   return (
-    <LoginForm />
+    <SignUpForm />
   )
 }
