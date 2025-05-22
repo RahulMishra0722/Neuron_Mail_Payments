@@ -1,0 +1,187 @@
+{
+  "timestamp": "2025-05-22T22:38:39.247Z",
+  "event_type": "transaction.updated",
+  "event_id": "evt_01jvx2c22zcpmjct2ezbx5dw44",
+  "headers": {
+    "paddle-signature": "ts=1747953518;h1=027722b2bb5cfd4b4db1837dc77edb3ecf5117972c54e56d157114802733ed37",
+    "content-type": "application/json",
+    "user-agent": "Paddle"
+  },
+  "payload": {
+    "data": {
+      "id": "txn_01jvx2b2smwffgtz1w99jq3sqy",
+      "items": [
+        {
+          "price": {
+            "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+            "name": "Starter",
+            "type": "standard",
+            "status": "active",
+            "quantity": {
+              "maximum": 1,
+              "minimum": 1
+            },
+            "tax_mode": "account_setting",
+            "created_at": "2025-05-19T12:25:15.677881Z",
+            "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+            "unit_price": {
+              "amount": "399",
+              "currency_code": "USD"
+            },
+            "updated_at": "2025-05-21T21:44:30.556949Z",
+            "custom_data": null,
+            "description": "Everything is included in this plan",
+            "trial_period": null,
+            "billing_cycle": {
+              "interval": "month",
+              "frequency": 1
+            },
+            "unit_price_overrides": []
+          },
+          "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "quantity": 1,
+          "proration": null
+        }
+      ],
+      "origin": "web",
+      "status": "completed",
+      "details": {
+        "totals": {
+          "fee": "70",
+          "tax": "61",
+          "total": "399",
+          "credit": "0",
+          "balance": "0",
+          "discount": "0",
+          "earnings": "268",
+          "subtotal": "338",
+          "grand_total": "399",
+          "currency_code": "USD",
+          "credit_to_balance": "0"
+        },
+        "line_items": [
+          {
+            "id": "txnitm_01jvx2b7wh482tpekn1xv0am6q",
+            "totals": {
+              "tax": "61",
+              "total": "399",
+              "discount": "0",
+              "subtotal": "338"
+            },
+            "item_id": null,
+            "product": {
+              "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+              "name": "Neuron Mail Subscription",
+              "type": "standard",
+              "status": "active",
+              "image_url": null,
+              "created_at": "2025-05-19T12:16:34.12Z",
+              "updated_at": "2025-05-19T12:16:34.12Z",
+              "custom_data": null,
+              "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
+              "tax_category": "standard"
+            },
+            "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+            "quantity": 1,
+            "tax_rate": "0.18",
+            "unit_totals": {
+              "tax": "61",
+              "total": "399",
+              "discount": "0",
+              "subtotal": "338"
+            },
+            "is_tax_exempt": false,
+            "revised_tax_exempted": false
+          }
+        ],
+        "payout_totals": {
+          "fee": "70",
+          "tax": "61",
+          "total": "399",
+          "credit": "0",
+          "balance": "0",
+          "discount": "0",
+          "earnings": "268",
+          "fee_rate": "0.05",
+          "subtotal": "338",
+          "grand_total": "399",
+          "currency_code": "USD",
+          "exchange_rate": "1",
+          "credit_to_balance": "0"
+        },
+        "tax_rates_used": [
+          {
+            "totals": {
+              "tax": "61",
+              "total": "399",
+              "discount": "0",
+              "subtotal": "338"
+            },
+            "tax_rate": "0.18"
+          }
+        ],
+        "adjusted_totals": {
+          "fee": "70",
+          "tax": "61",
+          "total": "399",
+          "earnings": "268",
+          "subtotal": "338",
+          "grand_total": "399",
+          "currency_code": "USD"
+        }
+      },
+      "checkout": {
+        "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2b2smwffgtz1w99jq3sqy"
+      },
+      "payments": [
+        {
+          "amount": "399",
+          "status": "captured",
+          "created_at": "2025-05-22T22:38:33.115301Z",
+          "error_code": null,
+          "captured_at": "2025-05-22T22:38:35.575493Z",
+          "method_details": {
+            "card": {
+              "type": "visa",
+              "last4": "4242",
+              "expiry_year": 2030,
+              "expiry_month": 3,
+              "cardholder_name": "Rahul"
+            },
+            "type": "card"
+          },
+          "payment_method_id": "paymtd_01jvx2bwm7mjr94f33jek8eqth",
+          "payment_attempt_id": "d14c8931-35e6-4afc-b16f-3451ac811125",
+          "stored_payment_method_id": "065fe9f8-3304-4d36-8366-587badf262a6"
+        }
+      ],
+      "billed_at": "2025-05-22T22:38:36.159246Z",
+      "address_id": "add_01jvx2b7jz5cvd3xweffvr0xmm",
+      "created_at": "2025-05-22T22:38:06.870312Z",
+      "invoice_id": "inv_01jvx2c00t52qs19r3wyscmh99",
+      "revised_at": null,
+      "updated_at": "2025-05-22T22:38:38.452726823Z",
+      "business_id": null,
+      "custom_data": {
+        "email": "rahulmishra1716@gmail.com",
+        "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      },
+      "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+      "discount_id": null,
+      "receipt_data": null,
+      "currency_code": "USD",
+      "billing_period": {
+        "ends_at": "2025-06-22T22:38:35.575493Z",
+        "starts_at": "2025-05-22T22:38:35.575493Z"
+      },
+      "invoice_number": "21333-10041",
+      "billing_details": null,
+      "collection_mode": "automatic",
+      "subscription_id": "sub_01jvx2c0003em8m62fpacm7ytz"
+    },
+    "event_id": "evt_01jvx2c22zcpmjct2ezbx5dw44",
+    "event_type": "transaction.updated",
+    "occurred_at": "2025-05-22T22:38:38.462135Z",
+    "notification_id": "ntf_01jvx2c26zsez3pw3x71bjery8"
+  }
+}

@@ -30,16 +30,15 @@ export async function POST(req: Request) {
     console.log(`Processing cancellation for subscription: ${subscriptionId}`);
     console.log(`Cancellation effective from: ${effectiveFrom}`);
 
-    // Determine the API environment
-    const environment = process.env.PADDLE_ENVIRONMENT || "sandbox";
+    // Determine the API environment for v2
+    const environment = process.env.NEXT_PUBLIC_PADDLE_ENVIRONMENT;
     const apiUrl =
       environment === "production"
         ? "https://api.paddle.com"
         : "https://sandbox-api.paddle.com";
 
-    // Get the server-side API key (stored securely in environment variables)
+    // Get the server-side API key for v2 (API token)
     const apiKey = process.env.PADDLE_API_KEY;
-
     if (!apiKey) {
       console.log("API Route Error: Paddle API key not configured");
       return NextResponse.json(
@@ -48,20 +47,13 @@ export async function POST(req: Request) {
       );
     }
 
-    // console.log(`Using Paddle environment: ${environment}`);
-    // console.log(
-    //   `API key available: ${
-    //     apiKey ? "Yes (starts with: " + apiKey.substring(0, 4) + "...)" : "No"
-    //   }`
-    // );
-
-    // Prepare the request body - using the right format for the API version
+    // Prepare the request body for v2 API
     const requestBody = {
       effective_from:
-        effectiveFrom === "immediate" ? "immediately" : "billing_period_end",
+        effectiveFrom === "immediate" ? "immediately" : "next_billing_period",
     };
 
-    // API v2 uses a different endpoint structure than v1
+    // API v2 endpoint for cancellation - correct path for Billing API
     const apiEndpoint = `${apiUrl}/subscriptions/${subscriptionId}/cancel`;
 
     console.log(`Request URL: ${apiEndpoint}`);
@@ -70,6 +62,39 @@ export async function POST(req: Request) {
     console.log(
       `Request headers: Content-Type: application/json, Authorization: Bearer [hidden]`
     );
+
+    // First, let's verify the subscription exists by fetching it
+    console.log("First checking if subscription exists...");
+    const checkResponse = await fetch(
+      `${apiUrl}/subscriptions/${subscriptionId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+      }
+    );
+
+    console.log(`Subscription check response status: ${checkResponse.status}`);
+
+    if (checkResponse.status === 404) {
+      console.log(
+        "Subscription not found - may be invalid ID or wrong environment"
+      );
+      return NextResponse.json(
+        {
+          error:
+            "Subscription not found. Please check the subscription ID and environment.",
+        },
+        { status: 404 }
+      );
+    }
+
+    if (checkResponse.ok) {
+      const subData = await checkResponse.json();
+      console.log("Subscription data:", JSON.stringify(subData, null, 2));
+    }
 
     // Make the cancellation request to Paddle using API v2
     const response = await fetch(apiEndpoint, {
@@ -100,7 +125,10 @@ export async function POST(req: Request) {
       console.log(`API Route Error: Paddle returned error ${response.status}`);
       return NextResponse.json(
         {
-          error: data.error?.message || "Failed to cancel subscription",
+          error:
+            data.error?.detail ||
+            data.error?.message ||
+            "Failed to cancel subscription",
           paddleError: data,
         },
         { status: response.status }

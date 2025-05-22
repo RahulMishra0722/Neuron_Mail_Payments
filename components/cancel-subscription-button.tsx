@@ -15,20 +15,74 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { toast } from "@/hooks/use-toast";
+import { AlertTriangle, CheckCircle, CreditCard } from "lucide-react";
+
+interface Subscription {
+    id: string;
+    user_id: string;
+    paddle_subscription_id?: string;
+    paddle_customer_id?: string;
+    status?: string;
+    plan_id?: string;
+    current_period_start?: string | null;
+    current_period_end?: string | null;
+    canceled_at?: string | null;
+    created_at?: string;
+    updated_at?: string;
+    price?: number;
+    currency_code?: string;
+}
 
 interface CancelSubscriptionButtonProps {
     subscriptionId: string;
     className?: string;
+    subscription: Subscription;
+    transactionId?: string;
 }
+
+type DialogStep = "cancel" | "success" | "refund";
 
 export default function CancelSubscriptionButton({
     subscriptionId,
-    className = ""
+    className = "",
+    subscription,
+    transactionId
 }: CancelSubscriptionButtonProps) {
     const router = useRouter();
     const [open, setOpen] = useState(false);
+    const [currentStep, setCurrentStep] = useState<DialogStep>("cancel");
     const [isLoading, setIsLoading] = useState(false);
     const [cancelType, setCancelType] = useState<"immediate" | "next_billing_period">("next_billing_period");
+    const [cancellationResult, setCancellationResult] = useState<{
+        type: "immediate" | "next_billing_period";
+        eligibleForRefund: boolean;
+    } | null>(null);
+
+    // Check if subscription is eligible for refund (within 7 days)
+    const isEligibleForRefund = () => {
+        if (!subscription.created_at) return false;
+        const createdDate = new Date(subscription.created_at);
+        const now = new Date();
+        const daysDifference = (now.getTime() - createdDate.getTime()) / (1000 * 3600 * 24);
+        return daysDifference <= 7;
+    };
+
+    const formatCurrency = (amount?: number, currency?: string) => {
+        if (!amount) return "the full amount";
+        return `${currency === "USD" ? "$" : ""}${amount}${currency !== "USD" ? ` ${currency}` : ""}`;
+    };
+
+    const resetDialog = () => {
+        setCurrentStep("cancel");
+        setCancellationResult(null);
+        setIsLoading(false);
+        setCancelType("next_billing_period");
+    };
+
+    const handleDialogClose = () => {
+        setOpen(false);
+        setTimeout(resetDialog, 200); // Reset after animation
+    };
 
     const handleCancel = async () => {
         if (!subscriptionId) {
@@ -43,8 +97,7 @@ export default function CancelSubscriptionButton({
         try {
             setIsLoading(true);
 
-            // Call our API route instead of direct Paddle API
-            const response = await fetch("/api/subscriptions/cancel", {
+            const response = await fetch("/api/paddle/subscriptions/cancel", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -61,17 +114,13 @@ export default function CancelSubscriptionButton({
                 throw new Error(data.error || "Failed to cancel subscription");
             }
 
-            setOpen(false);
-            toast({
-                title: "Subscription cancelled",
-                description: cancelType === "immediate"
-                    ? "Your subscription has been cancelled immediately"
-                    : "Your subscription will end at the current billing period",
-                variant: "default",
+            // Set cancellation result and move to success step
+            setCancellationResult({
+                type: cancelType,
+                eligibleForRefund: isEligibleForRefund() && !!transactionId
             });
+            setCurrentStep("success");
 
-            // Refresh the page to show updated subscription status
-            router.refresh();
         } catch (error) {
             console.error("Error cancelling subscription:", error);
             toast({
@@ -84,6 +133,193 @@ export default function CancelSubscriptionButton({
         }
     };
 
+    const handleRefund = async () => {
+        if (!transactionId) {
+            toast({
+                title: "Error",
+                description: "No transaction ID found for refund",
+                variant: "destructive",
+            });
+            return;
+        }
+
+        try {
+            setIsLoading(true);
+
+            const response = await fetch("/api/paddle/subscriptions/refund", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    transactionId,
+                    reason: "requested_by_customer",
+                    amount: subscription.price
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Failed to process refund");
+            }
+
+            toast({
+                title: "Refund Processed",
+                description: `Your refund of ${formatCurrency(subscription.price, subscription.currency_code)} has been processed successfully`,
+                variant: "default",
+            });
+
+            handleDialogClose();
+            router.refresh();
+
+        } catch (error) {
+            console.error("Error processing refund:", error);
+            toast({
+                title: "Refund Error",
+                description: error instanceof Error ? error.message : "There was an error processing your refund",
+                variant: "destructive",
+            });
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleFinish = () => {
+        handleDialogClose();
+        router.refresh();
+    };
+
+    const renderCancelStep = () => (
+        <>
+            <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                    <AlertTriangle className="h-5 w-5 text-amber-500" />
+                    Cancel Subscription
+                </DialogTitle>
+                <DialogDescription>
+                    Choose when you'd like your subscription to end. This action cannot be undone.
+                </DialogDescription>
+            </DialogHeader>
+
+            <div className="py-6">
+                <RadioGroup value={cancelType} onValueChange={(value: "immediate" | "next_billing_period") => setCancelType(value)}>
+                    <div className="space-y-4">
+                        <div className="flex items-start space-x-3 p-4 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors">
+                            <RadioGroupItem value="next_billing_period" id="next_billing_period" className="mt-1" />
+                            <div className="flex-1">
+                                <Label htmlFor="next_billing_period" className="text-base font-medium cursor-pointer">
+                                    End at billing period
+                                </Label>
+                                <p className="text-sm text-gray-600 mt-1">
+                                    Continue access until {subscription.current_period_end
+                                        ? new Date(subscription.current_period_end).toLocaleDateString()
+                                        : "your current period ends"}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="flex items-start space-x-3 p-4 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors">
+                            <RadioGroupItem value="immediate" id="immediate" className="mt-1" />
+                            <div className="flex-1">
+                                <Label htmlFor="immediate" className="text-base font-medium cursor-pointer">
+                                    Cancel immediately
+                                </Label>
+                                <p className="text-sm text-gray-600 mt-1">
+                                    Lose access to premium features right now
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </RadioGroup>
+            </div>
+
+            <DialogFooter className="gap-2">
+                <Button variant="outline" onClick={handleDialogClose} disabled={isLoading}>
+                    Keep Subscription
+                </Button>
+                <Button
+                    onClick={handleCancel}
+                    variant="destructive"
+                    disabled={isLoading}
+                    className="min-w-[140px]"
+                >
+                    {isLoading ? "Cancelling..." : "Cancel Subscription"}
+                </Button>
+            </DialogFooter>
+        </>
+    );
+
+    const renderSuccessStep = () => (
+        <>
+            <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                    <CheckCircle className="h-5 w-5 text-green-500" />
+                    Subscription Cancelled
+                </DialogTitle>
+                <DialogDescription>
+                    Your subscription has been successfully cancelled.
+                </DialogDescription>
+            </DialogHeader>
+
+            <div className="py-6">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                    <p className="text-sm text-green-800">
+                        {cancellationResult?.type === "immediate"
+                            ? "Your subscription ended immediately. You no longer have access to premium features."
+                            : `Your subscription will end on ${subscription.current_period_end
+                                ? new Date(subscription.current_period_end).toLocaleDateString()
+                                : "your current billing date"}. You'll retain access until then.`
+                        }
+                    </p>
+                </div>
+
+                {cancellationResult?.eligibleForRefund && (
+                    <div className="border border-blue-200 rounded-lg p-4 bg-blue-50">
+                        <div className="flex items-start gap-3">
+                            <CreditCard className="h-5 w-5 text-blue-600 mt-0.5" />
+                            <div className="flex-1">
+                                <h4 className="font-medium text-blue-900 mb-2">
+                                    Refund Available
+                                </h4>
+                                <p className="text-sm text-blue-800 mb-4">
+                                    Since you subscribed within the last 7 days, you can request a full refund of{' '}
+                                    {formatCurrency(subscription.price, subscription.currency_code)}.
+                                </p>
+                                <div className="flex gap-2">
+                                    <Button
+                                        onClick={handleRefund}
+                                        disabled={isLoading}
+                                        size="sm"
+                                        className="bg-blue-600 hover:bg-blue-700"
+                                    >
+                                        {isLoading ? "Processing..." : "Request Refund"}
+                                    </Button>
+                                    <Button
+                                        onClick={handleFinish}
+                                        variant="outline"
+                                        size="sm"
+                                        disabled={isLoading}
+                                    >
+                                        No Thanks
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            {!cancellationResult?.eligibleForRefund && (
+                <DialogFooter>
+                    <Button onClick={handleFinish} className="w-full">
+                        Done
+                    </Button>
+                </DialogFooter>
+            )}
+        </>
+    );
+
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
@@ -94,54 +330,9 @@ export default function CancelSubscriptionButton({
                     Cancel Subscription
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                    <DialogTitle>Cancel Subscription</DialogTitle>
-                    <DialogDescription>
-                        Please choose when you would like your subscription to end.
-                    </DialogDescription>
-                </DialogHeader>
-
-                <div className="py-4">
-                    <RadioGroup value={cancelType} onValueChange={(value: "immediate" | "next_billing_period") => setCancelType(value)}>
-                        <div className="flex items-start space-x-2 mb-4 border rounded-md p-3 hover:bg-gray-50">
-                            <RadioGroupItem value="next_billing_period" id="next_billing_period" />
-                            <div className="space-y-1">
-                                <Label htmlFor="next_billing_period" className="font-medium">
-                                    End of current billing period
-                                </Label>
-                                <p className="text-sm text-gray-500">
-                                    You'll continue to have access to premium features until your current billing period ends.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-start space-x-2 border rounded-md p-3 hover:bg-gray-50">
-                            <RadioGroupItem value="immediate" id="immediate" />
-                            <div className="space-y-1">
-                                <Label htmlFor="immediate" className="font-medium">
-                                    Cancel immediately
-                                </Label>
-                                <p className="text-sm text-gray-500">
-                                    Your subscription will end now and you'll lose access to premium features immediately.
-                                </p>
-                            </div>
-                        </div>
-                    </RadioGroup>
-                </div>
-
-                <DialogFooter>
-                    <Button variant="outline" onClick={() => setOpen(false)} disabled={isLoading}>
-                        Keep Subscription
-                    </Button>
-                    <Button
-                        onClick={handleCancel}
-                        variant="destructive"
-                        disabled={isLoading}
-                    >
-                        {isLoading ? "Cancelling..." : "Confirm Cancellation"}
-                    </Button>
-                </DialogFooter>
+            <DialogContent className="sm:max-w-[480px]">
+                {currentStep === "cancel" && renderCancelStep()}
+                {currentStep === "success" && renderSuccessStep()}
             </DialogContent>
         </Dialog>
     );

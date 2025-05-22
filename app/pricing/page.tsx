@@ -117,8 +117,8 @@ export default async function PricingPage() {
             <div
               key={plan.id}
               className={`relative bg-white rounded-2xl shadow-sm border-2 transition-all hover:shadow-lg ${plan.popular
-                  ? 'border-blue-500 ring-2 ring-blue-200'
-                  : 'border-gray-200 hover:border-gray-300'
+                ? 'border-blue-500 ring-2 ring-blue-200'
+                : 'border-gray-200 hover:border-gray-300'
                 }`}
             >
               {/* Popular Badge */}
@@ -165,13 +165,13 @@ export default async function PricingPage() {
                     <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg text-center font-medium">
                       Current Plan
                     </div>
-                  ) : user ? (
+                  ) : user && user.email ? (
                     <CheckoutButton
                       email={user.email}
                       userId={user.id}
                       className={`w-full py-3 px-4 rounded-lg font-medium transition-colors ${plan.popular
-                          ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                          : 'bg-gray-900 hover:bg-gray-800 text-white'
+                        ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                        : 'bg-gray-900 hover:bg-gray-800 text-white'
                         }`}
                     >
                       {plan.buttonText}
@@ -181,8 +181,8 @@ export default async function PricingPage() {
                       <Link href="/auth/sign-up" className="block">
                         <Button
                           className={`w-full py-3 ${plan.popular
-                              ? 'bg-blue-600 hover:bg-blue-700'
-                              : 'bg-gray-900 hover:bg-gray-800'
+                            ? 'bg-blue-600 hover:bg-blue-700'
+                            : 'bg-gray-900 hover:bg-gray-800'
                             }`}
                         >
                           {plan.buttonText}

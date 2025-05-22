@@ -4,6 +4,12 @@ import { config } from "@/lib/config";
 import crypto from "crypto";
 import fs from "fs";
 import path from "path";
+import { handle_webhook_transaction_updated } from "./webhook-transaction-updated";
+import {
+  handle_subscription_activated,
+  handle_webhook_subscription_canceled,
+  handle_webhook_subscription_trialing,
+} from "./webhook_subscription_updated";
 
 // Define subscription states based on Paddle's status
 type SubscriptionStatus =
@@ -139,36 +145,24 @@ export async function POST(req: NextRequest) {
 
     console.log("Webhook event logged successfully:", webhookEvent.id);
 
-    // // Process the webhook based on event type
     try {
-      //   switch (body.event_type) {
-      //     case "subscription.created":
-      //       await handleSubscriptionCreated(body, supabase);
-      //       break;
-      //     case "subscription.updated":
-      //       await handleSubscriptionUpdated(body, supabase);
-      //       break;
-      //     case "subscription.canceled":
-      //       await handleSubscriptionCanceled(body, supabase);
-      //       break;
-      //     case "subscription.trialing":
-      //       await handleSubscriptionTrialing(body, supabase);
-      //       break;
-      //     case "transaction.completed":
-      //       await handleTransactionCompleted(body, supabase);
-      //       break;
-      //     case "transaction.updated":
-      //       await handleTransactionUpdated(body, supabase);
-      //       break;
-      //     case "transaction.failed":
-      //       await handleTransactionFailed(body, supabase);
-      //       break;
-      //     case "payment_method.deleted":
-      //       console.log("Payment method deleted, no further action needed");
-      //       break;
-      //     default:
-      //       console.log(`Unhandled webhook event: ${body.event_type}`);
-      //   }
+      switch (body.event_type) {
+        case "subscription.updated":
+        case "subscription.canceled":
+          await handle_webhook_subscription_canceled(body, supabase);
+          break;
+        case "subscription.trialing":
+          await handle_webhook_subscription_trialing(body, supabase);
+          break;
+        case "subscription.activated":
+          await handle_subscription_activated(body, supabase);
+          break;
+        case "transaction.updated":
+          await handle_webhook_transaction_updated(body, supabase);
+          break;
+        default:
+          console.log(`Unhandled webhook event: ${body.event_type}`);
+      }
 
       await supabase
         .from("webhook_events")

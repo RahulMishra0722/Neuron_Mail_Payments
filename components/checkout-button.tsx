@@ -27,6 +27,7 @@ export default function CheckoutButton({ email, userId, className }: CheckoutBut
             quantity: 1,
           },
         ],
+
         successUrl: `${config.app.url}/dashboard?checkout_success=true`,
         cancelUrl: `${config.app.url}/pricing?checkout_canceled=true`,
         customer: {

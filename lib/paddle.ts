@@ -86,10 +86,11 @@ export const createCheckout = async (options: PaddleCheckoutOptions) => {
           },
         ],
         customer: {
-          email: options.customer.email ?? "",
+          email: options.customer.email,
         },
         customData: {
           userId: options.customer.id,
+          email: options.customer.email,
         },
         settings: {
           displayMode: "popup",
