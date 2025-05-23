@@ -83,7 +83,7 @@ export function SignupForm() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-500px">
       {error && (
         <Alert variant="destructive">
           <AlertDescription>{error}</AlertDescription>
@@ -103,13 +103,13 @@ export function SignupForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Full name</FormLabel>
+                <FormLabel className="text-sm font-medium">Full name</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <User className="h-5 w-5 text-muted-foreground" />
                     </div>
-                    <Input {...field} className="pl-10" placeholder="John Doe" disabled={loading} />
+                    <Input {...field} className="pl-10 h-12" placeholder="John Doe" disabled={loading} />
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -122,13 +122,19 @@ export function SignupForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email address</FormLabel>
+                <FormLabel className="text-sm font-medium">Email address</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                       <Mail className="h-5 w-5 text-muted-foreground" />
                     </div>
-                    <Input {...field} type="email" className="pl-10" placeholder="you@example.com" disabled={loading} />
+                    <Input
+                      {...field}
+                      type="email"
+                      className="pl-10 h-12"
+                      placeholder="you@example.com"
+                      disabled={loading}
+                    />
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -141,7 +147,7 @@ export function SignupForm() {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel className="text-sm font-medium">Password</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -150,7 +156,7 @@ export function SignupForm() {
                     <Input
                       {...field}
                       type={showPassword ? "text" : "password"}
-                      className="pl-10 pr-10"
+                      className="pl-10 pr-10 h-12"
                       placeholder="••••••••"
                       disabled={loading}
                     />
@@ -176,7 +182,7 @@ export function SignupForm() {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Confirm Password</FormLabel>
+                <FormLabel className="text-sm font-medium">Confirm Password</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -185,7 +191,7 @@ export function SignupForm() {
                     <Input
                       {...field}
                       type={showPassword ? "text" : "password"}
-                      className="pl-10"
+                      className="pl-10 h-12"
                       placeholder="••••••••"
                       disabled={loading}
                     />
@@ -200,7 +206,7 @@ export function SignupForm() {
             control={form.control}
             name="acceptTerms"
             render={({ field }) => (
-              <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md">
+              <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md pt-2">
                 <FormControl>
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} disabled={loading} />
                 </FormControl>
@@ -221,7 +227,7 @@ export function SignupForm() {
             )}
           />
 
-          <Button type="submit" disabled={loading} className="w-full">
+          <Button type="submit" disabled={loading} className="w-full h-12 mt-2">
             {loading ? (
               <div className="flex items-center gap-2">
                 <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
@@ -234,16 +240,10 @@ export function SignupForm() {
         </form>
       </Form>
 
-      <div className="relative flex items-center justify-center">
-        <div className="border-t w-full border-border"></div>
-        <div className="relative flex justify-center text-xs">
-          <span className="bg-background px-2 text-muted-foreground">Already have an account?</span>
-        </div>
-      </div>
-
-      <div className="text-center">
+      <div className="text-center pt-2">
+        <p className="text-sm text-muted-foreground mb-4">Already have an account?</p>
         <Link href="/auth/login">
-          <Button type="button" variant="outline" className="w-full">
+          <Button type="button" variant="outline" className="w-full h-12">
             Sign in
           </Button>
         </Link>

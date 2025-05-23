@@ -22,7 +22,7 @@ export default async function SignupPage() {
             <CardTitle className="text-2xl text-center">Create an account</CardTitle>
             <CardDescription className="text-center">Enter your email below to create your account</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="w-600px">
             <SignupForm />
           </CardContent>
         </Card>

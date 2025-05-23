@@ -37,6 +37,7 @@ export const handle_webhook_transaction_updated = async (
     // Extract required fields from transaction data
     const transactionId = subscriptionData.id;
     const subscriptionId = subscriptionData.subscription_id;
+    if (!subscriptionId || !transactionId) return;
     const userId = subscriptionData.custom_data?.userId;
     const status = subscriptionData.status;
     const currencyCode = subscriptionData.currency_code;
