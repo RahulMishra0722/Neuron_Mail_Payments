@@ -1,8 +1,8 @@
 import Link from "next/link"
-import { ArrowRight, CheckCircle } from "lucide-react"
-
+import { ArrowRight, CheckCircle, BarChart3, Shield, Zap } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { createClient } from "@/lib/supabase/server"
+import { siteConfig } from "@/config/site-config"
 
 export default async function Home() {
   const supabase = await createClient()
@@ -13,57 +13,57 @@ export default async function Home() {
   // Key benefits - easily customizable
   const benefits = [
     {
-      title: "Simple Integration",
-      description: "Integrate with your existing systems in minutes, not days.",
+      icon: Zap,
+      title: "Seamless Integration",
+      description: "Connect with your existing systems in minutes, not days.",
     },
     {
-      title: "Flexible Pricing",
-      description: "Choose the plan that works for your business, with no hidden fees.",
+      icon: Shield,
+      title: "Enterprise Security",
+      description: "Bank-level security with advanced encryption and compliance.",
     },
     {
+      icon: BarChart3,
       title: "Powerful Analytics",
       description: "Gain insights into your subscription metrics and customer behavior.",
     },
   ]
 
-  return (
-    <div className="flex min-h-screen flex-col bg-white">
-      {/* Header */}
-      <header className="border-b border-gray-200 py-4">
-        <div className="container mx-auto flex justify-between items-center px-4">
-          <Link href="/" className="text-xl font-bold text-gray-900">
-            YourStartup
-          </Link>
-          <div className="flex items-center gap-4">
-            <Link href="/pricing">
-              <Button variant="ghost" size="sm">
-                Pricing
-              </Button>
-            </Link>
-            {user ? (
-              <Link href="/dashboard">
-                <Button size="sm">Dashboard</Button>
-              </Link>
-            ) : (
-              <Link href="/auth/login">
-                <Button size="sm">Sign In</Button>
-              </Link>
-            )}
-          </div>
-        </div>
-      </header>
+  // Features section
+  const features = [
+    {
+      title: "Flexible Subscription Management",
+      description:
+        "Create and manage subscription plans with ease. Support for trials, discounts, and custom billing cycles.",
+      image: "/placeholder.svg?height=400&width=600",
+    },
+    {
+      title: "Global Payment Processing",
+      description: "Accept payments in multiple currencies with support for all major payment methods worldwide.",
+      image: "/placeholder.svg?height=400&width=600",
+    },
+    {
+      title: "Comprehensive Reporting",
+      description: "Track revenue, churn, and customer lifetime value with beautiful, intuitive dashboards.",
+      image: "/placeholder.svg?height=400&width=600",
+    },
+  ]
 
+  return (
+    <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-b from-white to-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Subscription Management Made Simple
-            </h1>
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed">
-              Everything you need to launch, manage, and scale your subscription business. Start your 14-day free trial
-              today.
-            </p>
+      <section className="py-20 md:py-32">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                Subscription Management Made Simple
+              </h1>
+              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                Everything you need to launch, manage, and scale your subscription business. Start your 7-day free
+                trial today.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing">
                 <Button size="lg" className="px-8">
@@ -84,19 +84,77 @@ export default async function Home() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-16">Why Choose Our Platform</h2>
-          <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+      <section className="py-20 bg-muted/50">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Why Choose {siteConfig.name}</h2>
+              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg">
+                Our platform provides everything you need to manage subscriptions efficiently.
+              </p>
+            </div>
+          </div>
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3 md:gap-12 lg:gap-16 mt-12">
             {benefits.map((benefit, index) => (
-              <div key={index} className="text-center">
-                <div className="flex justify-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <CheckCircle className="h-8 w-8 text-primary" />
-                  </div>
+              <div key={index} className="flex flex-col items-center space-y-4 text-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  <benefit.icon className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-bold">{benefit.title}</h3>
+                  <p className="text-muted-foreground">{benefit.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Powerful Features</h2>
+              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg">
+                Everything you need to manage subscriptions and payments in one place.
+              </p>
+            </div>
+          </div>
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-16 mt-12">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className={`flex flex-col ${index % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
+                  } gap-8 items-center`}
+              >
+                <div className="flex-1 space-y-4">
+                  <h3 className="text-2xl font-bold">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center">
+                      <CheckCircle className="h-5 w-5 text-primary mr-2" />
+                      <span>Easy to implement</span>
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-5 w-5 text-primary mr-2" />
+                      <span>Fully customizable</span>
+                    </li>
+                    <li className="flex items-center">
+                      <CheckCircle className="h-5 w-5 text-primary mr-2" />
+                      <span>Enterprise-ready</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="flex-1">
+                  <img
+                    src={feature.image || "/placeholder.svg"}
+                    alt={feature.title}
+                    className="rounded-lg border shadow-lg"
+                    width={600}
+                    height={400}
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -104,30 +162,30 @@ export default async function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to get started?</h2>
-            <p className="text-xl text-gray-600 mb-8">
-              Join thousands of businesses that trust our platform for their subscription needs.
-            </p>
-            <Link href="/pricing">
-              <Button size="lg" className="px-8">
-                View Pricing
-              </Button>
-            </Link>
+      <section className="py-20 bg-muted/50">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Ready to get started?</h2>
+              <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg">
+                Join thousands of businesses that trust our platform for their subscription needs.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/pricing">
+                <Button size="lg" className="px-8">
+                  View Pricing
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button variant="outline" size="lg" className="px-8">
+                  Contact Sales
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="text-center text-gray-400">
-            <p>© {new Date().getFullYear()} YourStartup, Inc. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }

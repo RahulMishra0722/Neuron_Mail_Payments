@@ -18,12 +18,17 @@ export const handle_subscription_activated = async (
   supabase: SupabaseClient
 ) => {
   try {
+    console.log(`----------------------------------`);
+    console.log({ activated: JSON.stringify(obj) });
+    console.log(JSON.stringify(obj));
+    console.log(`----------------------------------`);
     if (!obj?.data) {
       throw new Error("Invalid webhook payload structure");
     }
 
     const data = obj.data;
 
+    // Check for required fields
     if (!data.custom_data?.userId) {
       throw new Error("Missing userId in custom_data");
     }
@@ -58,10 +63,9 @@ export const handle_subscription_activated = async (
     return { success: true, data: insertedData };
   } catch (error) {
     console.error("Error handling subscription activation:", error);
-    throw error;
+    throw error; // Re-throw to let calling code handle it
   }
 };
-
 export const handle_webhook_subscription_canceled = async (
   body: any,
   supabase: SupabaseClient
@@ -132,7 +136,6 @@ export const handle_webhook_subscription_resumed = async (
         canceled_at: null, // Clear canceled_at when resumed
         current_period_start: data.current_billing_period?.starts_at || null,
         current_period_end: data.current_billing_period?.ends_at || null,
-        next_billed_at: data.next_billed_at,
       })
       .eq("paddle_subscription_id", paddleSubscriptionId)
       .select();
@@ -171,20 +174,28 @@ export const handle_webhook_subscription_trialing = async (
 ) => {
   try {
     const data = body.data;
+
+    // Extract the subscription ID from the webhook data
     const paddleSubscriptionId = data.id;
 
     if (!paddleSubscriptionId) {
       throw new Error("No subscription ID found in webhook data");
     }
 
+    // Update the subscription in the database
     const { data: updatedSubscription, error } = await supabase
-      .from("subscriptions")
+      .from("subscriptions") // Replace with your actual table name
       .update({
+        user_id: data.custom_data.userId,
+        paddle_subscription_id: data.id,
+        paddle_customer_id: data.customer_id,
         status: data.status,
+        plan_id: data.items[0].price.id,
+        price: parseFloat(data.items[0].price.unit_price.amount) / 100,
+        currency_code: data.currency_code,
         current_period_start: data.current_billing_period?.starts_at || null,
         current_period_end: data.current_billing_period?.ends_at || null,
-        next_billed_at: data.next_billed_at,
-        canceled_at: null,
+        canceled_at: data.canceled_at,
       })
       .eq("paddle_subscription_id", paddleSubscriptionId)
       .select();
@@ -209,6 +220,7 @@ export const handle_webhook_subscription_trialing = async (
       "Subscription successfully set to trialing:",
       updatedSubscription[0]
     );
+
     return {
       success: true,
       message: "Subscription set to trialing successfully",
@@ -237,7 +249,6 @@ export const handle_webhook_subscription_updated = async (
       status: data.status,
       current_period_start: data.current_billing_period?.starts_at || null,
       current_period_end: data.current_billing_period?.ends_at || null,
-      next_billed_at: data.next_billed_at,
     };
 
     // Update price and plan if items are available
@@ -305,7 +316,6 @@ export const handle_webhook_subscription_past_due = async (
         status: data.status, // "past_due"
         current_period_start: data.current_billing_period?.starts_at || null,
         current_period_end: data.current_billing_period?.ends_at || null,
-        next_billed_at: data.next_billed_at,
       })
       .eq("paddle_subscription_id", paddleSubscriptionId)
       .select();

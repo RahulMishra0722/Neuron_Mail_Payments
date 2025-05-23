@@ -1,15 +1,15 @@
 {
-  "timestamp": "2025-05-22T22:53:46.124Z",
+  "timestamp": "2025-05-23T07:30:42.797Z",
   "event_type": "transaction.updated",
-  "event_id": "evt_01jvx37prmdz2mk6dqmkmksbr0",
+  "event_id": "evt_01jvy0t9748a1jmjkea06dthky",
   "headers": {
-    "paddle-signature": "ts=1747954424;h1=b3034786068a1534ce2a2c04232a486bd3657d0984749ef2ba2f1c9a3446e38e",
+    "paddle-signature": "ts=1747985442;h1=ef5e786ae1dc77e936553f547f238abf5a31ff091c1330f5527148af021c5fbd",
     "content-type": "application/json",
     "user-agent": "Paddle"
   },
   "payload": {
     "data": {
-      "id": "txn_01jvx2gceekw55nna445y7e8w0",
+      "id": "txn_01jvy0sktjrkmsa2ff7ewj2wed",
       "items": [
         {
           "price": {
@@ -28,10 +28,13 @@
               "amount": "399",
               "currency_code": "USD"
             },
-            "updated_at": "2025-05-21T21:44:30.556949Z",
+            "updated_at": "2025-05-22T23:31:06.944914Z",
             "custom_data": null,
             "description": "Everything is included in this plan",
-            "trial_period": null,
+            "trial_period": {
+              "interval": "day",
+              "frequency": 3
+            },
             "billing_cycle": {
               "interval": "month",
               "frequency": 1
@@ -44,29 +47,29 @@
         }
       ],
       "origin": "web",
-      "status": "paid",
+      "status": "completed",
       "details": {
         "totals": {
-          "fee": "70",
-          "tax": "61",
-          "total": "399",
+          "fee": "0",
+          "tax": "0",
+          "total": "0",
           "credit": "0",
           "balance": "0",
           "discount": "0",
-          "earnings": "268",
-          "subtotal": "338",
-          "grand_total": "399",
+          "earnings": "0",
+          "subtotal": "0",
+          "grand_total": "0",
           "currency_code": "USD",
           "credit_to_balance": "0"
         },
         "line_items": [
           {
-            "id": "txnitm_01jvx2hb8ddnktzt8tsgkjde2r",
+            "id": "txnitm_01jvy0srvqwet3r5e800bgk3th",
             "totals": {
-              "tax": "61",
-              "total": "399",
+              "tax": "0",
+              "total": "0",
               "discount": "0",
-              "subtotal": "338"
+              "subtotal": "0"
             },
             "item_id": null,
             "product": {
@@ -85,26 +88,26 @@
             "quantity": 1,
             "tax_rate": "0.18",
             "unit_totals": {
-              "tax": "61",
-              "total": "399",
+              "tax": "0",
+              "total": "0",
               "discount": "0",
-              "subtotal": "338"
+              "subtotal": "0"
             },
             "is_tax_exempt": false,
             "revised_tax_exempted": false
           }
         ],
         "payout_totals": {
-          "fee": "70",
-          "tax": "61",
-          "total": "399",
+          "fee": "0",
+          "tax": "0",
+          "total": "0",
           "credit": "0",
           "balance": "0",
           "discount": "0",
-          "earnings": "268",
-          "fee_rate": "0.05",
-          "subtotal": "338",
-          "grand_total": "399",
+          "earnings": "0",
+          "fee_rate": "0",
+          "subtotal": "0",
+          "grand_total": "0",
           "currency_code": "USD",
           "exchange_rate": "1",
           "credit_to_balance": "0"
@@ -112,96 +115,76 @@
         "tax_rates_used": [
           {
             "totals": {
-              "tax": "61",
-              "total": "399",
+              "tax": "0",
+              "total": "0",
               "discount": "0",
-              "subtotal": "338"
+              "subtotal": "0"
             },
             "tax_rate": "0.18"
           }
         ],
         "adjusted_totals": {
-          "fee": "70",
-          "tax": "61",
-          "total": "399",
-          "earnings": "268",
-          "subtotal": "338",
-          "grand_total": "399",
+          "fee": "0",
+          "tax": "0",
+          "total": "0",
+          "earnings": "0",
+          "subtotal": "0",
+          "grand_total": "0",
           "currency_code": "USD"
         }
       },
       "checkout": {
-        "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2gceekw55nna445y7e8w0"
+        "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvy0sktjrkmsa2ff7ewj2wed"
       },
       "payments": [
         {
-          "amount": "399",
-          "status": "captured",
-          "created_at": "2025-05-22T22:53:23.61251Z",
+          "amount": "0",
+          "status": "authorized",
+          "created_at": "2025-05-23T07:30:39.146029Z",
           "error_code": null,
-          "captured_at": "2025-05-22T22:53:43.147875Z",
-          "method_details": {
-            "card": {
-              "type": "visa",
-              "last4": "0446",
-              "expiry_year": 2030,
-              "expiry_month": 3,
-              "cardholder_name": "Rahul"
-            },
-            "type": "card"
-          },
-          "payment_method_id": "paymtd_01jvx3728dgcyspxr07xdts89t",
-          "payment_attempt_id": "360985de-8dd5-44f5-9ae5-92533ae75f9a",
-          "stored_payment_method_id": "b73e6683-ca46-432a-bd3f-a406b19c91c0"
-        },
-        {
-          "amount": "399",
-          "status": "error",
-          "created_at": "2025-05-22T22:45:00.091856Z",
-          "error_code": "declined",
           "captured_at": null,
           "method_details": {
             "card": {
               "type": "visa",
-              "last4": "0002",
+              "last4": "4242",
               "expiry_year": 2030,
               "expiry_month": 3,
               "cardholder_name": "Rahul"
             },
             "type": "card"
           },
-          "payment_method_id": "paymtd_01jvx2qph43jwdzdjsg77q900d",
-          "payment_attempt_id": "1a4894a5-25b4-4b02-ad13-2906adb60f7e",
-          "stored_payment_method_id": "8dad590d-c385-4346-8fec-16ae3391f834"
+          "payment_method_id": "paymtd_01jvy0t6cpkqspvjm6ekz6a6eb",
+          "payment_attempt_id": "0a6a26e5-0085-4c92-874f-3c93bde82c0c",
+          "stored_payment_method_id": "a6879cc1-e7bb-4cd4-b1b3-c3bad6f004d9"
         }
       ],
-      "billed_at": "2025-05-22T22:53:43.442181Z",
-      "address_id": "add_01jvx2hazgzpxs9ge9pawczsp7",
-      "created_at": "2025-05-22T22:41:00.420301Z",
+      "billed_at": "2025-05-23T07:30:41.131304Z",
+      "address_id": "add_01jvy0srj7jxr7vvqxa4d8v5pk",
+      "created_at": "2025-05-23T07:30:20.163939Z",
       "invoice_id": null,
       "revised_at": null,
-      "updated_at": "2025-05-22T22:53:44.1635402Z",
+      "updated_at": "2025-05-23T07:30:41.77470939Z",
       "business_id": null,
       "custom_data": {
-        "email": "rahulmishra1716@gmail.com",
-        "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+        "email": "rahulmishra7802@gmail.com",
+        "userId": "411686f2-b77e-42d8-b20d-1694f3bacd67"
       },
-      "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+      "customer_id": "ctm_01jvptkxnp16mxw2jeh3md8npa",
       "discount_id": null,
       "receipt_data": null,
       "currency_code": "USD",
       "billing_period": {
-        "ends_at": "2025-06-22T22:53:43.147875Z",
-        "starts_at": "2025-05-22T22:53:43.147875Z"
+        "ends_at": "2025-05-26T07:30:41.401Z",
+        "starts_at": "2025-05-23T07:30:41.401Z"
       },
       "invoice_number": null,
       "billing_details": null,
       "collection_mode": "automatic",
-      "subscription_id": "sub_01jvx37nx7ye78qc89p1k3apsb"
+      "subscription_id": "sub_01jvy0t8m04ssv10r1xd4s4kg1"
     },
-    "event_id": "evt_01jvx37prmdz2mk6dqmkmksbr0",
+    "event_id": "evt_01jvy0t9748a1jmjkea06dthky",
     "event_type": "transaction.updated",
-    "occurred_at": "2025-05-22T22:53:44.175244Z",
-    "notification_id": "ntf_01jvx37px0jh28yw6x6x9c5cv2"
+    "occurred_at": "2025-05-23T07:30:41.784642Z",
+    "notification_id": "ntf_01jvy0t9j2kcxbfqvtb2vrz269"
   }
 }

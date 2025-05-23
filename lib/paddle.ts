@@ -1,6 +1,6 @@
-import { toast } from "@/hooks/use-toast"; // Make sure to import your toast component
+import { toast } from "@/hooks/use-toast";
 import { initializePaddle, type Paddle } from "@paddle/paddle-js";
-// Types for Paddle SDK
+
 export type PaddleCheckoutOptions = {
   items: Array<{
     priceId: string;
@@ -13,9 +13,34 @@ export type PaddleCheckoutOptions = {
   successUrl?: string;
   cancelUrl?: string;
 };
-let Paddle: Paddle;
-// Initialize Paddle SDK
-export const initPaddle = async () => {
+
+let Paddle: Paddle | null = null;
+let isInitializing = false;
+
+// Initialize Paddle SDK - only once
+export const initPaddle = async (): Promise<Paddle | null> => {
+  // Return existing instance if already initialized
+  if (Paddle) return Paddle;
+
+  // Prevent multiple simultaneous initializations
+  if (isInitializing) {
+    // Wait for the current initialization to complete
+    return new Promise((resolve) => {
+      const checkInitialization = () => {
+        if (Paddle) {
+          resolve(Paddle);
+        } else if (!isInitializing) {
+          resolve(null);
+        } else {
+          setTimeout(checkInitialization, 100);
+        }
+      };
+      checkInitialization();
+    });
+  }
+
+  isInitializing = true;
+
   try {
     const paddleInstance = await initializePaddle({
       environment:
@@ -24,28 +49,20 @@ export const initPaddle = async () => {
           | "production") || "sandbox",
       token: process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN!,
       eventCallback: (event) => {
-        // This is the correct way to handle events in the current Paddle SDK
         console.log("Paddle event received:", event);
 
-        // Check for checkout completion event
         if (event.name === "checkout.completed") {
-          console.log("Checkout completed event received:");
-          console.log(event);
-
-          // Here you can implement your success handling logic
-          // For example, redirect to success page or update UI
+          console.log("Checkout completed event received:", event);
           const transactionData = event.data;
           console.log("Payment successful!", transactionData);
 
-          // You might want to call your backend to verify the transaction
-          // and update user subscription status
-
-          // If you need to redirect programmatically:
-          // window.location.href = `${window.location.origin}/success`;
+          toast({
+            title: "Payment Successful!",
+            description: "Your subscription has been activated.",
+          });
         }
-
-        // Log other events as needed
-        if (event) {
+        //@ts-ignore
+        if (event.name === "checkout.opened") {
           console.log("Checkout opened");
         }
 
@@ -54,8 +71,14 @@ export const initPaddle = async () => {
         }
       },
     });
-    if (paddleInstance) Paddle = paddleInstance;
-    console.log("Paddle initialized successfully");
+
+    if (paddleInstance) {
+      Paddle = paddleInstance;
+      console.log("Paddle initialized successfully");
+      return Paddle;
+    }
+
+    throw new Error("Failed to initialize Paddle instance");
   } catch (error) {
     console.error("Failed to initialize Paddle:", error);
     toast({
@@ -63,6 +86,9 @@ export const initPaddle = async () => {
       description: "Please refresh the page and try again.",
       variant: "destructive",
     });
+    return null;
+  } finally {
+    isInitializing = false;
   }
 };
 
@@ -70,38 +96,41 @@ export const createCheckout = async (options: PaddleCheckoutOptions) => {
   if (typeof window === "undefined") return null;
 
   try {
-    await initPaddle();
+    // Ensure Paddle is initialized
+    const paddleInstance = await initPaddle();
+
+    if (!paddleInstance) {
+      throw new Error("Failed to initialize Paddle");
+    }
 
     const priceId = process.env.NEXT_PUBLIC_PADDLE_PRICE_ID;
     if (!priceId) {
       throw new Error("Paddle price ID is not configured");
     }
 
-    if (Paddle) {
-      const checkout = Paddle.Checkout.open({
-        items: [
-          {
-            priceId: process.env.NEXT_PUBLIC_PADDLE_PRICE_ID || "",
-            quantity: 1,
-          },
-        ],
-        customer: {
-          email: options.customer.email,
+    const checkout = paddleInstance.Checkout.open({
+      items: [
+        {
+          priceId: priceId,
+          quantity: 1,
         },
-        customData: {
-          userId: options.customer.id,
-          email: options.customer.email,
-        },
-        settings: {
-          displayMode: "popup",
-          theme: "light",
-          successUrl: `${window.location.origin}/success`,
-          locale: "en",
-        },
-      });
+      ],
+      customer: {
+        email: options.customer.email,
+      },
+      customData: {
+        userId: options.customer.id,
+        email: options.customer.email,
+      },
+      settings: {
+        displayMode: "popup",
+        theme: "light",
+        successUrl: options.successUrl,
+        locale: "en",
+      },
+    });
 
-      return checkout;
-    }
+    return checkout;
   } catch (error) {
     console.error("Paddle checkout error:", error);
     toast({

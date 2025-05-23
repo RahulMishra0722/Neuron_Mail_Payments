@@ -1,15 +1,15 @@
 {
-  "timestamp": "2025-05-22T22:39:57.311Z",
-  "event_type": "subscription.canceled",
-  "event_id": "evt_01jvx2ee1t6d9t3xepswk79852",
+  "timestamp": "2025-05-23T06:26:46.603Z",
+  "event_type": "subscription.trialing",
+  "event_id": "evt_01jvxx23xdjkz97cd4gb3ap38w",
   "headers": {
-    "paddle-signature": "ts=1747953596;h1=73db60240edcd0d14408aa2586be89289b7736a737d1a962a08118be233bf012",
+    "paddle-signature": "ts=1747981605;h1=c795c71bf10f318967b24a81a300dd190c06c7add8f7c1688496ec0be6c6b274",
     "content-type": "application/json",
     "user-agent": "Paddle"
   },
   "payload": {
     "data": {
-      "id": "sub_01jvx2c0003em8m62fpacm7ytz",
+      "id": "sub_01jvxx2378n0qqh0bscpy6argj",
       "items": [
         {
           "price": {
@@ -29,18 +29,21 @@
               "amount": "399",
               "currency_code": "USD"
             },
-            "updated_at": "2025-05-21T21:44:30.556949Z",
+            "updated_at": "2025-05-22T23:31:06.944914Z",
             "custom_data": null,
             "description": "Everything is included in this plan",
             "import_meta": null,
-            "trial_period": null,
+            "trial_period": {
+              "interval": "day",
+              "frequency": 3
+            },
             "billing_cycle": {
               "interval": "month",
               "frequency": 1
             },
             "unit_price_overrides": []
           },
-          "status": "active",
+          "status": "trialing",
           "product": {
             "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
             "name": "Neuron Mail Subscription",
@@ -56,25 +59,28 @@
           },
           "quantity": 1,
           "recurring": true,
-          "created_at": "2025-05-22T22:38:36.544Z",
-          "updated_at": "2025-05-22T22:38:36.544Z",
-          "trial_dates": null,
-          "next_billed_at": null,
-          "previously_billed_at": "2025-05-22T22:38:35.575493Z"
+          "created_at": "2025-05-23T06:25:03.72Z",
+          "updated_at": "2025-05-23T06:25:03.72Z",
+          "trial_dates": {
+            "ends_at": "2025-05-26T06:25:03.713Z",
+            "starts_at": "2025-05-23T06:25:03.713Z"
+          },
+          "next_billed_at": "2025-05-26T06:25:03.713Z",
+          "previously_billed_at": null
         }
       ],
-      "status": "canceled",
+      "status": "trialing",
       "discount": null,
       "paused_at": null,
-      "address_id": "add_01jvx2b7jz5cvd3xweffvr0xmm",
-      "created_at": "2025-05-22T22:38:36.544Z",
-      "started_at": "2025-05-22T22:38:35.575493Z",
-      "updated_at": "2025-05-22T22:39:55.763Z",
+      "address_id": "add_01jvxx18y2pb4f5vja3r4adwze",
+      "created_at": "2025-05-23T06:25:03.72Z",
+      "started_at": "2025-05-23T06:25:03.713Z",
+      "updated_at": "2025-05-23T06:25:03.72Z",
       "business_id": null,
-      "canceled_at": "2025-05-22T22:39:55.758Z",
+      "canceled_at": null,
       "custom_data": {
         "email": "rahulmishra1716@gmail.com",
-        "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+        "userId": "46c71f5d-54d5-4815-8882-11020bac0d1b"
       },
       "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
       "import_meta": null,
@@ -83,16 +89,19 @@
         "frequency": 1
       },
       "currency_code": "USD",
-      "next_billed_at": null,
+      "next_billed_at": "2025-05-26T06:25:03.713Z",
       "billing_details": null,
       "collection_mode": "automatic",
-      "first_billed_at": "2025-05-22T22:38:35.575493Z",
+      "first_billed_at": null,
       "scheduled_change": null,
-      "current_billing_period": null
+      "current_billing_period": {
+        "ends_at": "2025-05-26T06:25:03.713Z",
+        "starts_at": "2025-05-23T06:25:03.713Z"
+      }
     },
-    "event_id": "evt_01jvx2ee1t6d9t3xepswk79852",
-    "event_type": "subscription.canceled",
-    "occurred_at": "2025-05-22T22:39:55.918768Z",
-    "notification_id": "ntf_01jvx2ee69yp9debjg1c9jwxc7"
+    "event_id": "evt_01jvxx23xdjkz97cd4gb3ap38w",
+    "event_type": "subscription.trialing",
+    "occurred_at": "2025-05-23T06:25:03.920648Z",
+    "notification_id": "ntf_01jvxx241yw9vtz96qfadmh4x4"
   }
 }

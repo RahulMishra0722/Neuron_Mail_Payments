@@ -1,16 +1,124 @@
 
 ================================================================================
-2025-05-22T22:38:13.571Z - transaction.updated
+2025-05-23T06:26:46.603Z - subscription.trialing
 ================================================================================
-Event ID: evt_01jvx2b84kk7qb3rdx8b3b3dpp
+Event ID: evt_01jvxx23xdjkz97cd4gb3ap38w
 Headers: {
-  "paddle-signature": "ts=1747953492;h1=b175b5b35a79a8afce492e805f4ac687e384681f1e14ea559d997c48250f1565",
+  "paddle-signature": "ts=1747981605;h1=c795c71bf10f318967b24a81a300dd190c06c7add8f7c1688496ec0be6c6b274",
   "content-type": "application/json",
   "user-agent": "Paddle"
 }
 Payload: {
   "data": {
-    "id": "txn_01jvx2b2smwffgtz1w99jq3sqy",
+    "id": "sub_01jvxx2378n0qqh0bscpy6argj",
+    "items": [
+      {
+        "price": {
+          "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "name": "Starter",
+          "type": "standard",
+          "status": "active",
+          "quantity": {
+            "maximum": 1,
+            "minimum": 1
+          },
+          "tax_mode": "account_setting",
+          "seller_id": "31565",
+          "created_at": "2025-05-19T12:25:15.677881Z",
+          "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+          "unit_price": {
+            "amount": "399",
+            "currency_code": "USD"
+          },
+          "updated_at": "2025-05-22T23:31:06.944914Z",
+          "custom_data": null,
+          "description": "Everything is included in this plan",
+          "import_meta": null,
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
+          "billing_cycle": {
+            "interval": "month",
+            "frequency": 1
+          },
+          "unit_price_overrides": []
+        },
+        "status": "trialing",
+        "product": {
+          "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+          "name": "Neuron Mail Subscription",
+          "type": "standard",
+          "status": "active",
+          "image_url": null,
+          "seller_id": "31565",
+          "created_at": "2025-05-19T12:16:34.12Z",
+          "updated_at": "2025-05-19T12:16:34.12Z",
+          "custom_data": null,
+          "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
+          "tax_category": "standard"
+        },
+        "quantity": 1,
+        "recurring": true,
+        "created_at": "2025-05-23T06:25:03.72Z",
+        "updated_at": "2025-05-23T06:25:03.72Z",
+        "trial_dates": {
+          "ends_at": "2025-05-26T06:25:03.713Z",
+          "starts_at": "2025-05-23T06:25:03.713Z"
+        },
+        "next_billed_at": "2025-05-26T06:25:03.713Z",
+        "previously_billed_at": null
+      }
+    ],
+    "status": "trialing",
+    "discount": null,
+    "paused_at": null,
+    "address_id": "add_01jvxx18y2pb4f5vja3r4adwze",
+    "created_at": "2025-05-23T06:25:03.72Z",
+    "started_at": "2025-05-23T06:25:03.713Z",
+    "updated_at": "2025-05-23T06:25:03.72Z",
+    "business_id": null,
+    "canceled_at": null,
+    "custom_data": {
+      "email": "rahulmishra1716@gmail.com",
+      "userId": "46c71f5d-54d5-4815-8882-11020bac0d1b"
+    },
+    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "import_meta": null,
+    "billing_cycle": {
+      "interval": "month",
+      "frequency": 1
+    },
+    "currency_code": "USD",
+    "next_billed_at": "2025-05-26T06:25:03.713Z",
+    "billing_details": null,
+    "collection_mode": "automatic",
+    "first_billed_at": null,
+    "scheduled_change": null,
+    "current_billing_period": {
+      "ends_at": "2025-05-26T06:25:03.713Z",
+      "starts_at": "2025-05-23T06:25:03.713Z"
+    }
+  },
+  "event_id": "evt_01jvxx23xdjkz97cd4gb3ap38w",
+  "event_type": "subscription.trialing",
+  "occurred_at": "2025-05-23T06:25:03.920648Z",
+  "notification_id": "ntf_01jvxx241yw9vtz96qfadmh4x4"
+}
+
+
+================================================================================
+2025-05-23T06:26:46.609Z - transaction.updated
+================================================================================
+Event ID: evt_01jvxx246j4f9fp9ww84qat5sj
+Headers: {
+  "paddle-signature": "ts=1747981605;h1=33ca5b594686b321217a821b7e4cdbc0178fd83e57963d03faeba8504cd6fe81",
+  "content-type": "application/json",
+  "user-agent": "Paddle"
+}
+Payload: {
+  "data": {
+    "id": "txn_01jvxx151rqk1see21xdk4ggw6",
     "items": [
       {
         "price": {
@@ -29,10 +137,204 @@ Payload: {
             "amount": "399",
             "currency_code": "USD"
           },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
+          "updated_at": "2025-05-22T23:31:06.944914Z",
           "custom_data": null,
           "description": "Everything is included in this plan",
-          "trial_period": null,
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
+          "billing_cycle": {
+            "interval": "month",
+            "frequency": 1
+          },
+          "unit_price_overrides": []
+        },
+        "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+        "quantity": 1,
+        "proration": null
+      }
+    ],
+    "origin": "web",
+    "status": "completed",
+    "details": {
+      "totals": {
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
+        "credit": "0",
+        "balance": "0",
+        "discount": "0",
+        "earnings": "0",
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD",
+        "credit_to_balance": "0"
+      },
+      "line_items": [
+        {
+          "id": "txnitm_01jvxx1979mqdxmheh1ggvpbt3",
+          "totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "item_id": null,
+          "product": {
+            "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+            "name": "Neuron Mail Subscription",
+            "type": "standard",
+            "status": "active",
+            "image_url": null,
+            "created_at": "2025-05-19T12:16:34.12Z",
+            "updated_at": "2025-05-19T12:16:34.12Z",
+            "custom_data": null,
+            "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
+            "tax_category": "standard"
+          },
+          "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "quantity": 1,
+          "tax_rate": "0.18",
+          "unit_totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "is_tax_exempt": false,
+          "revised_tax_exempted": false
+        }
+      ],
+      "payout_totals": {
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
+        "credit": "0",
+        "balance": "0",
+        "discount": "0",
+        "earnings": "0",
+        "fee_rate": "0",
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD",
+        "exchange_rate": "1",
+        "credit_to_balance": "0"
+      },
+      "tax_rates_used": [
+        {
+          "totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "tax_rate": "0.18"
+        }
+      ],
+      "adjusted_totals": {
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
+        "earnings": "0",
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD"
+      }
+    },
+    "checkout": {
+      "url": "https://9fcc-45-251-48-112.ngrok-free.app/?_ptxn=txn_01jvxx151rqk1see21xdk4ggw6"
+    },
+    "payments": [
+      {
+        "amount": "0",
+        "status": "authorized",
+        "created_at": "2025-05-23T06:25:01.514548Z",
+        "error_code": null,
+        "captured_at": null,
+        "method_details": {
+          "card": {
+            "type": "visa",
+            "last4": "4242",
+            "expiry_year": 2030,
+            "expiry_month": 3,
+            "cardholder_name": "Rahul"
+          },
+          "type": "card"
+        },
+        "payment_method_id": "paymtd_01jvxx20zwgqz41gjg1hnx0dvt",
+        "payment_attempt_id": "1892a98d-b044-4f3d-b1ca-7b66ea1756f1",
+        "stored_payment_method_id": "c19d6180-460d-420f-8867-7d36f1f96301"
+      }
+    ],
+    "billed_at": "2025-05-23T06:25:03.231178Z",
+    "address_id": "add_01jvxx18y2pb4f5vja3r4adwze",
+    "created_at": "2025-05-23T06:24:32.873651Z",
+    "invoice_id": null,
+    "revised_at": null,
+    "updated_at": "2025-05-23T06:25:04.357231029Z",
+    "business_id": null,
+    "custom_data": {
+      "email": "rahulmishra1716@gmail.com",
+      "userId": "46c71f5d-54d5-4815-8882-11020bac0d1b"
+    },
+    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "discount_id": null,
+    "receipt_data": null,
+    "currency_code": "USD",
+    "billing_period": {
+      "ends_at": "2025-05-26T06:25:03.713Z",
+      "starts_at": "2025-05-23T06:25:03.713Z"
+    },
+    "invoice_number": null,
+    "billing_details": null,
+    "collection_mode": "automatic",
+    "subscription_id": "sub_01jvxx2378n0qqh0bscpy6argj"
+  },
+  "event_id": "evt_01jvxx246j4f9fp9ww84qat5sj",
+  "event_type": "transaction.updated",
+  "occurred_at": "2025-05-23T06:25:04.374513Z",
+  "notification_id": "ntf_01jvxx24ax7gj0q2eyak50dwyn"
+}
+
+
+================================================================================
+2025-05-23T06:39:42.508Z - transaction.updated
+================================================================================
+Event ID: evt_01jvxxwwfn1n5e095jcd3kgycy
+Headers: {
+  "paddle-signature": "ts=1747982381;h1=b70df698866ba7001c9424d6765a9f06631c01f6a158bde8edb28793370892c6",
+  "content-type": "application/json",
+  "user-agent": "Paddle"
+}
+Payload: {
+  "data": {
+    "id": "txn_01jvxxwpzxcmvgcjj2dvkwe514",
+    "items": [
+      {
+        "price": {
+          "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "name": "Starter",
+          "type": "standard",
+          "status": "active",
+          "quantity": {
+            "maximum": 1,
+            "minimum": 1
+          },
+          "tax_mode": "account_setting",
+          "created_at": "2025-05-19T12:25:15.677881Z",
+          "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+          "unit_price": {
+            "amount": "399",
+            "currency_code": "USD"
+          },
+          "updated_at": "2025-05-22T23:31:06.944914Z",
+          "custom_data": null,
+          "description": "Everything is included in this plan",
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
           "billing_cycle": {
             "interval": "month",
             "frequency": 1
@@ -49,25 +351,25 @@ Payload: {
     "details": {
       "totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "credit": "0",
-        "balance": "399",
+        "balance": "0",
         "discount": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD",
         "credit_to_balance": "0"
       },
       "line_items": [
         {
-          "id": "txnitm_01jvx2b7wh482tpekn1xv0am6q",
+          "id": "txnitm_01jvxxww1szp0ff04ejyy85jq5",
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "item_id": null,
           "product": {
@@ -86,10 +388,10 @@ Payload: {
           "quantity": 1,
           "tax_rate": "0.18",
           "unit_totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "is_tax_exempt": false,
           "revised_tax_exempted": false
@@ -99,38 +401,38 @@ Payload: {
       "tax_rates_used": [
         {
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "tax_rate": "0.18"
         }
       ],
       "adjusted_totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD"
       }
     },
     "checkout": {
-      "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2b2smwffgtz1w99jq3sqy"
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvxxwpzxcmvgcjj2dvkwe514"
     },
     "payments": [],
     "billed_at": null,
-    "address_id": "add_01jvx2b7jz5cvd3xweffvr0xmm",
-    "created_at": "2025-05-22T22:38:06.870312Z",
+    "address_id": "add_01jvxxwvrkjes51rppy8q4nqa3",
+    "created_at": "2025-05-23T06:39:35.985774Z",
     "invoice_id": null,
     "revised_at": null,
-    "updated_at": "2025-05-22T22:38:11.860367669Z",
+    "updated_at": "2025-05-23T06:39:41.116461613Z",
     "business_id": null,
     "custom_data": {
       "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      "userId": "ee56ee1d-be29-4865-bb67-b695498978e6"
     },
     "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
     "discount_id": null,
@@ -142,25 +444,25 @@ Payload: {
     "collection_mode": "automatic",
     "subscription_id": null
   },
-  "event_id": "evt_01jvx2b84kk7qb3rdx8b3b3dpp",
+  "event_id": "evt_01jvxxwwfn1n5e095jcd3kgycy",
   "event_type": "transaction.updated",
-  "occurred_at": "2025-05-22T22:38:11.884244Z",
-  "notification_id": "ntf_01jvx2b88fdsj474fnvvr77w4v"
+  "occurred_at": "2025-05-23T06:39:41.136077Z",
+  "notification_id": "ntf_01jvxxwwkhdkb4k6pj469e5tkw"
 }
 
 
 ================================================================================
-2025-05-22T22:38:37.094Z - transaction.updated
+2025-05-23T06:40:00.427Z - transaction.updated
 ================================================================================
-Event ID: evt_01jvx2c00af9v5k53avrdskeh8
+Event ID: evt_01jvxxxecpwz9ty7d8y8rx8c10
 Headers: {
-  "paddle-signature": "ts=1747953516;h1=0f2c45003c214cc98237d6818f7ef06de3087b6c0648a51670d3dbba84fc94be",
+  "paddle-signature": "ts=1747982400;h1=d613d3bd4fc0105e8e89db42aa40b4313ee7376154971da820e394f6f6a1f466",
   "content-type": "application/json",
   "user-agent": "Paddle"
 }
 Payload: {
   "data": {
-    "id": "txn_01jvx2b2smwffgtz1w99jq3sqy",
+    "id": "txn_01jvxxwpzxcmvgcjj2dvkwe514",
     "items": [
       {
         "price": {
@@ -179,10 +481,13 @@ Payload: {
             "amount": "399",
             "currency_code": "USD"
           },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
+          "updated_at": "2025-05-22T23:31:06.944914Z",
           "custom_data": null,
           "description": "Everything is included in this plan",
-          "trial_period": null,
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
           "billing_cycle": {
             "interval": "month",
             "frequency": 1
@@ -199,25 +504,25 @@ Payload: {
     "details": {
       "totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "credit": "0",
         "balance": "0",
         "discount": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD",
         "credit_to_balance": "0"
       },
       "line_items": [
         {
-          "id": "txnitm_01jvx2b7wh482tpekn1xv0am6q",
+          "id": "txnitm_01jvxxww1szp0ff04ejyy85jq5",
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "item_id": null,
           "product": {
@@ -236,10 +541,10 @@ Payload: {
           "quantity": 1,
           "tax_rate": "0.18",
           "unit_totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "is_tax_exempt": false,
           "revised_tax_exempted": false
@@ -249,34 +554,34 @@ Payload: {
       "tax_rates_used": [
         {
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "tax_rate": "0.18"
         }
       ],
       "adjusted_totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD"
       }
     },
     "checkout": {
-      "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2b2smwffgtz1w99jq3sqy"
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvxxwpzxcmvgcjj2dvkwe514"
     },
     "payments": [
       {
-        "amount": "399",
-        "status": "captured",
-        "created_at": "2025-05-22T22:38:33.115301Z",
+        "amount": "0",
+        "status": "authorized",
+        "created_at": "2025-05-23T06:39:58.242044Z",
         "error_code": null,
-        "captured_at": "2025-05-22T22:38:35.575493Z",
+        "captured_at": null,
         "method_details": {
           "card": {
             "type": "visa",
@@ -287,21 +592,21 @@ Payload: {
           },
           "type": "card"
         },
-        "payment_method_id": "paymtd_01jvx2bwm7mjr94f33jek8eqth",
-        "payment_attempt_id": "d14c8931-35e6-4afc-b16f-3451ac811125",
-        "stored_payment_method_id": "065fe9f8-3304-4d36-8366-587badf262a6"
+        "payment_method_id": "paymtd_01jvxxxcrj4b2byqav0ccnaze7",
+        "payment_attempt_id": "57dd9733-e00b-4bc4-aad6-5cd7c10522b7",
+        "stored_payment_method_id": "d411b629-9f8a-42e5-b5e1-5eaf85f1cf91"
       }
     ],
-    "billed_at": "2025-05-22T22:38:36.15924668Z",
-    "address_id": "add_01jvx2b7jz5cvd3xweffvr0xmm",
-    "created_at": "2025-05-22T22:38:06.870312Z",
+    "billed_at": "2025-05-23T06:39:59.673012253Z",
+    "address_id": "add_01jvxxwvrkjes51rppy8q4nqa3",
+    "created_at": "2025-05-23T06:39:35.985774Z",
     "invoice_id": null,
     "revised_at": null,
-    "updated_at": "2025-05-22T22:38:36.159250153Z",
+    "updated_at": "2025-05-23T06:39:59.673014446Z",
     "business_id": null,
     "custom_data": {
       "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      "userId": "ee56ee1d-be29-4865-bb67-b695498978e6"
     },
     "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
     "discount_id": null,
@@ -313,25 +618,25 @@ Payload: {
     "collection_mode": "automatic",
     "subscription_id": null
   },
-  "event_id": "evt_01jvx2c00af9v5k53avrdskeh8",
+  "event_id": "evt_01jvxxxecpwz9ty7d8y8rx8c10",
   "event_type": "transaction.updated",
-  "occurred_at": "2025-05-22T22:38:36.169536Z",
-  "notification_id": "ntf_01jvx2c03xwzc2d5zbx1hebmrs"
+  "occurred_at": "2025-05-23T06:39:59.680027Z",
+  "notification_id": "ntf_01jvxxxefwst6qtfs5010vwz50"
 }
 
 
 ================================================================================
-2025-05-22T22:38:37.109Z - transaction.paid
+2025-05-23T06:40:00.636Z - transaction.paid
 ================================================================================
-Event ID: evt_01jvx2c00acs8jha67ntq24nc9
+Event ID: evt_01jvxxxeef4fmja87cwjsgxe9j
 Headers: {
-  "paddle-signature": "ts=1747953516;h1=21123f8befbfeae1761b0472567a37f5021423b9c45b9aef6fa2fcc76dd3924e",
+  "paddle-signature": "ts=1747982400;h1=0b36610e77384a43d86434720b4ac7a17f6bbec222cf46e95ccdc4ea153a220b",
   "content-type": "application/json",
   "user-agent": "Paddle"
 }
 Payload: {
   "data": {
-    "id": "txn_01jvx2b2smwffgtz1w99jq3sqy",
+    "id": "txn_01jvxxwpzxcmvgcjj2dvkwe514",
     "items": [
       {
         "price": {
@@ -350,10 +655,13 @@ Payload: {
             "amount": "399",
             "currency_code": "USD"
           },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
+          "updated_at": "2025-05-22T23:31:06.944914Z",
           "custom_data": null,
           "description": "Everything is included in this plan",
-          "trial_period": null,
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
           "billing_cycle": {
             "interval": "month",
             "frequency": 1
@@ -370,25 +678,25 @@ Payload: {
     "details": {
       "totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "credit": "0",
         "balance": "0",
         "discount": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD",
         "credit_to_balance": "0"
       },
       "line_items": [
         {
-          "id": "txnitm_01jvx2b7wh482tpekn1xv0am6q",
+          "id": "txnitm_01jvxxww1szp0ff04ejyy85jq5",
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "item_id": null,
           "product": {
@@ -407,10 +715,10 @@ Payload: {
           "quantity": 1,
           "tax_rate": "0.18",
           "unit_totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "is_tax_exempt": false,
           "revised_tax_exempted": false
@@ -420,34 +728,34 @@ Payload: {
       "tax_rates_used": [
         {
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "tax_rate": "0.18"
         }
       ],
       "adjusted_totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD"
       }
     },
     "checkout": {
-      "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2b2smwffgtz1w99jq3sqy"
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvxxwpzxcmvgcjj2dvkwe514"
     },
     "payments": [
       {
-        "amount": "399",
-        "status": "captured",
-        "created_at": "2025-05-22T22:38:33.115301Z",
+        "amount": "0",
+        "status": "authorized",
+        "created_at": "2025-05-23T06:39:58.242044Z",
         "error_code": null,
-        "captured_at": "2025-05-22T22:38:35.575493Z",
+        "captured_at": null,
         "method_details": {
           "card": {
             "type": "visa",
@@ -458,21 +766,21 @@ Payload: {
           },
           "type": "card"
         },
-        "payment_method_id": "paymtd_01jvx2bwm7mjr94f33jek8eqth",
-        "payment_attempt_id": "d14c8931-35e6-4afc-b16f-3451ac811125",
-        "stored_payment_method_id": "065fe9f8-3304-4d36-8366-587badf262a6"
+        "payment_method_id": "paymtd_01jvxxxcrj4b2byqav0ccnaze7",
+        "payment_attempt_id": "57dd9733-e00b-4bc4-aad6-5cd7c10522b7",
+        "stored_payment_method_id": "d411b629-9f8a-42e5-b5e1-5eaf85f1cf91"
       }
     ],
-    "billed_at": "2025-05-22T22:38:36.15924668Z",
-    "address_id": "add_01jvx2b7jz5cvd3xweffvr0xmm",
-    "created_at": "2025-05-22T22:38:06.870312Z",
+    "billed_at": "2025-05-23T06:39:59.673012253Z",
+    "address_id": "add_01jvxxwvrkjes51rppy8q4nqa3",
+    "created_at": "2025-05-23T06:39:35.985774Z",
     "invoice_id": null,
     "revised_at": null,
-    "updated_at": "2025-05-22T22:38:36.159250153Z",
+    "updated_at": "2025-05-23T06:39:59.673014446Z",
     "business_id": null,
     "custom_data": {
       "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      "userId": "ee56ee1d-be29-4865-bb67-b695498978e6"
     },
     "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
     "discount_id": null,
@@ -484,25 +792,25 @@ Payload: {
     "collection_mode": "automatic",
     "subscription_id": null
   },
-  "event_id": "evt_01jvx2c00acs8jha67ntq24nc9",
+  "event_id": "evt_01jvxxxeef4fmja87cwjsgxe9j",
   "event_type": "transaction.paid",
-  "occurred_at": "2025-05-22T22:38:36.184141Z",
-  "notification_id": "ntf_01jvx2c047zrdarzhx5wvepbb9"
+  "occurred_at": "2025-05-23T06:39:59.691453Z",
+  "notification_id": "ntf_01jvxxxep7yjnxrqhxr9yzqbpp"
 }
 
 
 ================================================================================
-2025-05-22T22:38:37.457Z - subscription.activated
+2025-05-23T06:40:01.362Z - subscription.trialing
 ================================================================================
-Event ID: evt_01jvx2c0crydnt0e3c7xcdqkra
+Event ID: evt_01jvxxxf8xnq8633x7eepa05pe
 Headers: {
-  "paddle-signature": "ts=1747953517;h1=e754c4415dbd48b9946da4130bb01a07c85ca9648b5acf8973f39b0b9448986f",
+  "paddle-signature": "ts=1747982401;h1=022ea59fd564c40bd7cbe7dcd1bfb8b4cc949279a8133daf3f5a368bad42f70a",
   "content-type": "application/json",
   "user-agent": "Paddle"
 }
 Payload: {
   "data": {
-    "id": "sub_01jvx2c0003em8m62fpacm7ytz",
+    "id": "sub_01jvxxxed4tgyrhpfcfk30rmss",
     "items": [
       {
         "price": {
@@ -522,18 +830,21 @@ Payload: {
             "amount": "399",
             "currency_code": "USD"
           },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
+          "updated_at": "2025-05-22T23:31:06.944914Z",
           "custom_data": null,
           "description": "Everything is included in this plan",
           "import_meta": null,
-          "trial_period": null,
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
           "billing_cycle": {
             "interval": "month",
             "frequency": 1
           },
           "unit_price_overrides": []
         },
-        "status": "active",
+        "status": "trialing",
         "product": {
           "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
           "name": "Neuron Mail Subscription",
@@ -549,25 +860,28 @@ Payload: {
         },
         "quantity": 1,
         "recurring": true,
-        "created_at": "2025-05-22T22:38:36.544Z",
-        "updated_at": "2025-05-22T22:38:36.544Z",
-        "trial_dates": null,
-        "next_billed_at": "2025-06-22T22:38:35.575493Z",
-        "previously_billed_at": "2025-05-22T22:38:35.575493Z"
+        "created_at": "2025-05-23T06:39:59.908Z",
+        "updated_at": "2025-05-23T06:39:59.908Z",
+        "trial_dates": {
+          "ends_at": "2025-05-26T06:39:59.901Z",
+          "starts_at": "2025-05-23T06:39:59.901Z"
+        },
+        "next_billed_at": "2025-05-26T06:39:59.901Z",
+        "previously_billed_at": null
       }
     ],
-    "status": "active",
+    "status": "trialing",
     "discount": null,
     "paused_at": null,
-    "address_id": "add_01jvx2b7jz5cvd3xweffvr0xmm",
-    "created_at": "2025-05-22T22:38:36.544Z",
-    "started_at": "2025-05-22T22:38:35.575493Z",
-    "updated_at": "2025-05-22T22:38:36.544Z",
+    "address_id": "add_01jvxxwvrkjes51rppy8q4nqa3",
+    "created_at": "2025-05-23T06:39:59.908Z",
+    "started_at": "2025-05-23T06:39:59.901Z",
+    "updated_at": "2025-05-23T06:39:59.908Z",
     "business_id": null,
     "canceled_at": null,
     "custom_data": {
       "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      "userId": "ee56ee1d-be29-4865-bb67-b695498978e6"
     },
     "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
     "import_meta": null,
@@ -576,35 +890,35 @@ Payload: {
       "frequency": 1
     },
     "currency_code": "USD",
-    "next_billed_at": "2025-06-22T22:38:35.575493Z",
+    "next_billed_at": "2025-05-26T06:39:59.901Z",
     "billing_details": null,
     "collection_mode": "automatic",
-    "first_billed_at": "2025-05-22T22:38:35.575493Z",
+    "first_billed_at": null,
     "scheduled_change": null,
     "current_billing_period": {
-      "ends_at": "2025-06-22T22:38:35.575493Z",
-      "starts_at": "2025-05-22T22:38:35.575493Z"
+      "ends_at": "2025-05-26T06:39:59.901Z",
+      "starts_at": "2025-05-23T06:39:59.901Z"
     }
   },
-  "event_id": "evt_01jvx2c0crydnt0e3c7xcdqkra",
-  "event_type": "subscription.activated",
-  "occurred_at": "2025-05-22T22:38:36.704751Z",
-  "notification_id": "ntf_01jvx2c0h4p0rbygw90dmkyxm6"
+  "event_id": "evt_01jvxxxf8xnq8633x7eepa05pe",
+  "event_type": "subscription.trialing",
+  "occurred_at": "2025-05-23T06:40:00.285517Z",
+  "notification_id": "ntf_01jvxxxfczg60hz3s03ek7q1dt"
 }
 
 
 ================================================================================
-2025-05-22T22:38:38.009Z - transaction.updated
+2025-05-23T06:40:01.780Z - transaction.updated
 ================================================================================
-Event ID: evt_01jvx2c0yfbz905m8swqkxjrzp
+Event ID: evt_01jvxxxfj3p10gdg5z3ar0tyhm
 Headers: {
-  "paddle-signature": "ts=1747953517;h1=f51b670ff9ba6bf84c569cbd1a706f992484a6c0a97a82b049a354fa04bb589b",
+  "paddle-signature": "ts=1747982401;h1=2ecd8fea85db2e3071a8b1ecd6f1551513d37c3ed4edaba039a457c916c0559a",
   "content-type": "application/json",
   "user-agent": "Paddle"
 }
 Payload: {
   "data": {
-    "id": "txn_01jvx2b2smwffgtz1w99jq3sqy",
+    "id": "txn_01jvxxwpzxcmvgcjj2dvkwe514",
     "items": [
       {
         "price": {
@@ -623,198 +937,13 @@ Payload: {
             "amount": "399",
             "currency_code": "USD"
           },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
+          "updated_at": "2025-05-22T23:31:06.944914Z",
           "custom_data": null,
           "description": "Everything is included in this plan",
-          "trial_period": null,
-          "billing_cycle": {
-            "interval": "month",
-            "frequency": 1
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
           },
-          "unit_price_overrides": []
-        },
-        "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
-        "quantity": 1,
-        "proration": null
-      }
-    ],
-    "origin": "web",
-    "status": "paid",
-    "details": {
-      "totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
-        "credit": "0",
-        "balance": "0",
-        "discount": "0",
-        "earnings": "268",
-        "subtotal": "338",
-        "grand_total": "399",
-        "currency_code": "USD",
-        "credit_to_balance": "0"
-      },
-      "line_items": [
-        {
-          "id": "txnitm_01jvx2b7wh482tpekn1xv0am6q",
-          "totals": {
-            "tax": "61",
-            "total": "399",
-            "discount": "0",
-            "subtotal": "338"
-          },
-          "item_id": null,
-          "product": {
-            "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
-            "name": "Neuron Mail Subscription",
-            "type": "standard",
-            "status": "active",
-            "image_url": null,
-            "created_at": "2025-05-19T12:16:34.12Z",
-            "updated_at": "2025-05-19T12:16:34.12Z",
-            "custom_data": null,
-            "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
-            "tax_category": "standard"
-          },
-          "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
-          "quantity": 1,
-          "tax_rate": "0.18",
-          "unit_totals": {
-            "tax": "61",
-            "total": "399",
-            "discount": "0",
-            "subtotal": "338"
-          },
-          "is_tax_exempt": false,
-          "revised_tax_exempted": false
-        }
-      ],
-      "payout_totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
-        "credit": "0",
-        "balance": "0",
-        "discount": "0",
-        "earnings": "268",
-        "fee_rate": "0.05",
-        "subtotal": "338",
-        "grand_total": "399",
-        "currency_code": "USD",
-        "exchange_rate": "1",
-        "credit_to_balance": "0"
-      },
-      "tax_rates_used": [
-        {
-          "totals": {
-            "tax": "61",
-            "total": "399",
-            "discount": "0",
-            "subtotal": "338"
-          },
-          "tax_rate": "0.18"
-        }
-      ],
-      "adjusted_totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
-        "earnings": "268",
-        "subtotal": "338",
-        "grand_total": "399",
-        "currency_code": "USD"
-      }
-    },
-    "checkout": {
-      "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2b2smwffgtz1w99jq3sqy"
-    },
-    "payments": [
-      {
-        "amount": "399",
-        "status": "captured",
-        "created_at": "2025-05-22T22:38:33.115301Z",
-        "error_code": null,
-        "captured_at": "2025-05-22T22:38:35.575493Z",
-        "method_details": {
-          "card": {
-            "type": "visa",
-            "last4": "4242",
-            "expiry_year": 2030,
-            "expiry_month": 3,
-            "cardholder_name": "Rahul"
-          },
-          "type": "card"
-        },
-        "payment_method_id": "paymtd_01jvx2bwm7mjr94f33jek8eqth",
-        "payment_attempt_id": "d14c8931-35e6-4afc-b16f-3451ac811125",
-        "stored_payment_method_id": "065fe9f8-3304-4d36-8366-587badf262a6"
-      }
-    ],
-    "billed_at": "2025-05-22T22:38:36.159246Z",
-    "address_id": "add_01jvx2b7jz5cvd3xweffvr0xmm",
-    "created_at": "2025-05-22T22:38:06.870312Z",
-    "invoice_id": null,
-    "revised_at": null,
-    "updated_at": "2025-05-22T22:38:36.963457712Z",
-    "business_id": null,
-    "custom_data": {
-      "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
-    },
-    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
-    "discount_id": null,
-    "receipt_data": null,
-    "currency_code": "USD",
-    "billing_period": {
-      "ends_at": "2025-06-22T22:38:35.575493Z",
-      "starts_at": "2025-05-22T22:38:35.575493Z"
-    },
-    "invoice_number": null,
-    "billing_details": null,
-    "collection_mode": "automatic",
-    "subscription_id": "sub_01jvx2c0003em8m62fpacm7ytz"
-  },
-  "event_id": "evt_01jvx2c0yfbz905m8swqkxjrzp",
-  "event_type": "transaction.updated",
-  "occurred_at": "2025-05-22T22:38:36.993520Z",
-  "notification_id": "ntf_01jvx2c1226hv664bmbg8s2s4v"
-}
-
-
-================================================================================
-2025-05-22T22:38:39.247Z - transaction.updated
-================================================================================
-Event ID: evt_01jvx2c22zcpmjct2ezbx5dw44
-Headers: {
-  "paddle-signature": "ts=1747953518;h1=027722b2bb5cfd4b4db1837dc77edb3ecf5117972c54e56d157114802733ed37",
-  "content-type": "application/json",
-  "user-agent": "Paddle"
-}
-Payload: {
-  "data": {
-    "id": "txn_01jvx2b2smwffgtz1w99jq3sqy",
-    "items": [
-      {
-        "price": {
-          "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
-          "name": "Starter",
-          "type": "standard",
-          "status": "active",
-          "quantity": {
-            "maximum": 1,
-            "minimum": 1
-          },
-          "tax_mode": "account_setting",
-          "created_at": "2025-05-19T12:25:15.677881Z",
-          "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
-          "unit_price": {
-            "amount": "399",
-            "currency_code": "USD"
-          },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
-          "custom_data": null,
-          "description": "Everything is included in this plan",
-          "trial_period": null,
           "billing_cycle": {
             "interval": "month",
             "frequency": 1
@@ -830,26 +959,26 @@ Payload: {
     "status": "completed",
     "details": {
       "totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
         "credit": "0",
         "balance": "0",
         "discount": "0",
-        "earnings": "268",
-        "subtotal": "338",
-        "grand_total": "399",
+        "earnings": "0",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD",
         "credit_to_balance": "0"
       },
       "line_items": [
         {
-          "id": "txnitm_01jvx2b7wh482tpekn1xv0am6q",
+          "id": "txnitm_01jvxxww1szp0ff04ejyy85jq5",
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "item_id": null,
           "product": {
@@ -868,26 +997,26 @@ Payload: {
           "quantity": 1,
           "tax_rate": "0.18",
           "unit_totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "is_tax_exempt": false,
           "revised_tax_exempted": false
         }
       ],
       "payout_totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
         "credit": "0",
         "balance": "0",
         "discount": "0",
-        "earnings": "268",
-        "fee_rate": "0.05",
-        "subtotal": "338",
-        "grand_total": "399",
+        "earnings": "0",
+        "fee_rate": "0",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD",
         "exchange_rate": "1",
         "credit_to_balance": "0"
@@ -895,34 +1024,34 @@ Payload: {
       "tax_rates_used": [
         {
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "tax_rate": "0.18"
         }
       ],
       "adjusted_totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
-        "earnings": "268",
-        "subtotal": "338",
-        "grand_total": "399",
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
+        "earnings": "0",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD"
       }
     },
     "checkout": {
-      "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2b2smwffgtz1w99jq3sqy"
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvxxwpzxcmvgcjj2dvkwe514"
     },
     "payments": [
       {
-        "amount": "399",
-        "status": "captured",
-        "created_at": "2025-05-22T22:38:33.115301Z",
+        "amount": "0",
+        "status": "authorized",
+        "created_at": "2025-05-23T06:39:58.242044Z",
         "error_code": null,
-        "captured_at": "2025-05-22T22:38:35.575493Z",
+        "captured_at": null,
         "method_details": {
           "card": {
             "type": "visa",
@@ -933,54 +1062,555 @@ Payload: {
           },
           "type": "card"
         },
-        "payment_method_id": "paymtd_01jvx2bwm7mjr94f33jek8eqth",
-        "payment_attempt_id": "d14c8931-35e6-4afc-b16f-3451ac811125",
-        "stored_payment_method_id": "065fe9f8-3304-4d36-8366-587badf262a6"
+        "payment_method_id": "paymtd_01jvxxxcrj4b2byqav0ccnaze7",
+        "payment_attempt_id": "57dd9733-e00b-4bc4-aad6-5cd7c10522b7",
+        "stored_payment_method_id": "d411b629-9f8a-42e5-b5e1-5eaf85f1cf91"
       }
     ],
-    "billed_at": "2025-05-22T22:38:36.159246Z",
-    "address_id": "add_01jvx2b7jz5cvd3xweffvr0xmm",
-    "created_at": "2025-05-22T22:38:06.870312Z",
-    "invoice_id": "inv_01jvx2c00t52qs19r3wyscmh99",
+    "billed_at": "2025-05-23T06:39:59.673012Z",
+    "address_id": "add_01jvxxwvrkjes51rppy8q4nqa3",
+    "created_at": "2025-05-23T06:39:35.985774Z",
+    "invoice_id": null,
     "revised_at": null,
-    "updated_at": "2025-05-22T22:38:38.452726823Z",
+    "updated_at": "2025-05-23T06:40:00.7325619Z",
     "business_id": null,
     "custom_data": {
       "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      "userId": "ee56ee1d-be29-4865-bb67-b695498978e6"
     },
     "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
     "discount_id": null,
     "receipt_data": null,
     "currency_code": "USD",
     "billing_period": {
-      "ends_at": "2025-06-22T22:38:35.575493Z",
-      "starts_at": "2025-05-22T22:38:35.575493Z"
+      "ends_at": "2025-05-26T06:39:59.901Z",
+      "starts_at": "2025-05-23T06:39:59.901Z"
     },
-    "invoice_number": "21333-10041",
+    "invoice_number": null,
     "billing_details": null,
     "collection_mode": "automatic",
-    "subscription_id": "sub_01jvx2c0003em8m62fpacm7ytz"
+    "subscription_id": "sub_01jvxxxed4tgyrhpfcfk30rmss"
   },
-  "event_id": "evt_01jvx2c22zcpmjct2ezbx5dw44",
+  "event_id": "evt_01jvxxxfj3p10gdg5z3ar0tyhm",
   "event_type": "transaction.updated",
-  "occurred_at": "2025-05-22T22:38:38.462135Z",
-  "notification_id": "ntf_01jvx2c26zsez3pw3x71bjery8"
+  "occurred_at": "2025-05-23T06:40:00.742711Z",
+  "notification_id": "ntf_01jvxxxfpz1qrxqgkt748rksyy"
 }
 
 
 ================================================================================
-2025-05-22T22:39:57.308Z - subscription.updated
+2025-05-23T06:44:53.116Z - transaction.updated
 ================================================================================
-Event ID: evt_01jvx2ee3zsxnabsr9y5494b1k
+Event ID: evt_01jvxy6bmptvnss5vegxkxqw51
 Headers: {
-  "paddle-signature": "ts=1747953596;h1=addd8ed570b17926c649c8525caad6efa7cb0433af0b0f30a505804abbcf100c",
+  "paddle-signature": "ts=1747982692;h1=61fdbf2f2ba3d63fbb53ff5d6515ce0b66a87e85df4db7b62522afa4b551f14a",
   "content-type": "application/json",
   "user-agent": "Paddle"
 }
 Payload: {
   "data": {
-    "id": "sub_01jvx2c0003em8m62fpacm7ytz",
+    "id": "txn_01jvxy6708rre5a2fp7k8t4xsn",
+    "items": [
+      {
+        "price": {
+          "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "name": "Starter",
+          "type": "standard",
+          "status": "active",
+          "quantity": {
+            "maximum": 1,
+            "minimum": 1
+          },
+          "tax_mode": "account_setting",
+          "created_at": "2025-05-19T12:25:15.677881Z",
+          "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+          "unit_price": {
+            "amount": "399",
+            "currency_code": "USD"
+          },
+          "updated_at": "2025-05-22T23:31:06.944914Z",
+          "custom_data": null,
+          "description": "Everything is included in this plan",
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
+          "billing_cycle": {
+            "interval": "month",
+            "frequency": 1
+          },
+          "unit_price_overrides": []
+        },
+        "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+        "quantity": 1,
+        "proration": null
+      }
+    ],
+    "origin": "web",
+    "status": "ready",
+    "details": {
+      "totals": {
+        "fee": null,
+        "tax": "0",
+        "total": "0",
+        "credit": "0",
+        "balance": "0",
+        "discount": "0",
+        "earnings": null,
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD",
+        "credit_to_balance": "0"
+      },
+      "line_items": [
+        {
+          "id": "txnitm_01jvxy6b4p93k68rnd9ed1sbqn",
+          "totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "item_id": null,
+          "product": {
+            "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+            "name": "Neuron Mail Subscription",
+            "type": "standard",
+            "status": "active",
+            "image_url": null,
+            "created_at": "2025-05-19T12:16:34.12Z",
+            "updated_at": "2025-05-19T12:16:34.12Z",
+            "custom_data": null,
+            "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
+            "tax_category": "standard"
+          },
+          "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "quantity": 1,
+          "tax_rate": "0.18",
+          "unit_totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "is_tax_exempt": false,
+          "revised_tax_exempted": false
+        }
+      ],
+      "payout_totals": null,
+      "tax_rates_used": [
+        {
+          "totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "tax_rate": "0.18"
+        }
+      ],
+      "adjusted_totals": {
+        "fee": null,
+        "tax": "0",
+        "total": "0",
+        "earnings": null,
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD"
+      }
+    },
+    "checkout": {
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvxy6708rre5a2fp7k8t4xsn"
+    },
+    "payments": [],
+    "billed_at": null,
+    "address_id": "add_01jvxy6av75985xtsncb8p21s7",
+    "created_at": "2025-05-23T06:44:47.290385Z",
+    "invoice_id": null,
+    "revised_at": null,
+    "updated_at": "2025-05-23T06:44:51.481881277Z",
+    "business_id": null,
+    "custom_data": {
+      "email": "rahulmishra1716@gmail.com",
+      "userId": "5026aa0b-bac6-43d2-ba38-591b14686b0c"
+    },
+    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "discount_id": null,
+    "receipt_data": null,
+    "currency_code": "USD",
+    "billing_period": null,
+    "invoice_number": null,
+    "billing_details": null,
+    "collection_mode": "automatic",
+    "subscription_id": null
+  },
+  "event_id": "evt_01jvxy6bmptvnss5vegxkxqw51",
+  "event_type": "transaction.updated",
+  "occurred_at": "2025-05-23T06:44:51.500149Z",
+  "notification_id": "ntf_01jvxy6bs431p02tsra90p01fs"
+}
+
+
+================================================================================
+2025-05-23T06:45:17.400Z - transaction.paid
+================================================================================
+Event ID: evt_01jvxy73vye249jc2ebzp5mrws
+Headers: {
+  "paddle-signature": "ts=1747982717;h1=af502aeb9da2f917bcaf0506ceec587959a0be8c5e0a092be8043bc50b7a3c6d",
+  "content-type": "application/json",
+  "user-agent": "Paddle"
+}
+Payload: {
+  "data": {
+    "id": "txn_01jvxy6708rre5a2fp7k8t4xsn",
+    "items": [
+      {
+        "price": {
+          "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "name": "Starter",
+          "type": "standard",
+          "status": "active",
+          "quantity": {
+            "maximum": 1,
+            "minimum": 1
+          },
+          "tax_mode": "account_setting",
+          "created_at": "2025-05-19T12:25:15.677881Z",
+          "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+          "unit_price": {
+            "amount": "399",
+            "currency_code": "USD"
+          },
+          "updated_at": "2025-05-22T23:31:06.944914Z",
+          "custom_data": null,
+          "description": "Everything is included in this plan",
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
+          "billing_cycle": {
+            "interval": "month",
+            "frequency": 1
+          },
+          "unit_price_overrides": []
+        },
+        "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+        "quantity": 1,
+        "proration": null
+      }
+    ],
+    "origin": "web",
+    "status": "paid",
+    "details": {
+      "totals": {
+        "fee": null,
+        "tax": "0",
+        "total": "0",
+        "credit": "0",
+        "balance": "0",
+        "discount": "0",
+        "earnings": null,
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD",
+        "credit_to_balance": "0"
+      },
+      "line_items": [
+        {
+          "id": "txnitm_01jvxy6b4p93k68rnd9ed1sbqn",
+          "totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "item_id": null,
+          "product": {
+            "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+            "name": "Neuron Mail Subscription",
+            "type": "standard",
+            "status": "active",
+            "image_url": null,
+            "created_at": "2025-05-19T12:16:34.12Z",
+            "updated_at": "2025-05-19T12:16:34.12Z",
+            "custom_data": null,
+            "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
+            "tax_category": "standard"
+          },
+          "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "quantity": 1,
+          "tax_rate": "0.18",
+          "unit_totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "is_tax_exempt": false,
+          "revised_tax_exempted": false
+        }
+      ],
+      "payout_totals": null,
+      "tax_rates_used": [
+        {
+          "totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "tax_rate": "0.18"
+        }
+      ],
+      "adjusted_totals": {
+        "fee": null,
+        "tax": "0",
+        "total": "0",
+        "earnings": null,
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD"
+      }
+    },
+    "checkout": {
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvxy6708rre5a2fp7k8t4xsn"
+    },
+    "payments": [
+      {
+        "amount": "0",
+        "status": "authorized",
+        "created_at": "2025-05-23T06:45:14.446853Z",
+        "error_code": null,
+        "captured_at": null,
+        "method_details": {
+          "card": {
+            "type": "visa",
+            "last4": "4242",
+            "expiry_year": 2030,
+            "expiry_month": 3,
+            "cardholder_name": "Rahul"
+          },
+          "type": "card"
+        },
+        "payment_method_id": "paymtd_01jvxy71hz0s7tj5sjj2zxanhp",
+        "payment_attempt_id": "4722280d-e863-449a-91b1-4fb189da9e5b",
+        "stored_payment_method_id": "eb3fe0e5-6065-43de-a405-fd29fa02f9dc"
+      }
+    ],
+    "billed_at": "2025-05-23T06:45:16.334399332Z",
+    "address_id": "add_01jvxy6av75985xtsncb8p21s7",
+    "created_at": "2025-05-23T06:44:47.290385Z",
+    "invoice_id": null,
+    "revised_at": null,
+    "updated_at": "2025-05-23T06:45:16.334402504Z",
+    "business_id": null,
+    "custom_data": {
+      "email": "rahulmishra1716@gmail.com",
+      "userId": "5026aa0b-bac6-43d2-ba38-591b14686b0c"
+    },
+    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "discount_id": null,
+    "receipt_data": null,
+    "currency_code": "USD",
+    "billing_period": null,
+    "invoice_number": null,
+    "billing_details": null,
+    "collection_mode": "automatic",
+    "subscription_id": null
+  },
+  "event_id": "evt_01jvxy73vye249jc2ebzp5mrws",
+  "event_type": "transaction.paid",
+  "occurred_at": "2025-05-23T06:45:16.351707Z",
+  "notification_id": "ntf_01jvxy740az2y850h1f829axjm"
+}
+
+
+================================================================================
+2025-05-23T06:45:17.590Z - transaction.updated
+================================================================================
+Event ID: evt_01jvxy73z8w82m4tr0nj66cnx4
+Headers: {
+  "paddle-signature": "ts=1747982717;h1=a7e845c9ef2aec6707c7d8a90d2def6c72c34b40f6b7453997fccaf2a13e2697",
+  "content-type": "application/json",
+  "user-agent": "Paddle"
+}
+Payload: {
+  "data": {
+    "id": "txn_01jvxy6708rre5a2fp7k8t4xsn",
+    "items": [
+      {
+        "price": {
+          "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "name": "Starter",
+          "type": "standard",
+          "status": "active",
+          "quantity": {
+            "maximum": 1,
+            "minimum": 1
+          },
+          "tax_mode": "account_setting",
+          "created_at": "2025-05-19T12:25:15.677881Z",
+          "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+          "unit_price": {
+            "amount": "399",
+            "currency_code": "USD"
+          },
+          "updated_at": "2025-05-22T23:31:06.944914Z",
+          "custom_data": null,
+          "description": "Everything is included in this plan",
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
+          "billing_cycle": {
+            "interval": "month",
+            "frequency": 1
+          },
+          "unit_price_overrides": []
+        },
+        "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+        "quantity": 1,
+        "proration": null
+      }
+    ],
+    "origin": "web",
+    "status": "paid",
+    "details": {
+      "totals": {
+        "fee": null,
+        "tax": "0",
+        "total": "0",
+        "credit": "0",
+        "balance": "0",
+        "discount": "0",
+        "earnings": null,
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD",
+        "credit_to_balance": "0"
+      },
+      "line_items": [
+        {
+          "id": "txnitm_01jvxy6b4p93k68rnd9ed1sbqn",
+          "totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "item_id": null,
+          "product": {
+            "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+            "name": "Neuron Mail Subscription",
+            "type": "standard",
+            "status": "active",
+            "image_url": null,
+            "created_at": "2025-05-19T12:16:34.12Z",
+            "updated_at": "2025-05-19T12:16:34.12Z",
+            "custom_data": null,
+            "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
+            "tax_category": "standard"
+          },
+          "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "quantity": 1,
+          "tax_rate": "0.18",
+          "unit_totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "is_tax_exempt": false,
+          "revised_tax_exempted": false
+        }
+      ],
+      "payout_totals": null,
+      "tax_rates_used": [
+        {
+          "totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "tax_rate": "0.18"
+        }
+      ],
+      "adjusted_totals": {
+        "fee": null,
+        "tax": "0",
+        "total": "0",
+        "earnings": null,
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD"
+      }
+    },
+    "checkout": {
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvxy6708rre5a2fp7k8t4xsn"
+    },
+    "payments": [
+      {
+        "amount": "0",
+        "status": "authorized",
+        "created_at": "2025-05-23T06:45:14.446853Z",
+        "error_code": null,
+        "captured_at": null,
+        "method_details": {
+          "card": {
+            "type": "visa",
+            "last4": "4242",
+            "expiry_year": 2030,
+            "expiry_month": 3,
+            "cardholder_name": "Rahul"
+          },
+          "type": "card"
+        },
+        "payment_method_id": "paymtd_01jvxy71hz0s7tj5sjj2zxanhp",
+        "payment_attempt_id": "4722280d-e863-449a-91b1-4fb189da9e5b",
+        "stored_payment_method_id": "eb3fe0e5-6065-43de-a405-fd29fa02f9dc"
+      }
+    ],
+    "billed_at": "2025-05-23T06:45:16.334399332Z",
+    "address_id": "add_01jvxy6av75985xtsncb8p21s7",
+    "created_at": "2025-05-23T06:44:47.290385Z",
+    "invoice_id": null,
+    "revised_at": null,
+    "updated_at": "2025-05-23T06:45:16.334402504Z",
+    "business_id": null,
+    "custom_data": {
+      "email": "rahulmishra1716@gmail.com",
+      "userId": "5026aa0b-bac6-43d2-ba38-591b14686b0c"
+    },
+    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "discount_id": null,
+    "receipt_data": null,
+    "currency_code": "USD",
+    "billing_period": null,
+    "invoice_number": null,
+    "billing_details": null,
+    "collection_mode": "automatic",
+    "subscription_id": null
+  },
+  "event_id": "evt_01jvxy73z8w82m4tr0nj66cnx4",
+  "event_type": "transaction.updated",
+  "occurred_at": "2025-05-23T06:45:16.340996Z",
+  "notification_id": "ntf_01jvxy743dvk1y3fdezyhm743z"
+}
+
+
+================================================================================
+2025-05-23T06:45:17.876Z - subscription.trialing
+================================================================================
+Event ID: evt_01jvxy74c6bvdnk4g2838jw9bq
+Headers: {
+  "paddle-signature": "ts=1747982717;h1=9598fb1c8d0fb027b94014f035a64e15412bd4690c55f6d414d762621d95eadf",
+  "content-type": "application/json",
+  "user-agent": "Paddle"
+}
+Payload: {
+  "data": {
+    "id": "sub_01jvxy73te5ah9t9pmkg0jxc5z",
     "items": [
       {
         "price": {
@@ -1000,18 +1630,21 @@ Payload: {
             "amount": "399",
             "currency_code": "USD"
           },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
+          "updated_at": "2025-05-22T23:31:06.944914Z",
           "custom_data": null,
           "description": "Everything is included in this plan",
           "import_meta": null,
-          "trial_period": null,
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
           "billing_cycle": {
             "interval": "month",
             "frequency": 1
           },
           "unit_price_overrides": []
         },
-        "status": "active",
+        "status": "trialing",
         "product": {
           "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
           "name": "Neuron Mail Subscription",
@@ -1027,25 +1660,327 @@ Payload: {
         },
         "quantity": 1,
         "recurring": true,
-        "created_at": "2025-05-22T22:38:36.544Z",
-        "updated_at": "2025-05-22T22:38:36.544Z",
-        "trial_dates": null,
-        "next_billed_at": null,
-        "previously_billed_at": "2025-05-22T22:38:35.575493Z"
+        "created_at": "2025-05-23T06:45:16.75Z",
+        "updated_at": "2025-05-23T06:45:16.75Z",
+        "trial_dates": {
+          "ends_at": "2025-05-26T06:45:16.743Z",
+          "starts_at": "2025-05-23T06:45:16.743Z"
+        },
+        "next_billed_at": "2025-05-26T06:45:16.743Z",
+        "previously_billed_at": null
       }
     ],
-    "status": "canceled",
+    "status": "trialing",
     "discount": null,
     "paused_at": null,
-    "address_id": "add_01jvx2b7jz5cvd3xweffvr0xmm",
-    "created_at": "2025-05-22T22:38:36.544Z",
-    "started_at": "2025-05-22T22:38:35.575493Z",
-    "updated_at": "2025-05-22T22:39:55.763Z",
+    "address_id": "add_01jvxy6av75985xtsncb8p21s7",
+    "created_at": "2025-05-23T06:45:16.75Z",
+    "started_at": "2025-05-23T06:45:16.743Z",
+    "updated_at": "2025-05-23T06:45:16.75Z",
     "business_id": null,
-    "canceled_at": "2025-05-22T22:39:55.758Z",
+    "canceled_at": null,
     "custom_data": {
       "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      "userId": "5026aa0b-bac6-43d2-ba38-591b14686b0c"
+    },
+    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "import_meta": null,
+    "billing_cycle": {
+      "interval": "month",
+      "frequency": 1
+    },
+    "currency_code": "USD",
+    "next_billed_at": "2025-05-26T06:45:16.743Z",
+    "billing_details": null,
+    "collection_mode": "automatic",
+    "first_billed_at": null,
+    "scheduled_change": null,
+    "current_billing_period": {
+      "ends_at": "2025-05-26T06:45:16.743Z",
+      "starts_at": "2025-05-23T06:45:16.743Z"
+    }
+  },
+  "event_id": "evt_01jvxy74c6bvdnk4g2838jw9bq",
+  "event_type": "subscription.trialing",
+  "occurred_at": "2025-05-23T06:45:16.909600Z",
+  "notification_id": "ntf_01jvxy74gj2rqbx0mwvdvxdtf6"
+}
+
+
+================================================================================
+2025-05-23T06:45:18.246Z - transaction.updated
+================================================================================
+Event ID: evt_01jvxy74r9c4v9g0v899qe7tx5
+Headers: {
+  "paddle-signature": "ts=1747982717;h1=e25d315fbb88791ae6a83092b85578b8ba13c2310257c4ed489a58a32c408844",
+  "content-type": "application/json",
+  "user-agent": "Paddle"
+}
+Payload: {
+  "data": {
+    "id": "txn_01jvxy6708rre5a2fp7k8t4xsn",
+    "items": [
+      {
+        "price": {
+          "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "name": "Starter",
+          "type": "standard",
+          "status": "active",
+          "quantity": {
+            "maximum": 1,
+            "minimum": 1
+          },
+          "tax_mode": "account_setting",
+          "created_at": "2025-05-19T12:25:15.677881Z",
+          "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+          "unit_price": {
+            "amount": "399",
+            "currency_code": "USD"
+          },
+          "updated_at": "2025-05-22T23:31:06.944914Z",
+          "custom_data": null,
+          "description": "Everything is included in this plan",
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
+          "billing_cycle": {
+            "interval": "month",
+            "frequency": 1
+          },
+          "unit_price_overrides": []
+        },
+        "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+        "quantity": 1,
+        "proration": null
+      }
+    ],
+    "origin": "web",
+    "status": "completed",
+    "details": {
+      "totals": {
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
+        "credit": "0",
+        "balance": "0",
+        "discount": "0",
+        "earnings": "0",
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD",
+        "credit_to_balance": "0"
+      },
+      "line_items": [
+        {
+          "id": "txnitm_01jvxy6b4p93k68rnd9ed1sbqn",
+          "totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "item_id": null,
+          "product": {
+            "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+            "name": "Neuron Mail Subscription",
+            "type": "standard",
+            "status": "active",
+            "image_url": null,
+            "created_at": "2025-05-19T12:16:34.12Z",
+            "updated_at": "2025-05-19T12:16:34.12Z",
+            "custom_data": null,
+            "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
+            "tax_category": "standard"
+          },
+          "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "quantity": 1,
+          "tax_rate": "0.18",
+          "unit_totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "is_tax_exempt": false,
+          "revised_tax_exempted": false
+        }
+      ],
+      "payout_totals": {
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
+        "credit": "0",
+        "balance": "0",
+        "discount": "0",
+        "earnings": "0",
+        "fee_rate": "0",
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD",
+        "exchange_rate": "1",
+        "credit_to_balance": "0"
+      },
+      "tax_rates_used": [
+        {
+          "totals": {
+            "tax": "0",
+            "total": "0",
+            "discount": "0",
+            "subtotal": "0"
+          },
+          "tax_rate": "0.18"
+        }
+      ],
+      "adjusted_totals": {
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
+        "earnings": "0",
+        "subtotal": "0",
+        "grand_total": "0",
+        "currency_code": "USD"
+      }
+    },
+    "checkout": {
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvxy6708rre5a2fp7k8t4xsn"
+    },
+    "payments": [
+      {
+        "amount": "0",
+        "status": "authorized",
+        "created_at": "2025-05-23T06:45:14.446853Z",
+        "error_code": null,
+        "captured_at": null,
+        "method_details": {
+          "card": {
+            "type": "visa",
+            "last4": "4242",
+            "expiry_year": 2030,
+            "expiry_month": 3,
+            "cardholder_name": "Rahul"
+          },
+          "type": "card"
+        },
+        "payment_method_id": "paymtd_01jvxy71hz0s7tj5sjj2zxanhp",
+        "payment_attempt_id": "4722280d-e863-449a-91b1-4fb189da9e5b",
+        "stored_payment_method_id": "eb3fe0e5-6065-43de-a405-fd29fa02f9dc"
+      }
+    ],
+    "billed_at": "2025-05-23T06:45:16.334399Z",
+    "address_id": "add_01jvxy6av75985xtsncb8p21s7",
+    "created_at": "2025-05-23T06:44:47.290385Z",
+    "invoice_id": null,
+    "revised_at": null,
+    "updated_at": "2025-05-23T06:45:17.354084783Z",
+    "business_id": null,
+    "custom_data": {
+      "email": "rahulmishra1716@gmail.com",
+      "userId": "5026aa0b-bac6-43d2-ba38-591b14686b0c"
+    },
+    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "discount_id": null,
+    "receipt_data": null,
+    "currency_code": "USD",
+    "billing_period": {
+      "ends_at": "2025-05-26T06:45:16.743Z",
+      "starts_at": "2025-05-23T06:45:16.743Z"
+    },
+    "invoice_number": null,
+    "billing_details": null,
+    "collection_mode": "automatic",
+    "subscription_id": "sub_01jvxy73te5ah9t9pmkg0jxc5z"
+  },
+  "event_id": "evt_01jvxy74r9c4v9g0v899qe7tx5",
+  "event_type": "transaction.updated",
+  "occurred_at": "2025-05-23T06:45:17.364315Z",
+  "notification_id": "ntf_01jvxy74wm65fjy453pgj2th68"
+}
+
+
+================================================================================
+2025-05-23T07:23:44.061Z - subscription.updated
+================================================================================
+Event ID: evt_01jvy0dg6w6wsccpy9sqtx9k06
+Headers: {
+  "paddle-signature": "ts=1747985023;h1=aa163b37da95e9f38269c4d1264d8ae25a0c53c559d8070b4a68bdf449d8e00c",
+  "content-type": "application/json",
+  "user-agent": "Paddle"
+}
+Payload: {
+  "data": {
+    "id": "sub_01jvxy73te5ah9t9pmkg0jxc5z",
+    "items": [
+      {
+        "price": {
+          "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "name": "Starter",
+          "type": "standard",
+          "status": "active",
+          "quantity": {
+            "maximum": 1,
+            "minimum": 1
+          },
+          "tax_mode": "account_setting",
+          "seller_id": "31565",
+          "created_at": "2025-05-19T12:25:15.677881Z",
+          "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+          "unit_price": {
+            "amount": "399",
+            "currency_code": "USD"
+          },
+          "updated_at": "2025-05-22T23:31:06.944914Z",
+          "custom_data": null,
+          "description": "Everything is included in this plan",
+          "import_meta": null,
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
+          "billing_cycle": {
+            "interval": "month",
+            "frequency": 1
+          },
+          "unit_price_overrides": []
+        },
+        "status": "trialing",
+        "product": {
+          "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+          "name": "Neuron Mail Subscription",
+          "type": "standard",
+          "status": "active",
+          "image_url": null,
+          "seller_id": "31565",
+          "created_at": "2025-05-19T12:16:34.12Z",
+          "updated_at": "2025-05-19T12:16:34.12Z",
+          "custom_data": null,
+          "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
+          "tax_category": "standard"
+        },
+        "quantity": 1,
+        "recurring": true,
+        "created_at": "2025-05-23T06:45:16.75Z",
+        "updated_at": "2025-05-23T06:45:16.75Z",
+        "trial_dates": {
+          "ends_at": "2025-05-26T06:45:16.743Z",
+          "starts_at": "2025-05-23T06:45:16.743Z"
+        },
+        "next_billed_at": null,
+        "previously_billed_at": null
+      }
+    ],
+    "status": "trialing",
+    "discount": null,
+    "paused_at": null,
+    "address_id": "add_01jvxy6av75985xtsncb8p21s7",
+    "created_at": "2025-05-23T06:45:16.75Z",
+    "started_at": "2025-05-23T06:45:16.743Z",
+    "updated_at": "2025-05-23T07:23:42.616Z",
+    "business_id": null,
+    "canceled_at": null,
+    "custom_data": {
+      "email": "rahulmishra1716@gmail.com",
+      "userId": "5026aa0b-bac6-43d2-ba38-591b14686b0c"
     },
     "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
     "import_meta": null,
@@ -1057,128 +1992,36 @@ Payload: {
     "next_billed_at": null,
     "billing_details": null,
     "collection_mode": "automatic",
-    "first_billed_at": "2025-05-22T22:38:35.575493Z",
-    "scheduled_change": null,
-    "current_billing_period": null
+    "first_billed_at": null,
+    "scheduled_change": {
+      "action": "cancel",
+      "resume_at": null,
+      "effective_at": "2025-05-26T06:45:16.743Z"
+    },
+    "current_billing_period": {
+      "ends_at": "2025-05-26T06:45:16.743Z",
+      "starts_at": "2025-05-23T06:45:16.743Z"
+    }
   },
-  "event_id": "evt_01jvx2ee3zsxnabsr9y5494b1k",
+  "event_id": "evt_01jvy0dg6w6wsccpy9sqtx9k06",
   "event_type": "subscription.updated",
-  "occurred_at": "2025-05-22T22:39:55.918768Z",
-  "notification_id": "ntf_01jvx2ee8dt2t1wsr1bxzh80yh"
+  "occurred_at": "2025-05-23T07:23:42.850307Z",
+  "notification_id": "ntf_01jvy0dgatfnx4e2jmen9mk965"
 }
 
 
 ================================================================================
-2025-05-22T22:39:57.311Z - subscription.canceled
+2025-05-23T07:30:26.380Z - transaction.updated
 ================================================================================
-Event ID: evt_01jvx2ee1t6d9t3xepswk79852
+Event ID: evt_01jvy0ss9x54eeb6qnfp556h5f
 Headers: {
-  "paddle-signature": "ts=1747953596;h1=73db60240edcd0d14408aa2586be89289b7736a737d1a962a08118be233bf012",
+  "paddle-signature": "ts=1747985425;h1=d7c9cd612f234a700e8874e11217c08d605ec02c9523924e4d7d12ae0eb9dca2",
   "content-type": "application/json",
   "user-agent": "Paddle"
 }
 Payload: {
   "data": {
-    "id": "sub_01jvx2c0003em8m62fpacm7ytz",
-    "items": [
-      {
-        "price": {
-          "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
-          "name": "Starter",
-          "type": "standard",
-          "status": "active",
-          "quantity": {
-            "maximum": 1,
-            "minimum": 1
-          },
-          "tax_mode": "account_setting",
-          "seller_id": "31565",
-          "created_at": "2025-05-19T12:25:15.677881Z",
-          "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
-          "unit_price": {
-            "amount": "399",
-            "currency_code": "USD"
-          },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
-          "custom_data": null,
-          "description": "Everything is included in this plan",
-          "import_meta": null,
-          "trial_period": null,
-          "billing_cycle": {
-            "interval": "month",
-            "frequency": 1
-          },
-          "unit_price_overrides": []
-        },
-        "status": "active",
-        "product": {
-          "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
-          "name": "Neuron Mail Subscription",
-          "type": "standard",
-          "status": "active",
-          "image_url": null,
-          "seller_id": "31565",
-          "created_at": "2025-05-19T12:16:34.12Z",
-          "updated_at": "2025-05-19T12:16:34.12Z",
-          "custom_data": null,
-          "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
-          "tax_category": "standard"
-        },
-        "quantity": 1,
-        "recurring": true,
-        "created_at": "2025-05-22T22:38:36.544Z",
-        "updated_at": "2025-05-22T22:38:36.544Z",
-        "trial_dates": null,
-        "next_billed_at": null,
-        "previously_billed_at": "2025-05-22T22:38:35.575493Z"
-      }
-    ],
-    "status": "canceled",
-    "discount": null,
-    "paused_at": null,
-    "address_id": "add_01jvx2b7jz5cvd3xweffvr0xmm",
-    "created_at": "2025-05-22T22:38:36.544Z",
-    "started_at": "2025-05-22T22:38:35.575493Z",
-    "updated_at": "2025-05-22T22:39:55.763Z",
-    "business_id": null,
-    "canceled_at": "2025-05-22T22:39:55.758Z",
-    "custom_data": {
-      "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
-    },
-    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
-    "import_meta": null,
-    "billing_cycle": {
-      "interval": "month",
-      "frequency": 1
-    },
-    "currency_code": "USD",
-    "next_billed_at": null,
-    "billing_details": null,
-    "collection_mode": "automatic",
-    "first_billed_at": "2025-05-22T22:38:35.575493Z",
-    "scheduled_change": null,
-    "current_billing_period": null
-  },
-  "event_id": "evt_01jvx2ee1t6d9t3xepswk79852",
-  "event_type": "subscription.canceled",
-  "occurred_at": "2025-05-22T22:39:55.918768Z",
-  "notification_id": "ntf_01jvx2ee69yp9debjg1c9jwxc7"
-}
-
-
-================================================================================
-2025-05-22T22:41:32.729Z - transaction.updated
-================================================================================
-Event ID: evt_01jvx2hbh66tbh6m4jp2mmkd4s
-Headers: {
-  "paddle-signature": "ts=1747953692;h1=a92b4f8241c8db17977edd36e51b327498ff37fac9f432728396129d7d04f7bd",
-  "content-type": "application/json",
-  "user-agent": "Paddle"
-}
-Payload: {
-  "data": {
-    "id": "txn_01jvx2gceekw55nna445y7e8w0",
+    "id": "txn_01jvy0sktjrkmsa2ff7ewj2wed",
     "items": [
       {
         "price": {
@@ -1197,10 +2040,13 @@ Payload: {
             "amount": "399",
             "currency_code": "USD"
           },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
+          "updated_at": "2025-05-22T23:31:06.944914Z",
           "custom_data": null,
           "description": "Everything is included in this plan",
-          "trial_period": null,
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
           "billing_cycle": {
             "interval": "month",
             "frequency": 1
@@ -1217,25 +2063,25 @@ Payload: {
     "details": {
       "totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "credit": "0",
-        "balance": "399",
+        "balance": "0",
         "discount": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD",
         "credit_to_balance": "0"
       },
       "line_items": [
         {
-          "id": "txnitm_01jvx2hb8ddnktzt8tsgkjde2r",
+          "id": "txnitm_01jvy0srvqwet3r5e800bgk3th",
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "item_id": null,
           "product": {
@@ -1254,10 +2100,10 @@ Payload: {
           "quantity": 1,
           "tax_rate": "0.18",
           "unit_totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "is_tax_exempt": false,
           "revised_tax_exempted": false
@@ -1267,40 +2113,40 @@ Payload: {
       "tax_rates_used": [
         {
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "tax_rate": "0.18"
         }
       ],
       "adjusted_totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD"
       }
     },
     "checkout": {
-      "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2gceekw55nna445y7e8w0"
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvy0sktjrkmsa2ff7ewj2wed"
     },
     "payments": [],
     "billed_at": null,
-    "address_id": "add_01jvx2hazgzpxs9ge9pawczsp7",
-    "created_at": "2025-05-22T22:41:00.420301Z",
+    "address_id": "add_01jvy0srj7jxr7vvqxa4d8v5pk",
+    "created_at": "2025-05-23T07:30:20.163939Z",
     "invoice_id": null,
     "revised_at": null,
-    "updated_at": "2025-05-22T22:41:31.919854234Z",
+    "updated_at": "2025-05-23T07:30:25.274252472Z",
     "business_id": null,
     "custom_data": {
-      "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      "email": "rahulmishra7802@gmail.com",
+      "userId": "411686f2-b77e-42d8-b20d-1694f3bacd67"
     },
-    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "customer_id": "ctm_01jvptkxnp16mxw2jeh3md8npa",
     "discount_id": null,
     "receipt_data": null,
     "currency_code": "USD",
@@ -1310,25 +2156,25 @@ Payload: {
     "collection_mode": "automatic",
     "subscription_id": null
   },
-  "event_id": "evt_01jvx2hbh66tbh6m4jp2mmkd4s",
+  "event_id": "evt_01jvy0ss9x54eeb6qnfp556h5f",
   "event_type": "transaction.updated",
-  "occurred_at": "2025-05-22T22:41:31.941065Z",
-  "notification_id": "ntf_01jvx2hbn53vfwvxnkg1jm611g"
+  "occurred_at": "2025-05-23T07:30:25.292556Z",
+  "notification_id": "ntf_01jvy0ssdkhz09hvsnyp70aem4"
 }
 
 
 ================================================================================
-2025-05-22T22:45:03.446Z - transaction.payment_failed
+2025-05-23T07:30:42.055Z - transaction.updated
 ================================================================================
-Event ID: evt_01jvx2qs8ttw14kfvkr1de556t
+Event ID: evt_01jvy0t8kxw7mja2d8wdjb505m
 Headers: {
-  "paddle-signature": "ts=1747953903;h1=963cfb9ac3e32cb3c4d41620b7a9ed2b008e517b105966d0bf689a1bba7bf6ad",
+  "paddle-signature": "ts=1747985441;h1=19da43e968b06f3f8c49acecadf846ebf7027883084aa0c989d573c5800bdde6",
   "content-type": "application/json",
   "user-agent": "Paddle"
 }
 Payload: {
   "data": {
-    "id": "txn_01jvx2gceekw55nna445y7e8w0",
+    "id": "txn_01jvy0sktjrkmsa2ff7ewj2wed",
     "items": [
       {
         "price": {
@@ -1347,181 +2193,13 @@ Payload: {
             "amount": "399",
             "currency_code": "USD"
           },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
+          "updated_at": "2025-05-22T23:31:06.944914Z",
           "custom_data": null,
           "description": "Everything is included in this plan",
-          "trial_period": null,
-          "billing_cycle": {
-            "interval": "month",
-            "frequency": 1
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
           },
-          "unit_price_overrides": []
-        },
-        "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
-        "quantity": 1,
-        "proration": null
-      }
-    ],
-    "origin": "web",
-    "status": "ready",
-    "details": {
-      "totals": {
-        "fee": null,
-        "tax": "61",
-        "total": "399",
-        "credit": "0",
-        "balance": "399",
-        "discount": "0",
-        "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
-        "currency_code": "USD",
-        "credit_to_balance": "0"
-      },
-      "line_items": [
-        {
-          "id": "txnitm_01jvx2hb8ddnktzt8tsgkjde2r",
-          "totals": {
-            "tax": "61",
-            "total": "399",
-            "discount": "0",
-            "subtotal": "338"
-          },
-          "item_id": null,
-          "product": {
-            "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
-            "name": "Neuron Mail Subscription",
-            "type": "standard",
-            "status": "active",
-            "image_url": null,
-            "created_at": "2025-05-19T12:16:34.12Z",
-            "updated_at": "2025-05-19T12:16:34.12Z",
-            "custom_data": null,
-            "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
-            "tax_category": "standard"
-          },
-          "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
-          "quantity": 1,
-          "tax_rate": "0.18",
-          "unit_totals": {
-            "tax": "61",
-            "total": "399",
-            "discount": "0",
-            "subtotal": "338"
-          },
-          "is_tax_exempt": false,
-          "revised_tax_exempted": false
-        }
-      ],
-      "payout_totals": null,
-      "tax_rates_used": [
-        {
-          "totals": {
-            "tax": "61",
-            "total": "399",
-            "discount": "0",
-            "subtotal": "338"
-          },
-          "tax_rate": "0.18"
-        }
-      ],
-      "adjusted_totals": {
-        "fee": null,
-        "tax": "61",
-        "total": "399",
-        "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
-        "currency_code": "USD"
-      }
-    },
-    "checkout": {
-      "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2gceekw55nna445y7e8w0"
-    },
-    "payments": [
-      {
-        "amount": "399",
-        "status": "error",
-        "created_at": "2025-05-22T22:45:00.091856Z",
-        "error_code": "declined",
-        "captured_at": null,
-        "method_details": {
-          "card": {
-            "type": "visa",
-            "last4": "0002",
-            "expiry_year": 2030,
-            "expiry_month": 3,
-            "cardholder_name": "Rahul"
-          },
-          "type": "card"
-        },
-        "payment_method_id": "paymtd_01jvx2qph43jwdzdjsg77q900d",
-        "payment_attempt_id": "1a4894a5-25b4-4b02-ad13-2906adb60f7e",
-        "stored_payment_method_id": "8dad590d-c385-4346-8fec-16ae3391f834"
-      }
-    ],
-    "billed_at": null,
-    "address_id": "add_01jvx2hazgzpxs9ge9pawczsp7",
-    "created_at": "2025-05-22T22:41:00.420301Z",
-    "invoice_id": null,
-    "revised_at": null,
-    "updated_at": "2025-05-22T22:41:31.919854Z",
-    "business_id": null,
-    "custom_data": {
-      "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
-    },
-    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
-    "discount_id": null,
-    "receipt_data": null,
-    "currency_code": "USD",
-    "billing_period": null,
-    "invoice_number": null,
-    "billing_details": null,
-    "collection_mode": "automatic",
-    "subscription_id": null
-  },
-  "event_id": "evt_01jvx2qs8ttw14kfvkr1de556t",
-  "event_type": "transaction.payment_failed",
-  "occurred_at": "2025-05-22T22:45:02.368100Z",
-  "notification_id": "ntf_01jvx2qsdsjtwsqt77ghthpkad"
-}
-
-
-================================================================================
-2025-05-22T22:53:44.315Z - transaction.updated
-================================================================================
-Event ID: evt_01jvx37nxy8124ec9y8a85rz3b
-Headers: {
-  "paddle-signature": "ts=1747954423;h1=3a79759ef77d8bc90ec50bb9abdfb791934850eb12d0a0f6a4e9de750908aa65",
-  "content-type": "application/json",
-  "user-agent": "Paddle"
-}
-Payload: {
-  "data": {
-    "id": "txn_01jvx2gceekw55nna445y7e8w0",
-    "items": [
-      {
-        "price": {
-          "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
-          "name": "Starter",
-          "type": "standard",
-          "status": "active",
-          "quantity": {
-            "maximum": 1,
-            "minimum": 1
-          },
-          "tax_mode": "account_setting",
-          "created_at": "2025-05-19T12:25:15.677881Z",
-          "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
-          "unit_price": {
-            "amount": "399",
-            "currency_code": "USD"
-          },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
-          "custom_data": null,
-          "description": "Everything is included in this plan",
-          "trial_period": null,
           "billing_cycle": {
             "interval": "month",
             "frequency": 1
@@ -1538,25 +2216,25 @@ Payload: {
     "details": {
       "totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "credit": "0",
         "balance": "0",
         "discount": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD",
         "credit_to_balance": "0"
       },
       "line_items": [
         {
-          "id": "txnitm_01jvx2hb8ddnktzt8tsgkjde2r",
+          "id": "txnitm_01jvy0srvqwet3r5e800bgk3th",
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "item_id": null,
           "product": {
@@ -1575,10 +2253,10 @@ Payload: {
           "quantity": 1,
           "tax_rate": "0.18",
           "unit_totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "is_tax_exempt": false,
           "revised_tax_exempted": false
@@ -1588,81 +2266,61 @@ Payload: {
       "tax_rates_used": [
         {
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "tax_rate": "0.18"
         }
       ],
       "adjusted_totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD"
       }
     },
     "checkout": {
-      "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2gceekw55nna445y7e8w0"
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvy0sktjrkmsa2ff7ewj2wed"
     },
     "payments": [
       {
-        "amount": "399",
-        "status": "captured",
-        "created_at": "2025-05-22T22:53:23.61251Z",
+        "amount": "0",
+        "status": "authorized",
+        "created_at": "2025-05-23T07:30:39.146029Z",
         "error_code": null,
-        "captured_at": "2025-05-22T22:53:43.147875Z",
-        "method_details": {
-          "card": {
-            "type": "visa",
-            "last4": "0446",
-            "expiry_year": 2030,
-            "expiry_month": 3,
-            "cardholder_name": "Rahul"
-          },
-          "type": "card"
-        },
-        "payment_method_id": "paymtd_01jvx3728dgcyspxr07xdts89t",
-        "payment_attempt_id": "360985de-8dd5-44f5-9ae5-92533ae75f9a",
-        "stored_payment_method_id": "b73e6683-ca46-432a-bd3f-a406b19c91c0"
-      },
-      {
-        "amount": "399",
-        "status": "error",
-        "created_at": "2025-05-22T22:45:00.091856Z",
-        "error_code": "declined",
         "captured_at": null,
         "method_details": {
           "card": {
             "type": "visa",
-            "last4": "0002",
+            "last4": "4242",
             "expiry_year": 2030,
             "expiry_month": 3,
             "cardholder_name": "Rahul"
           },
           "type": "card"
         },
-        "payment_method_id": "paymtd_01jvx2qph43jwdzdjsg77q900d",
-        "payment_attempt_id": "1a4894a5-25b4-4b02-ad13-2906adb60f7e",
-        "stored_payment_method_id": "8dad590d-c385-4346-8fec-16ae3391f834"
+        "payment_method_id": "paymtd_01jvy0t6cpkqspvjm6ekz6a6eb",
+        "payment_attempt_id": "0a6a26e5-0085-4c92-874f-3c93bde82c0c",
+        "stored_payment_method_id": "a6879cc1-e7bb-4cd4-b1b3-c3bad6f004d9"
       }
     ],
-    "billed_at": "2025-05-22T22:53:43.442181297Z",
-    "address_id": "add_01jvx2hazgzpxs9ge9pawczsp7",
-    "created_at": "2025-05-22T22:41:00.420301Z",
+    "billed_at": "2025-05-23T07:30:41.131304914Z",
+    "address_id": "add_01jvy0srj7jxr7vvqxa4d8v5pk",
+    "created_at": "2025-05-23T07:30:20.163939Z",
     "invoice_id": null,
     "revised_at": null,
-    "updated_at": "2025-05-22T22:53:43.442183531Z",
+    "updated_at": "2025-05-23T07:30:41.13130675Z",
     "business_id": null,
     "custom_data": {
-      "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      "email": "rahulmishra7802@gmail.com",
+      "userId": "411686f2-b77e-42d8-b20d-1694f3bacd67"
     },
-    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "customer_id": "ctm_01jvptkxnp16mxw2jeh3md8npa",
     "discount_id": null,
     "receipt_data": null,
     "currency_code": "USD",
@@ -1672,25 +2330,25 @@ Payload: {
     "collection_mode": "automatic",
     "subscription_id": null
   },
-  "event_id": "evt_01jvx37nxy8124ec9y8a85rz3b",
+  "event_id": "evt_01jvy0t8kxw7mja2d8wdjb505m",
   "event_type": "transaction.updated",
-  "occurred_at": "2025-05-22T22:53:43.450606Z",
-  "notification_id": "ntf_01jvx37p2s24e9wkvd7bzm6g6k"
+  "occurred_at": "2025-05-23T07:30:41.137902Z",
+  "notification_id": "ntf_01jvy0t8rjm3hz272vbxmmt10p"
 }
 
 
 ================================================================================
-2025-05-22T22:53:44.574Z - transaction.paid
+2025-05-23T07:30:42.061Z - transaction.paid
 ================================================================================
-Event ID: evt_01jvx37p02d0qpnnh9xrvzcm6r
+Event ID: evt_01jvy0t8kjgvt8zmaksx01vk7n
 Headers: {
-  "paddle-signature": "ts=1747954424;h1=29c9530b607cbe27c561a77dae6bc7a482e81df0ba852984ce51968352976975",
+  "paddle-signature": "ts=1747985441;h1=6d7b288393f6b757802a07d4ea89c8f74828e5b7f431fd9b9a2743c4d7405798",
   "content-type": "application/json",
   "user-agent": "Paddle"
 }
 Payload: {
   "data": {
-    "id": "txn_01jvx2gceekw55nna445y7e8w0",
+    "id": "txn_01jvy0sktjrkmsa2ff7ewj2wed",
     "items": [
       {
         "price": {
@@ -1709,10 +2367,13 @@ Payload: {
             "amount": "399",
             "currency_code": "USD"
           },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
+          "updated_at": "2025-05-22T23:31:06.944914Z",
           "custom_data": null,
           "description": "Everything is included in this plan",
-          "trial_period": null,
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
           "billing_cycle": {
             "interval": "month",
             "frequency": 1
@@ -1729,25 +2390,25 @@ Payload: {
     "details": {
       "totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "credit": "0",
         "balance": "0",
         "discount": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD",
         "credit_to_balance": "0"
       },
       "line_items": [
         {
-          "id": "txnitm_01jvx2hb8ddnktzt8tsgkjde2r",
+          "id": "txnitm_01jvy0srvqwet3r5e800bgk3th",
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "item_id": null,
           "product": {
@@ -1766,10 +2427,10 @@ Payload: {
           "quantity": 1,
           "tax_rate": "0.18",
           "unit_totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "is_tax_exempt": false,
           "revised_tax_exempted": false
@@ -1779,81 +2440,61 @@ Payload: {
       "tax_rates_used": [
         {
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "tax_rate": "0.18"
         }
       ],
       "adjusted_totals": {
         "fee": null,
-        "tax": "61",
-        "total": "399",
+        "tax": "0",
+        "total": "0",
         "earnings": null,
-        "subtotal": "338",
-        "grand_total": "399",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD"
       }
     },
     "checkout": {
-      "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2gceekw55nna445y7e8w0"
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvy0sktjrkmsa2ff7ewj2wed"
     },
     "payments": [
       {
-        "amount": "399",
-        "status": "captured",
-        "created_at": "2025-05-22T22:53:23.61251Z",
+        "amount": "0",
+        "status": "authorized",
+        "created_at": "2025-05-23T07:30:39.146029Z",
         "error_code": null,
-        "captured_at": "2025-05-22T22:53:43.147875Z",
-        "method_details": {
-          "card": {
-            "type": "visa",
-            "last4": "0446",
-            "expiry_year": 2030,
-            "expiry_month": 3,
-            "cardholder_name": "Rahul"
-          },
-          "type": "card"
-        },
-        "payment_method_id": "paymtd_01jvx3728dgcyspxr07xdts89t",
-        "payment_attempt_id": "360985de-8dd5-44f5-9ae5-92533ae75f9a",
-        "stored_payment_method_id": "b73e6683-ca46-432a-bd3f-a406b19c91c0"
-      },
-      {
-        "amount": "399",
-        "status": "error",
-        "created_at": "2025-05-22T22:45:00.091856Z",
-        "error_code": "declined",
         "captured_at": null,
         "method_details": {
           "card": {
             "type": "visa",
-            "last4": "0002",
+            "last4": "4242",
             "expiry_year": 2030,
             "expiry_month": 3,
             "cardholder_name": "Rahul"
           },
           "type": "card"
         },
-        "payment_method_id": "paymtd_01jvx2qph43jwdzdjsg77q900d",
-        "payment_attempt_id": "1a4894a5-25b4-4b02-ad13-2906adb60f7e",
-        "stored_payment_method_id": "8dad590d-c385-4346-8fec-16ae3391f834"
+        "payment_method_id": "paymtd_01jvy0t6cpkqspvjm6ekz6a6eb",
+        "payment_attempt_id": "0a6a26e5-0085-4c92-874f-3c93bde82c0c",
+        "stored_payment_method_id": "a6879cc1-e7bb-4cd4-b1b3-c3bad6f004d9"
       }
     ],
-    "billed_at": "2025-05-22T22:53:43.442181297Z",
-    "address_id": "add_01jvx2hazgzpxs9ge9pawczsp7",
-    "created_at": "2025-05-22T22:41:00.420301Z",
+    "billed_at": "2025-05-23T07:30:41.131304914Z",
+    "address_id": "add_01jvy0srj7jxr7vvqxa4d8v5pk",
+    "created_at": "2025-05-23T07:30:20.163939Z",
     "invoice_id": null,
     "revised_at": null,
-    "updated_at": "2025-05-22T22:53:43.442183531Z",
+    "updated_at": "2025-05-23T07:30:41.13130675Z",
     "business_id": null,
     "custom_data": {
-      "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      "email": "rahulmishra7802@gmail.com",
+      "userId": "411686f2-b77e-42d8-b20d-1694f3bacd67"
     },
-    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "customer_id": "ctm_01jvptkxnp16mxw2jeh3md8npa",
     "discount_id": null,
     "receipt_data": null,
     "currency_code": "USD",
@@ -1863,25 +2504,25 @@ Payload: {
     "collection_mode": "automatic",
     "subscription_id": null
   },
-  "event_id": "evt_01jvx37p02d0qpnnh9xrvzcm6r",
+  "event_id": "evt_01jvy0t8kjgvt8zmaksx01vk7n",
   "event_type": "transaction.paid",
-  "occurred_at": "2025-05-22T22:53:43.461142Z",
-  "notification_id": "ntf_01jvx37p4hch4sadg9t97h1ptz"
+  "occurred_at": "2025-05-23T07:30:41.149973Z",
+  "notification_id": "ntf_01jvy0t8qgxg2zggyvfq658fr3"
 }
 
 
 ================================================================================
-2025-05-22T22:53:44.792Z - subscription.activated
+2025-05-23T07:30:42.531Z - subscription.trialing
 ================================================================================
-Event ID: evt_01jvx37padheemxe9dygh3t7aw
+Event ID: evt_01jvy0t8zz77ev3trzmwaeqkbm
 Headers: {
-  "paddle-signature": "ts=1747954424;h1=8f75a4a0f2bab89beb7d24658612ae1a416dc33da673642bf10ed10b641fc082",
+  "paddle-signature": "ts=1747985442;h1=c72867b6324272c566fd42b21550ae2e22aa55631dad9dcef608ac760d5aaa67",
   "content-type": "application/json",
   "user-agent": "Paddle"
 }
 Payload: {
   "data": {
-    "id": "sub_01jvx37nx7ye78qc89p1k3apsb",
+    "id": "sub_01jvy0t8m04ssv10r1xd4s4kg1",
     "items": [
       {
         "price": {
@@ -1901,18 +2542,21 @@ Payload: {
             "amount": "399",
             "currency_code": "USD"
           },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
+          "updated_at": "2025-05-22T23:31:06.944914Z",
           "custom_data": null,
           "description": "Everything is included in this plan",
           "import_meta": null,
-          "trial_period": null,
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
+          },
           "billing_cycle": {
             "interval": "month",
             "frequency": 1
           },
           "unit_price_overrides": []
         },
-        "status": "active",
+        "status": "trialing",
         "product": {
           "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
           "name": "Neuron Mail Subscription",
@@ -1928,62 +2572,65 @@ Payload: {
         },
         "quantity": 1,
         "recurring": true,
-        "created_at": "2025-05-22T22:53:43.719Z",
-        "updated_at": "2025-05-22T22:53:43.719Z",
-        "trial_dates": null,
-        "next_billed_at": "2025-06-22T22:53:43.147875Z",
-        "previously_billed_at": "2025-05-22T22:53:43.147875Z"
+        "created_at": "2025-05-23T07:30:41.408Z",
+        "updated_at": "2025-05-23T07:30:41.408Z",
+        "trial_dates": {
+          "ends_at": "2025-05-26T07:30:41.401Z",
+          "starts_at": "2025-05-23T07:30:41.401Z"
+        },
+        "next_billed_at": "2025-05-26T07:30:41.401Z",
+        "previously_billed_at": null
       }
     ],
-    "status": "active",
+    "status": "trialing",
     "discount": null,
     "paused_at": null,
-    "address_id": "add_01jvx2hazgzpxs9ge9pawczsp7",
-    "created_at": "2025-05-22T22:53:43.719Z",
-    "started_at": "2025-05-22T22:53:43.147875Z",
-    "updated_at": "2025-05-22T22:53:43.719Z",
+    "address_id": "add_01jvy0srj7jxr7vvqxa4d8v5pk",
+    "created_at": "2025-05-23T07:30:41.408Z",
+    "started_at": "2025-05-23T07:30:41.401Z",
+    "updated_at": "2025-05-23T07:30:41.408Z",
     "business_id": null,
     "canceled_at": null,
     "custom_data": {
-      "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      "email": "rahulmishra7802@gmail.com",
+      "userId": "411686f2-b77e-42d8-b20d-1694f3bacd67"
     },
-    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "customer_id": "ctm_01jvptkxnp16mxw2jeh3md8npa",
     "import_meta": null,
     "billing_cycle": {
       "interval": "month",
       "frequency": 1
     },
     "currency_code": "USD",
-    "next_billed_at": "2025-06-22T22:53:43.147875Z",
+    "next_billed_at": "2025-05-26T07:30:41.401Z",
     "billing_details": null,
     "collection_mode": "automatic",
-    "first_billed_at": "2025-05-22T22:53:43.147875Z",
+    "first_billed_at": null,
     "scheduled_change": null,
     "current_billing_period": {
-      "ends_at": "2025-06-22T22:53:43.147875Z",
-      "starts_at": "2025-05-22T22:53:43.147875Z"
+      "ends_at": "2025-05-26T07:30:41.401Z",
+      "starts_at": "2025-05-23T07:30:41.401Z"
     }
   },
-  "event_id": "evt_01jvx37padheemxe9dygh3t7aw",
-  "event_type": "subscription.activated",
-  "occurred_at": "2025-05-22T22:53:43.875546Z",
-  "notification_id": "ntf_01jvx37pevmz289bf8as5ydwbv"
+  "event_id": "evt_01jvy0t8zz77ev3trzmwaeqkbm",
+  "event_type": "subscription.trialing",
+  "occurred_at": "2025-05-23T07:30:41.557260Z",
+  "notification_id": "ntf_01jvy0t96tfqr4dgm4en3y0rpc"
 }
 
 
 ================================================================================
-2025-05-22T22:53:46.124Z - transaction.updated
+2025-05-23T07:30:42.797Z - transaction.updated
 ================================================================================
-Event ID: evt_01jvx37prmdz2mk6dqmkmksbr0
+Event ID: evt_01jvy0t9748a1jmjkea06dthky
 Headers: {
-  "paddle-signature": "ts=1747954424;h1=b3034786068a1534ce2a2c04232a486bd3657d0984749ef2ba2f1c9a3446e38e",
+  "paddle-signature": "ts=1747985442;h1=ef5e786ae1dc77e936553f547f238abf5a31ff091c1330f5527148af021c5fbd",
   "content-type": "application/json",
   "user-agent": "Paddle"
 }
 Payload: {
   "data": {
-    "id": "txn_01jvx2gceekw55nna445y7e8w0",
+    "id": "txn_01jvy0sktjrkmsa2ff7ewj2wed",
     "items": [
       {
         "price": {
@@ -2002,218 +2649,13 @@ Payload: {
             "amount": "399",
             "currency_code": "USD"
           },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
+          "updated_at": "2025-05-22T23:31:06.944914Z",
           "custom_data": null,
           "description": "Everything is included in this plan",
-          "trial_period": null,
-          "billing_cycle": {
-            "interval": "month",
-            "frequency": 1
+          "trial_period": {
+            "interval": "day",
+            "frequency": 3
           },
-          "unit_price_overrides": []
-        },
-        "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
-        "quantity": 1,
-        "proration": null
-      }
-    ],
-    "origin": "web",
-    "status": "paid",
-    "details": {
-      "totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
-        "credit": "0",
-        "balance": "0",
-        "discount": "0",
-        "earnings": "268",
-        "subtotal": "338",
-        "grand_total": "399",
-        "currency_code": "USD",
-        "credit_to_balance": "0"
-      },
-      "line_items": [
-        {
-          "id": "txnitm_01jvx2hb8ddnktzt8tsgkjde2r",
-          "totals": {
-            "tax": "61",
-            "total": "399",
-            "discount": "0",
-            "subtotal": "338"
-          },
-          "item_id": null,
-          "product": {
-            "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
-            "name": "Neuron Mail Subscription",
-            "type": "standard",
-            "status": "active",
-            "image_url": null,
-            "created_at": "2025-05-19T12:16:34.12Z",
-            "updated_at": "2025-05-19T12:16:34.12Z",
-            "custom_data": null,
-            "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
-            "tax_category": "standard"
-          },
-          "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
-          "quantity": 1,
-          "tax_rate": "0.18",
-          "unit_totals": {
-            "tax": "61",
-            "total": "399",
-            "discount": "0",
-            "subtotal": "338"
-          },
-          "is_tax_exempt": false,
-          "revised_tax_exempted": false
-        }
-      ],
-      "payout_totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
-        "credit": "0",
-        "balance": "0",
-        "discount": "0",
-        "earnings": "268",
-        "fee_rate": "0.05",
-        "subtotal": "338",
-        "grand_total": "399",
-        "currency_code": "USD",
-        "exchange_rate": "1",
-        "credit_to_balance": "0"
-      },
-      "tax_rates_used": [
-        {
-          "totals": {
-            "tax": "61",
-            "total": "399",
-            "discount": "0",
-            "subtotal": "338"
-          },
-          "tax_rate": "0.18"
-        }
-      ],
-      "adjusted_totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
-        "earnings": "268",
-        "subtotal": "338",
-        "grand_total": "399",
-        "currency_code": "USD"
-      }
-    },
-    "checkout": {
-      "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2gceekw55nna445y7e8w0"
-    },
-    "payments": [
-      {
-        "amount": "399",
-        "status": "captured",
-        "created_at": "2025-05-22T22:53:23.61251Z",
-        "error_code": null,
-        "captured_at": "2025-05-22T22:53:43.147875Z",
-        "method_details": {
-          "card": {
-            "type": "visa",
-            "last4": "0446",
-            "expiry_year": 2030,
-            "expiry_month": 3,
-            "cardholder_name": "Rahul"
-          },
-          "type": "card"
-        },
-        "payment_method_id": "paymtd_01jvx3728dgcyspxr07xdts89t",
-        "payment_attempt_id": "360985de-8dd5-44f5-9ae5-92533ae75f9a",
-        "stored_payment_method_id": "b73e6683-ca46-432a-bd3f-a406b19c91c0"
-      },
-      {
-        "amount": "399",
-        "status": "error",
-        "created_at": "2025-05-22T22:45:00.091856Z",
-        "error_code": "declined",
-        "captured_at": null,
-        "method_details": {
-          "card": {
-            "type": "visa",
-            "last4": "0002",
-            "expiry_year": 2030,
-            "expiry_month": 3,
-            "cardholder_name": "Rahul"
-          },
-          "type": "card"
-        },
-        "payment_method_id": "paymtd_01jvx2qph43jwdzdjsg77q900d",
-        "payment_attempt_id": "1a4894a5-25b4-4b02-ad13-2906adb60f7e",
-        "stored_payment_method_id": "8dad590d-c385-4346-8fec-16ae3391f834"
-      }
-    ],
-    "billed_at": "2025-05-22T22:53:43.442181Z",
-    "address_id": "add_01jvx2hazgzpxs9ge9pawczsp7",
-    "created_at": "2025-05-22T22:41:00.420301Z",
-    "invoice_id": null,
-    "revised_at": null,
-    "updated_at": "2025-05-22T22:53:44.1635402Z",
-    "business_id": null,
-    "custom_data": {
-      "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
-    },
-    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
-    "discount_id": null,
-    "receipt_data": null,
-    "currency_code": "USD",
-    "billing_period": {
-      "ends_at": "2025-06-22T22:53:43.147875Z",
-      "starts_at": "2025-05-22T22:53:43.147875Z"
-    },
-    "invoice_number": null,
-    "billing_details": null,
-    "collection_mode": "automatic",
-    "subscription_id": "sub_01jvx37nx7ye78qc89p1k3apsb"
-  },
-  "event_id": "evt_01jvx37prmdz2mk6dqmkmksbr0",
-  "event_type": "transaction.updated",
-  "occurred_at": "2025-05-22T22:53:44.175244Z",
-  "notification_id": "ntf_01jvx37px0jh28yw6x6x9c5cv2"
-}
-
-
-================================================================================
-2025-05-22T22:53:46.687Z - transaction.updated
-================================================================================
-Event ID: evt_01jvx37r9hbeqmfbggb94jrs02
-Headers: {
-  "paddle-signature": "ts=1747954426;h1=d5c94689b89ee3ff9f73343aba0d511d1c0427accd4487bac5cc71b6dd74cc45",
-  "content-type": "application/json",
-  "user-agent": "Paddle"
-}
-Payload: {
-  "data": {
-    "id": "txn_01jvx2gceekw55nna445y7e8w0",
-    "items": [
-      {
-        "price": {
-          "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
-          "name": "Starter",
-          "type": "standard",
-          "status": "active",
-          "quantity": {
-            "maximum": 1,
-            "minimum": 1
-          },
-          "tax_mode": "account_setting",
-          "created_at": "2025-05-19T12:25:15.677881Z",
-          "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
-          "unit_price": {
-            "amount": "399",
-            "currency_code": "USD"
-          },
-          "updated_at": "2025-05-21T21:44:30.556949Z",
-          "custom_data": null,
-          "description": "Everything is included in this plan",
-          "trial_period": null,
           "billing_cycle": {
             "interval": "month",
             "frequency": 1
@@ -2229,26 +2671,26 @@ Payload: {
     "status": "completed",
     "details": {
       "totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
         "credit": "0",
         "balance": "0",
         "discount": "0",
-        "earnings": "268",
-        "subtotal": "338",
-        "grand_total": "399",
+        "earnings": "0",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD",
         "credit_to_balance": "0"
       },
       "line_items": [
         {
-          "id": "txnitm_01jvx2hb8ddnktzt8tsgkjde2r",
+          "id": "txnitm_01jvy0srvqwet3r5e800bgk3th",
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "item_id": null,
           "product": {
@@ -2267,26 +2709,26 @@ Payload: {
           "quantity": 1,
           "tax_rate": "0.18",
           "unit_totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "is_tax_exempt": false,
           "revised_tax_exempted": false
         }
       ],
       "payout_totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
         "credit": "0",
         "balance": "0",
         "discount": "0",
-        "earnings": "268",
-        "fee_rate": "0.05",
-        "subtotal": "338",
-        "grand_total": "399",
+        "earnings": "0",
+        "fee_rate": "0",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD",
         "exchange_rate": "1",
         "credit_to_balance": "0"
@@ -2294,96 +2736,76 @@ Payload: {
       "tax_rates_used": [
         {
           "totals": {
-            "tax": "61",
-            "total": "399",
+            "tax": "0",
+            "total": "0",
             "discount": "0",
-            "subtotal": "338"
+            "subtotal": "0"
           },
           "tax_rate": "0.18"
         }
       ],
       "adjusted_totals": {
-        "fee": "70",
-        "tax": "61",
-        "total": "399",
-        "earnings": "268",
-        "subtotal": "338",
-        "grand_total": "399",
+        "fee": "0",
+        "tax": "0",
+        "total": "0",
+        "earnings": "0",
+        "subtotal": "0",
+        "grand_total": "0",
         "currency_code": "USD"
       }
     },
     "checkout": {
-      "url": "https://e95c-119-252-197-228.ngrok-free.app/?_ptxn=txn_01jvx2gceekw55nna445y7e8w0"
+      "url": "https://2d1b-116-206-158-159.ngrok-free.app/?_ptxn=txn_01jvy0sktjrkmsa2ff7ewj2wed"
     },
     "payments": [
       {
-        "amount": "399",
-        "status": "captured",
-        "created_at": "2025-05-22T22:53:23.61251Z",
+        "amount": "0",
+        "status": "authorized",
+        "created_at": "2025-05-23T07:30:39.146029Z",
         "error_code": null,
-        "captured_at": "2025-05-22T22:53:43.147875Z",
-        "method_details": {
-          "card": {
-            "type": "visa",
-            "last4": "0446",
-            "expiry_year": 2030,
-            "expiry_month": 3,
-            "cardholder_name": "Rahul"
-          },
-          "type": "card"
-        },
-        "payment_method_id": "paymtd_01jvx3728dgcyspxr07xdts89t",
-        "payment_attempt_id": "360985de-8dd5-44f5-9ae5-92533ae75f9a",
-        "stored_payment_method_id": "b73e6683-ca46-432a-bd3f-a406b19c91c0"
-      },
-      {
-        "amount": "399",
-        "status": "error",
-        "created_at": "2025-05-22T22:45:00.091856Z",
-        "error_code": "declined",
         "captured_at": null,
         "method_details": {
           "card": {
             "type": "visa",
-            "last4": "0002",
+            "last4": "4242",
             "expiry_year": 2030,
             "expiry_month": 3,
             "cardholder_name": "Rahul"
           },
           "type": "card"
         },
-        "payment_method_id": "paymtd_01jvx2qph43jwdzdjsg77q900d",
-        "payment_attempt_id": "1a4894a5-25b4-4b02-ad13-2906adb60f7e",
-        "stored_payment_method_id": "8dad590d-c385-4346-8fec-16ae3391f834"
+        "payment_method_id": "paymtd_01jvy0t6cpkqspvjm6ekz6a6eb",
+        "payment_attempt_id": "0a6a26e5-0085-4c92-874f-3c93bde82c0c",
+        "stored_payment_method_id": "a6879cc1-e7bb-4cd4-b1b3-c3bad6f004d9"
       }
     ],
-    "billed_at": "2025-05-22T22:53:43.442181Z",
-    "address_id": "add_01jvx2hazgzpxs9ge9pawczsp7",
-    "created_at": "2025-05-22T22:41:00.420301Z",
-    "invoice_id": "inv_01jvx37nznatjkgwe4gv44wq4c",
+    "billed_at": "2025-05-23T07:30:41.131304Z",
+    "address_id": "add_01jvy0srj7jxr7vvqxa4d8v5pk",
+    "created_at": "2025-05-23T07:30:20.163939Z",
+    "invoice_id": null,
     "revised_at": null,
-    "updated_at": "2025-05-22T22:53:45.772190122Z",
+    "updated_at": "2025-05-23T07:30:41.77470939Z",
     "business_id": null,
     "custom_data": {
-      "email": "rahulmishra1716@gmail.com",
-      "userId": "f8490434-a9aa-488c-97c7-295c245082a9"
+      "email": "rahulmishra7802@gmail.com",
+      "userId": "411686f2-b77e-42d8-b20d-1694f3bacd67"
     },
-    "customer_id": "ctm_01jvsjhb462sezaaf10377yfpf",
+    "customer_id": "ctm_01jvptkxnp16mxw2jeh3md8npa",
     "discount_id": null,
     "receipt_data": null,
     "currency_code": "USD",
     "billing_period": {
-      "ends_at": "2025-06-22T22:53:43.147875Z",
-      "starts_at": "2025-05-22T22:53:43.147875Z"
+      "ends_at": "2025-05-26T07:30:41.401Z",
+      "starts_at": "2025-05-23T07:30:41.401Z"
     },
-    "invoice_number": "21333-10042",
+    "invoice_number": null,
     "billing_details": null,
     "collection_mode": "automatic",
-    "subscription_id": "sub_01jvx37nx7ye78qc89p1k3apsb"
+    "subscription_id": "sub_01jvy0t8m04ssv10r1xd4s4kg1"
   },
-  "event_id": "evt_01jvx37r9hbeqmfbggb94jrs02",
+  "event_id": "evt_01jvy0t9748a1jmjkea06dthky",
   "event_type": "transaction.updated",
-  "occurred_at": "2025-05-22T22:53:45.778912Z",
-  "notification_id": "ntf_01jvx37rd41f1sd0zvk4yjvm14"
+  "occurred_at": "2025-05-23T07:30:41.784642Z",
+  "notification_id": "ntf_01jvy0t9j2kcxbfqvtb2vrz269"
 }
 

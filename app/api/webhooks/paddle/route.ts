@@ -4,23 +4,14 @@ import { config } from "@/lib/config";
 import crypto from "crypto";
 import fs from "fs";
 import path from "path";
-import { handle_webhook_transaction_updated } from "./webhook-transaction-updated";
 import {
   handle_subscription_activated,
   handle_webhook_subscription_canceled,
-  handle_webhook_subscription_trialing,
+  handle_webhook_subscription_past_due,
+  handle_webhook_subscription_updated,
 } from "./webhook_subscription_updated";
+import { handle_webhook_transaction_updated } from "./webhook-transaction-updated";
 
-// Define subscription states based on Paddle's status
-type SubscriptionStatus =
-  | "active"
-  | "trialing"
-  | "past_due"
-  | "paused"
-  | "canceled"
-  | "expired";
-
-// Function to write webhook data to file
 function logWebhookToFile(body: any, headers: any) {
   try {
     const timestamp = new Date().toISOString();
@@ -148,20 +139,23 @@ export async function POST(req: NextRequest) {
     try {
       switch (body.event_type) {
         case "subscription.updated":
+          await handle_webhook_subscription_updated(body, supabase);
         case "subscription.canceled":
           await handle_webhook_subscription_canceled(body, supabase);
           break;
         case "subscription.trialing":
-          await handle_webhook_subscription_trialing(body, supabase);
+          await handle_subscription_activated(body, supabase);
           break;
         case "subscription.activated":
           await handle_subscription_activated(body, supabase);
+          break;
+        case "subscription.past_due":
+          await handle_webhook_subscription_past_due(body, supabase);
           break;
         case "transaction.updated":
           await handle_webhook_transaction_updated(body, supabase);
           break;
         default:
-          console.log(`Unhandled webhook event: ${body.event_type}`);
       }
 
       await supabase

@@ -28,7 +28,7 @@ export const handle_webhook_transaction_updated = async (
     payment_method_type: any;
     billing_period_start: any;
     billing_period_end: any;
-    raw_transaction_data: any; // Stor
+    raw_transaction_data: any;
   }
 
   try {
@@ -71,34 +71,23 @@ export const handle_webhook_transaction_updated = async (
     const billingPeriodStart = subscriptionData.billing_period?.starts_at;
     const billingPeriodEnd = subscriptionData.billing_period?.ends_at;
 
-    // Check for missing required fields
-    const missingFields: string[] = [];
-
-    if (!transactionId) missingFields.push("transaction_id");
-    if (!subscriptionId) missingFields.push("subscription_id");
-    if (!userId) missingFields.push("user_id");
-    if (!status) missingFields.push("status");
-    if (!currencyCode) missingFields.push("currency_code");
-    if (totalAmount === 0) missingFields.push("amount");
-
-    // Check for invoice fields (these indicate transaction is finalized)
+    // Extract invoice fields
     const invoiceId = subscriptionData.invoice_id;
     const invoiceNumber = subscriptionData.invoice_number;
 
-    if (!invoiceId) missingFields.push("invoice_id");
-    if (!invoiceNumber) missingFields.push("invoice_number");
+    // Check if transaction already exists
+    const { data: existingTransaction, error: fetchError } = await supabase
+      .from("transactions")
+      .select("*")
+      .eq("paddle_transaction_id", transactionId)
+      .single();
 
-    // If any required fields are missing, log and return
-    if (missingFields.length > 0) {
-      console.log(
-        `Waiting for transaction to finalize. Missing fields: ${missingFields.join(
-          ", "
-        )}`
-      );
-      return { success: false, message: "Transaction not yet finalized" };
+    if (fetchError && fetchError.code !== "PGRST116") {
+      // PGRST116 is "not found" error, which is expected for new transactions
+      console.error("Error checking for existing transaction:", fetchError);
+      throw fetchError;
     }
 
-    // Transaction is finalized, proceed with database insertion
     const transactionData: CreateTransaction = {
       user_id: userId,
       subscription_id: subscriptionId,
@@ -123,27 +112,47 @@ export const handle_webhook_transaction_updated = async (
       payment_method_type: paymentMethodType,
       billing_period_start: billingPeriodStart,
       billing_period_end: billingPeriodEnd,
-      raw_transaction_data: subscriptionData, // Store entire transaction for ultimate safety
+      raw_transaction_data: subscriptionData,
     };
 
-    console.log(
-      "Transaction finalized, inserting into database:",
-      transactionData
-    );
+    let result;
 
-    // Insert into Supabase
-    const { data, error } = await supabase
-      .from("transactions") // Adjust table name as needed
-      .insert([transactionData])
-      .select();
+    if (existingTransaction) {
+      // Transaction exists, update it
+      console.log("Updating existing transaction:", transactionId);
 
-    if (error) {
-      console.error("Error inserting transaction:", error);
-      throw error;
+      const { data, error } = await supabase
+        .from("transactions")
+        .update(transactionData)
+        .eq("paddle_transaction_id", transactionId)
+        .select();
+
+      if (error) {
+        console.error("Error updating transaction:", error);
+        throw error;
+      }
+
+      result = { success: true, data: data, action: "updated" };
+      console.log("Transaction successfully updated:", data);
+    } else {
+      // Transaction doesn't exist, insert new one
+      console.log("Inserting new transaction:", transactionId);
+
+      const { data, error } = await supabase
+        .from("transactions")
+        .insert([transactionData])
+        .select();
+
+      if (error) {
+        console.error("Error inserting transaction:", error);
+        throw error;
+      }
+
+      result = { success: true, data: data, action: "inserted" };
+      console.log("Transaction successfully inserted:", data);
     }
 
-    console.log("Transaction successfully inserted:", data);
-    return { success: true, data: data };
+    return result;
   } catch (error) {
     console.error("Error processing webhook:", error);
     throw error;

@@ -1,10 +1,10 @@
 "use client"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
 import { createCheckout, type PaddleCheckoutOptions } from "@/lib/paddle"
 import { config } from "@/lib/config"
+import { toast } from "@/hooks/use-toast"
 
 interface CheckoutButtonProps {
   email: string
@@ -19,25 +19,35 @@ export default function CheckoutButton({ email, userId, className }: CheckoutBut
     try {
       setLoading(true)
 
-      // Configure checkout options
+      // Use the same price ID consistently
+      const priceId = process.env.NEXT_PUBLIC_PADDLE_PRICE_ID || config.paddle.planId;
+
+      if (!priceId) {
+        throw new Error("Price ID is not configured");
+      }
+
       const checkoutOptions: PaddleCheckoutOptions = {
         items: [
           {
-            priceId: config.paddle.planId,
+            priceId: priceId,
             quantity: 1,
           },
         ],
-
-        successUrl: `${config.app.url}/dashboard?checkout_success=true`,
-        cancelUrl: `${config.app.url}/pricing?checkout_canceled=true`,
+        successUrl: `${config.app.url}/dashboard`,
         customer: {
           id: userId,
           email,
         }
       }
+
       await createCheckout(checkoutOptions)
     } catch (error) {
       console.error("Checkout error:", error)
+      toast({
+        title: "Checkout Failed",
+        description: "Unable to start checkout process. Please try again.",
+        variant: "destructive",
+      })
     } finally {
       setLoading(false)
     }
