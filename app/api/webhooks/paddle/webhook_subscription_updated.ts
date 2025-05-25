@@ -13,6 +13,36 @@ interface SubscriptionInsert {
   currency_code: string;
 }
 
+// Helper function to update user profile
+const updateUserProfile = async (
+  supabase: SupabaseClient,
+  userId: string,
+  subscriptionId: string | null,
+  status: string
+) => {
+  try {
+    const { data: profileData, error: profileError } = await supabase
+      .from("profiles")
+      .update({
+        subscription_id: subscriptionId,
+        subscription_status: status,
+      })
+      .eq("id", userId)
+      .select();
+
+    if (profileError) {
+      console.error("Error updating user profile:", profileError);
+      throw profileError;
+    }
+
+    console.log("User profile updated successfully:", profileData);
+    return profileData;
+  } catch (error) {
+    console.error("Failed to update user profile:", error);
+    throw error;
+  }
+};
+
 export const handle_subscription_activated = async (
   obj: any,
   supabase: SupabaseClient
@@ -59,13 +89,22 @@ export const handle_subscription_activated = async (
       throw new Error(`Database insert failed: ${error.message}`);
     }
 
+    // Update user profile with subscription info
+    await updateUserProfile(
+      supabase,
+      data.custom_data.userId,
+      data.id,
+      data.status
+    );
+
     console.log("Subscription activated successfully:", insertedData);
     return { success: true, data: insertedData };
   } catch (error) {
     console.error("Error handling subscription activation:", error);
-    throw error; // Re-throw to let calling code handle it
+    throw error;
   }
 };
+
 export const handle_webhook_subscription_canceled = async (
   body: any,
   supabase: SupabaseClient
@@ -103,6 +142,16 @@ export const handle_webhook_subscription_canceled = async (
         message: "Subscription not found",
         paddleSubscriptionId,
       };
+    }
+
+    // Update user profile - set subscription_id to null and status to canceled
+    if (data.custom_data?.userId) {
+      await updateUserProfile(
+        supabase,
+        data.custom_data.userId,
+        null, // Set to null when canceled
+        "canceled"
+      );
     }
 
     console.log("Subscription successfully canceled:", updatedSubscription[0]);
@@ -156,6 +205,16 @@ export const handle_webhook_subscription_resumed = async (
       };
     }
 
+    // Update user profile with resumed subscription
+    if (data.custom_data?.userId) {
+      await updateUserProfile(
+        supabase,
+        data.custom_data.userId,
+        data.id,
+        data.status
+      );
+    }
+
     console.log("Subscription successfully resumed:", updatedSubscription[0]);
     return {
       success: true,
@@ -184,7 +243,7 @@ export const handle_webhook_subscription_trialing = async (
 
     // Update the subscription in the database
     const { data: updatedSubscription, error } = await supabase
-      .from("subscriptions") // Replace with your actual table name
+      .from("subscriptions")
       .update({
         user_id: data.custom_data.userId,
         paddle_subscription_id: data.id,
@@ -214,6 +273,16 @@ export const handle_webhook_subscription_trialing = async (
         message: "Subscription not found",
         paddleSubscriptionId,
       };
+    }
+
+    // Update user profile with trialing subscription
+    if (data.custom_data?.userId) {
+      await updateUserProfile(
+        supabase,
+        data.custom_data.userId,
+        data.id,
+        "trialing"
+      );
     }
 
     console.log(
@@ -286,6 +355,17 @@ export const handle_webhook_subscription_updated = async (
       };
     }
 
+    // Update user profile with updated subscription info
+    if (data.custom_data?.userId) {
+      const subscriptionId = data.status === "canceled" ? null : data.id;
+      await updateUserProfile(
+        supabase,
+        data.custom_data.userId,
+        subscriptionId,
+        data.status
+      );
+    }
+
     console.log("Subscription successfully updated:", updatedSubscription[0]);
     return {
       success: true,
@@ -334,6 +414,16 @@ export const handle_webhook_subscription_past_due = async (
         message: "Subscription not found",
         paddleSubscriptionId,
       };
+    }
+
+    // Update user profile with past_due status
+    if (data.custom_data?.userId) {
+      await updateUserProfile(
+        supabase,
+        data.custom_data.userId,
+        data.id, // Keep subscription_id but update status
+        "past_due"
+      );
     }
 
     console.log(

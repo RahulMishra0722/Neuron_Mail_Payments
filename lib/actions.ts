@@ -149,26 +149,6 @@ export async function signup(formData: FormData) {
     };
   }
 }
-export async function updateProfile(data: any) {
-  const supabase = await createClient();
-
-  const { error } = await supabase
-    .from("profiles")
-    .upsert({
-      id: data.id,
-      full_name: data.full_name,
-      avatar_url: data.avatar_url,
-      updated_at: new Date().toISOString(),
-    })
-    .eq("id", data.id);
-
-  if (error) {
-    throw new Error(error.message);
-  }
-
-  revalidatePath("/account");
-  return { success: true };
-}
 
 export async function updatePassword(data: {
   currentPassword: string;
