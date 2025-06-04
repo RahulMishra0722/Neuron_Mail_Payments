@@ -10,37 +10,24 @@ interface CheckoutButtonProps {
   email: string
   userId: string
   className?: string
+  isYearly: boolean
 }
 
-export default function CheckoutButton({ email, userId, className }: CheckoutButtonProps) {
+export default function CheckoutButton({ email, userId, className, isYearly }: CheckoutButtonProps) {
   const [loading, setLoading] = useState(false)
 
   const handleCheckout = async () => {
     try {
       setLoading(true)
 
-      // Use the same price ID consistently
-      const priceId = process.env.NEXT_PUBLIC_PADDLE_PRICE_ID || config.paddle.planId;
-
-      if (!priceId) {
-        throw new Error("Price ID is not configured");
-      }
-
       const checkoutOptions: PaddleCheckoutOptions = {
-        items: [
-          {
-            priceId: priceId,
-            quantity: 1,
-          },
-        ],
         successUrl: `${config.app.url}/dashboard`,
         customer: {
           id: userId,
           email,
         }
       }
-
-      await createCheckout(checkoutOptions)
+      await createCheckout(checkoutOptions, isYearly)
     } catch (error) {
       console.error("Checkout error:", error)
       toast({
@@ -67,7 +54,7 @@ export default function CheckoutButton({ email, userId, className }: CheckoutBut
           Processing...
         </>
       ) : (
-        `Subscribe for $${config.paddle.price}/${config.paddle.currency}`
+        `Subscribe`
       )}
     </Button>
   )

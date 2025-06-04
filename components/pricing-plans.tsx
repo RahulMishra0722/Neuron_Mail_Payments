@@ -11,6 +11,9 @@ import { Label } from "@/components/ui/label"
 import { subscriptionPlans } from "@/config/subscription-config"
 import CheckoutButton from "@/components/checkout-button"
 
+const SUBSCRIPTION_MODE = process.env.NEXT_PUBLIC_SUBSCRIPTION_MODE || "multi";
+const SINGLE_PLAN_ID = process.env.NEXT_PUBLIC_SINGLE_PLAN_ID || "professional";
+
 interface PricingPlansProps {
     userId?: string
     userEmail?: string
@@ -24,6 +27,12 @@ export function PricingPlans({ userId, userEmail, isSubscribed = false }: Pricin
     const getYearlyPrice = (monthlyPrice: number) => {
         const yearlyPrice = monthlyPrice * 12 * 0.8
         return Math.round(yearlyPrice)
+    }
+
+    // Filter plans based on mode
+    let plansToShow = subscriptionPlans;
+    if (SUBSCRIPTION_MODE === "single") {
+        plansToShow = subscriptionPlans.filter(plan => plan.id === SINGLE_PLAN_ID);
     }
 
     return (
@@ -58,14 +67,24 @@ export function PricingPlans({ userId, userEmail, isSubscribed = false }: Pricin
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                {subscriptionPlans.map((plan) => {
+            {/* Center card if single plan mode */}
+            <div
+                className={`grid ${plansToShow.length === 1
+                    ? 'justify-center'
+                    : 'grid-cols-1 md:grid-cols-3'
+                    } gap-6 max-w-5xl mx-auto`}
+            >
+                {plansToShow.map((plan) => {
+                    // Use the same price as CheckoutButton for consistency
                     const price = billingInterval === "yearly" ? getYearlyPrice(plan.price) : plan.price
 
                     return (
                         <Card
                             key={plan.id}
-                            className={`flex flex-col ${plan.highlight ? "border-muted-foreground/20 shadow-md relative overflow-hidden" : ""}`}
+                            className={`flex flex-col ${plan.highlight
+                                ? "border-muted-foreground/20 shadow-md relative overflow-hidden"
+                                : ""
+                                } max-w-sm w-full mx-auto p-4`}
                         >
                             {plan.badge && (
                                 <div className="absolute top-0 right-0">
@@ -77,22 +96,22 @@ export function PricingPlans({ userId, userEmail, isSubscribed = false }: Pricin
                                     </Badge>
                                 </div>
                             )}
-                            <CardHeader>
-                                <CardTitle>{plan.name}</CardTitle>
-                                <CardDescription>{plan.description}</CardDescription>
-                                <div className="mt-4 flex items-baseline text-5xl font-extrabold">
+                            <CardHeader className="pb-2">
+                                <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                                <CardDescription className="text-base">{plan.description}</CardDescription>
+                                <div className="mt-2 flex items-baseline text-4xl font-extrabold">
                                     ${price}
-                                    <span className="ml-1 text-2xl font-medium text-muted-foreground">
+                                    <span className="ml-1 text-lg font-medium text-muted-foreground">
                                         /{billingInterval === "monthly" ? "mo" : "yr"}
                                     </span>
                                 </div>
                             </CardHeader>
-                            <CardContent className="flex-grow">
-                                <ul className="space-y-3">
+                            <CardContent className="flex-grow py-2">
+                                <ul className="space-y-2">
                                     {plan.features.map((feature, index) => (
                                         <li key={index} className="flex items-start">
                                             <Check
-                                                className={`h-5 w-5 mr-3 flex-shrink-0 ${feature.included ? "text-primary" : "text-muted-foreground/50"
+                                                className={`h-4 w-4 mr-2 flex-shrink-0 ${feature.included ? "text-primary" : "text-muted-foreground/50"
                                                     }`}
                                             />
                                             <span className={feature.included ? "" : "text-muted-foreground/70"}>{feature.title}</span>
@@ -100,7 +119,7 @@ export function PricingPlans({ userId, userEmail, isSubscribed = false }: Pricin
                                     ))}
                                 </ul>
                             </CardContent>
-                            <CardFooter>
+                            <CardFooter className="pt-2">
                                 {isSubscribed ? (
                                     <div className="w-full">
                                         <Button variant="outline" className="w-full" disabled>
@@ -108,9 +127,12 @@ export function PricingPlans({ userId, userEmail, isSubscribed = false }: Pricin
                                         </Button>
                                     </div>
                                 ) : userId && userEmail ? (
-                                    <CheckoutButton email={userEmail} userId={userId} className="w-full">
-                                        {plan.buttonText}
-                                    </CheckoutButton>
+                                    <CheckoutButton
+                                        email={userEmail}
+                                        userId={userId}
+                                        className="w-full"
+                                        isYearly={billingInterval === "yearly"}
+                                    />
                                 ) : (
                                     <div className="w-full space-y-3">
                                         <Link href="/auth/signup">

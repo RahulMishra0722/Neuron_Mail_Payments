@@ -80,23 +80,65 @@ async function upsertTransaction(
   return data;
 }
 
+// Helper function to look up user_id by subscription_id or customer_id
+async function getUserIdFromSubscriptionOrCustomer(
+  supabase: SupabaseClient,
+  subscriptionId: string | null,
+  customerId: string | null
+): Promise<string | null> {
+  if (subscriptionId) {
+    const { data, error } = await supabase
+      .from("subscriptions")
+      .select("user_id")
+      .eq("paddle_subscription_id", subscriptionId)
+      .single();
+    if (data?.user_id) return data.user_id;
+  }
+  if (customerId) {
+    const { data, error } = await supabase
+      .from("subscriptions")
+      .select("user_id")
+      .eq("paddle_customer_id", customerId)
+      .single();
+    if (data?.user_id) return data.user_id;
+  }
+  return null;
+}
+
+// Patch all transaction handlers to use the helper
 export const handle_webhook_transaction_billed = async (
   body: any,
   supabase: SupabaseClient
 ) => {
   try {
     const data = body.data;
-    const transactionData = extractTransactionData(data);
-
-    if (!transactionData.user_id) {
-      throw new Error("Missing userId in custom_data");
+    let userId = data.custom_data?.userId;
+    if (!userId) {
+      userId = await getUserIdFromSubscriptionOrCustomer(
+        supabase,
+        data.subscription_id,
+        data.customer_id
+      );
     }
-
+    if (!userId) {
+      console.warn("Skipping transaction insert: could not determine user_id", {
+        subscription_id: data.subscription_id,
+        customer_id: data.customer_id,
+        paddle_transaction_id: data.id,
+        event_type: body.event_type,
+      });
+      return {
+        success: true,
+        message: "Transaction skipped: user_id not found",
+      };
+    }
+    const transactionData = {
+      ...extractTransactionData(data),
+      user_id: userId,
+    };
     // Update status to billed
     transactionData.status = "billed";
-
     const result = await upsertTransaction(transactionData, supabase);
-
     console.log("Transaction billed successfully:", result[0]);
     return {
       success: true,
@@ -115,17 +157,33 @@ export const handle_webhook_transaction_canceled = async (
 ) => {
   try {
     const data = body.data;
-    const transactionData = extractTransactionData(data);
-
-    if (!transactionData.user_id) {
-      throw new Error("Missing userId in custom_data");
+    let userId = data.custom_data?.userId;
+    if (!userId) {
+      userId = await getUserIdFromSubscriptionOrCustomer(
+        supabase,
+        data.subscription_id,
+        data.customer_id
+      );
     }
-
+    if (!userId) {
+      console.warn("Skipping transaction insert: could not determine user_id", {
+        subscription_id: data.subscription_id,
+        customer_id: data.customer_id,
+        paddle_transaction_id: data.id,
+        event_type: body.event_type,
+      });
+      return {
+        success: true,
+        message: "Transaction skipped: user_id not found",
+      };
+    }
+    const transactionData = {
+      ...extractTransactionData(data),
+      user_id: userId,
+    };
     // Update status to canceled
     transactionData.status = "canceled";
-
     const result = await upsertTransaction(transactionData, supabase);
-
     console.log("Transaction canceled successfully:", result[0]);
     return {
       success: true,
@@ -144,17 +202,33 @@ export const handle_webhook_transaction_paid = async (
 ) => {
   try {
     const data = body.data;
-    const transactionData = extractTransactionData(data);
-
-    if (!transactionData.user_id) {
-      throw new Error("Missing userId in custom_data");
+    let userId = data.custom_data?.userId;
+    if (!userId) {
+      userId = await getUserIdFromSubscriptionOrCustomer(
+        supabase,
+        data.subscription_id,
+        data.customer_id
+      );
     }
-
+    if (!userId) {
+      console.warn("Skipping transaction insert: could not determine user_id", {
+        subscription_id: data.subscription_id,
+        customer_id: data.customer_id,
+        paddle_transaction_id: data.id,
+        event_type: body.event_type,
+      });
+      return {
+        success: true,
+        message: "Transaction skipped: user_id not found",
+      };
+    }
+    const transactionData = {
+      ...extractTransactionData(data),
+      user_id: userId,
+    };
     // Update status to paid
     transactionData.status = "paid";
-
     const result = await upsertTransaction(transactionData, supabase);
-
     console.log("Transaction paid successfully:", result[0]);
     return {
       success: true,
@@ -173,17 +247,33 @@ export const handle_webhook_transaction_past_due = async (
 ) => {
   try {
     const data = body.data;
-    const transactionData = extractTransactionData(data);
-
-    if (!transactionData.user_id) {
-      throw new Error("Missing userId in custom_data");
+    let userId = data.custom_data?.userId;
+    if (!userId) {
+      userId = await getUserIdFromSubscriptionOrCustomer(
+        supabase,
+        data.subscription_id,
+        data.customer_id
+      );
     }
-
+    if (!userId) {
+      console.warn("Skipping transaction insert: could not determine user_id", {
+        subscription_id: data.subscription_id,
+        customer_id: data.customer_id,
+        paddle_transaction_id: data.id,
+        event_type: body.event_type,
+      });
+      return {
+        success: true,
+        message: "Transaction skipped: user_id not found",
+      };
+    }
+    const transactionData = {
+      ...extractTransactionData(data),
+      user_id: userId,
+    };
     // Update status to past_due
     transactionData.status = "past_due";
-
     const result = await upsertTransaction(transactionData, supabase);
-
     console.log("Transaction past due successfully:", result[0]);
     return {
       success: true,
@@ -202,17 +292,33 @@ export const handle_webhook_transaction_payment_failed = async (
 ) => {
   try {
     const data = body.data;
-    const transactionData = extractTransactionData(data);
-
-    if (!transactionData.user_id) {
-      throw new Error("Missing userId in custom_data");
+    let userId = data.custom_data?.userId;
+    if (!userId) {
+      userId = await getUserIdFromSubscriptionOrCustomer(
+        supabase,
+        data.subscription_id,
+        data.customer_id
+      );
     }
-
+    if (!userId) {
+      console.warn("Skipping transaction insert: could not determine user_id", {
+        subscription_id: data.subscription_id,
+        customer_id: data.customer_id,
+        paddle_transaction_id: data.id,
+        event_type: body.event_type,
+      });
+      return {
+        success: true,
+        message: "Transaction skipped: user_id not found",
+      };
+    }
+    const transactionData = {
+      ...extractTransactionData(data),
+      user_id: userId,
+    };
     // Update status to payment_failed
     transactionData.status = "payment_failed";
-
     const result = await upsertTransaction(transactionData, supabase);
-
     console.log("Transaction payment failed successfully:", result[0]);
     return {
       success: true,
@@ -231,17 +337,33 @@ export const handle_webhook_transaction_revised = async (
 ) => {
   try {
     const data = body.data;
-    const transactionData = extractTransactionData(data);
-
-    if (!transactionData.user_id) {
-      throw new Error("Missing userId in custom_data");
+    let userId = data.custom_data?.userId;
+    if (!userId) {
+      userId = await getUserIdFromSubscriptionOrCustomer(
+        supabase,
+        data.subscription_id,
+        data.customer_id
+      );
     }
-
+    if (!userId) {
+      console.warn("Skipping transaction insert: could not determine user_id", {
+        subscription_id: data.subscription_id,
+        customer_id: data.customer_id,
+        paddle_transaction_id: data.id,
+        event_type: body.event_type,
+      });
+      return {
+        success: true,
+        message: "Transaction skipped: user_id not found",
+      };
+    }
+    const transactionData = {
+      ...extractTransactionData(data),
+      user_id: userId,
+    };
     // Update status to revised
     transactionData.status = "revised";
-
     const result = await upsertTransaction(transactionData, supabase);
-
     console.log("Transaction revised successfully:", result[0]);
     return {
       success: true,

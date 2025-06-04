@@ -2,16 +2,11 @@ import { toast } from "@/hooks/use-toast";
 import { initializePaddle, type Paddle } from "@paddle/paddle-js";
 
 export type PaddleCheckoutOptions = {
-  items: Array<{
-    priceId: string;
-    quantity: number;
-  }>;
   customer: {
     email: string;
     id: string;
   };
   successUrl?: string;
-  cancelUrl?: string;
 };
 
 let Paddle: Paddle | null = null;
@@ -92,7 +87,10 @@ export const initPaddle = async (): Promise<Paddle | null> => {
   }
 };
 
-export const createCheckout = async (options: PaddleCheckoutOptions) => {
+export const createCheckout = async (
+  options: PaddleCheckoutOptions,
+  isYearly: boolean
+) => {
   if (typeof window === "undefined") return null;
 
   try {
@@ -103,7 +101,9 @@ export const createCheckout = async (options: PaddleCheckoutOptions) => {
       throw new Error("Failed to initialize Paddle");
     }
 
-    const priceId = process.env.NEXT_PUBLIC_PADDLE_PRICE_ID;
+    const priceId = isYearly
+      ? process.env.NEXT_PUBLIC_PADDLE_PRICE_ID_YEARLY
+      : process.env.NEXT_PUBLIC_PADDLE_PRICE_ID;
     if (!priceId) {
       throw new Error("Paddle price ID is not configured");
     }

@@ -11,6 +11,13 @@ import {
   handle_webhook_subscription_updated,
 } from "./webhook_subscription_updated";
 import { handle_webhook_transaction_updated } from "./webhook-transaction-updated";
+import {
+  handle_webhook_transaction_billed,
+  handle_webhook_transaction_canceled,
+  handle_webhook_transaction_paid,
+  handle_webhook_transaction_payment_failed,
+  handle_webhook_transaction_revised,
+} from "./webhook-all-transactions";
 
 function logWebhookToFile(body: any, headers: any) {
   try {
@@ -138,6 +145,12 @@ export async function POST(req: NextRequest) {
 
     try {
       switch (body.event_type) {
+        case "subscription.created":
+          await handle_subscription_activated(body, supabase);
+          break;
+        case "subscription.renewed":
+          await handle_subscription_activated(body, supabase);
+          break;
         case "subscription.updated":
           await handle_webhook_subscription_updated(body, supabase);
         case "subscription.canceled":
@@ -151,6 +164,21 @@ export async function POST(req: NextRequest) {
           break;
         case "subscription.past_due":
           await handle_webhook_subscription_past_due(body, supabase);
+          break;
+        case "transaction.billed":
+          await handle_webhook_transaction_billed(body, supabase);
+          break;
+        case "transaction.canceled":
+          await handle_webhook_transaction_canceled(body, supabase);
+          break;
+        case "transaction.paid":
+          await handle_webhook_transaction_paid(body, supabase);
+          break;
+        case "transaction.payment_failed":
+          await handle_webhook_transaction_payment_failed(body, supabase);
+          break;
+        case "transaction.revised":
+          await handle_webhook_transaction_revised(body, supabase);
           break;
         case "transaction.updated":
           await handle_webhook_transaction_updated(body, supabase);

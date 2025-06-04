@@ -166,67 +166,6 @@ export const handle_webhook_subscription_canceled = async (
   }
 };
 
-export const handle_webhook_subscription_resumed = async (
-  body: any,
-  supabase: SupabaseClient
-) => {
-  try {
-    const data = body.data;
-    const paddleSubscriptionId = data.id;
-
-    if (!paddleSubscriptionId) {
-      throw new Error("No subscription ID found in webhook data");
-    }
-
-    const { data: updatedSubscription, error } = await supabase
-      .from("subscriptions")
-      .update({
-        status: data.status,
-        canceled_at: null, // Clear canceled_at when resumed
-        current_period_start: data.current_billing_period?.starts_at || null,
-        current_period_end: data.current_billing_period?.ends_at || null,
-      })
-      .eq("paddle_subscription_id", paddleSubscriptionId)
-      .select();
-
-    if (error) {
-      console.error("Error updating subscription to resumed:", error);
-      throw error;
-    }
-
-    if (!updatedSubscription || updatedSubscription.length === 0) {
-      console.warn(
-        `No subscription found with paddle_subscription_id: ${paddleSubscriptionId}`
-      );
-      return {
-        success: false,
-        message: "Subscription not found",
-        paddleSubscriptionId,
-      };
-    }
-
-    // Update user profile with resumed subscription
-    if (data.custom_data?.userId) {
-      await updateUserProfile(
-        supabase,
-        data.custom_data.userId,
-        data.id,
-        data.status
-      );
-    }
-
-    console.log("Subscription successfully resumed:", updatedSubscription[0]);
-    return {
-      success: true,
-      message: "Subscription resumed successfully",
-      subscription: updatedSubscription[0],
-    };
-  } catch (error) {
-    console.error("Error handling subscription resumption webhook:", error);
-    throw error;
-  }
-};
-
 export const handle_webhook_subscription_trialing = async (
   body: any,
   supabase: SupabaseClient

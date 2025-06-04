@@ -1,0 +1,181 @@
+{
+  "timestamp": "2025-06-04T11:24:20.365Z",
+  "event_type": "transaction.paid",
+  "event_id": "evt_01jwxaypb9f0s357fpzmgbytwb",
+  "headers": {
+    "paddle-signature": "ts=1749036259;h1=6bf6781142eb5b89ffbe5cc851a678a86c5465956afe16976383971e68860a7b",
+    "content-type": "application/json",
+    "user-agent": "Paddle"
+  },
+  "payload": {
+    "data": {
+      "id": "txn_01jwxabmm14nh8zpb8zcrrq7pk",
+      "items": [
+        {
+          "price": {
+            "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+            "name": "Starter",
+            "type": "standard",
+            "status": "active",
+            "quantity": {
+              "maximum": 1,
+              "minimum": 1
+            },
+            "tax_mode": "account_setting",
+            "created_at": "2025-05-19T12:25:15.677881Z",
+            "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+            "unit_price": {
+              "amount": "399",
+              "currency_code": "USD"
+            },
+            "updated_at": "2025-05-22T23:31:06.944914Z",
+            "custom_data": null,
+            "description": "Everything is included in this plan",
+            "trial_period": {
+              "interval": "day",
+              "frequency": 3
+            },
+            "billing_cycle": {
+              "interval": "month",
+              "frequency": 1
+            },
+            "unit_price_overrides": []
+          },
+          "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+          "quantity": 1,
+          "proration": null
+        }
+      ],
+      "origin": "web",
+      "status": "paid",
+      "details": {
+        "totals": {
+          "fee": null,
+          "tax": "0",
+          "total": "0",
+          "credit": "0",
+          "balance": "0",
+          "discount": "0",
+          "earnings": null,
+          "subtotal": "0",
+          "grand_total": "0",
+          "currency_code": "USD",
+          "credit_to_balance": "0"
+        },
+        "line_items": [
+          {
+            "id": "txnitm_01jwxabsvc2fd3xp8bjc1e2wag",
+            "totals": {
+              "tax": "0",
+              "total": "0",
+              "discount": "0",
+              "subtotal": "0"
+            },
+            "item_id": null,
+            "product": {
+              "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+              "name": "Neuron Mail Subscription",
+              "type": "standard",
+              "status": "active",
+              "image_url": null,
+              "created_at": "2025-05-19T12:16:34.12Z",
+              "updated_at": "2025-05-19T12:16:34.12Z",
+              "custom_data": null,
+              "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
+              "tax_category": "standard"
+            },
+            "price_id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+            "quantity": 1,
+            "tax_rate": "0.18",
+            "unit_totals": {
+              "tax": "0",
+              "total": "0",
+              "discount": "0",
+              "subtotal": "0"
+            },
+            "is_tax_exempt": false,
+            "revised_tax_exempted": false
+          }
+        ],
+        "payout_totals": null,
+        "tax_rates_used": [
+          {
+            "totals": {
+              "tax": "0",
+              "total": "0",
+              "discount": "0",
+              "subtotal": "0"
+            },
+            "tax_rate": "0.18"
+          }
+        ],
+        "adjusted_totals": {
+          "fee": null,
+          "tax": "0",
+          "total": "0",
+          "earnings": null,
+          "subtotal": "0",
+          "grand_total": "0",
+          "currency_code": "USD"
+        }
+      },
+      "checkout": {
+        "url": "https://3795-119-252-222-25.ngrok-free.app/?_ptxn=txn_01jwxabmm14nh8zpb8zcrrq7pk"
+      },
+      "payments": [
+        {
+          "amount": "0",
+          "status": "authorized",
+          "created_at": "2025-06-04T11:20:39.844714Z",
+          "error_code": null,
+          "captured_at": null,
+          "method_details": {
+            "card": null,
+            "type": "paypal"
+          },
+          "payment_method_id": "paymtd_01jwxaqzmk48p0rnrsqfcg3zv8",
+          "payment_attempt_id": "b3229db9-b721-482e-ac05-6ffbcd52c7f5",
+          "stored_payment_method_id": "ab16cb19-7c8f-4893-bc95-5f2c9200bc37"
+        },
+        {
+          "amount": "0",
+          "status": "action_required",
+          "created_at": "2025-06-04T11:14:04.322296Z",
+          "error_code": null,
+          "captured_at": null,
+          "method_details": {
+            "card": null,
+            "type": "paypal"
+          },
+          "payment_method_id": "paymtd_01jwxabxcgrhfackx4fhhc67k5",
+          "payment_attempt_id": "5a6dde2b-5ca3-4a26-a049-8aec0c3a8f20",
+          "stored_payment_method_id": "8d3d556a-9eb3-4f19-86c8-4ab325b6f84e"
+        }
+      ],
+      "billed_at": "2025-06-04T11:24:19.432971169Z",
+      "address_id": "add_01jwxabrzy4xz14feg06ppcxs7",
+      "created_at": "2025-06-04T11:13:55.378045Z",
+      "invoice_id": null,
+      "revised_at": null,
+      "updated_at": "2025-06-04T11:24:19.432973482Z",
+      "business_id": null,
+      "custom_data": {
+        "email": "rahulmishra7802@gmail.com",
+        "userId": "d556c082-1697-4731-b8e0-db58ec8a5ef9"
+      },
+      "customer_id": "ctm_01jvptkxnp16mxw2jeh3md8npa",
+      "discount_id": null,
+      "receipt_data": null,
+      "currency_code": "USD",
+      "billing_period": null,
+      "invoice_number": null,
+      "billing_details": null,
+      "collection_mode": "automatic",
+      "subscription_id": null
+    },
+    "event_id": "evt_01jwxaypb9f0s357fpzmgbytwb",
+    "event_type": "transaction.paid",
+    "occurred_at": "2025-06-04T11:24:19.445701Z",
+    "notification_id": "ntf_01jwxaypfqtsgydhb6wns5wg83"
+  }
+}

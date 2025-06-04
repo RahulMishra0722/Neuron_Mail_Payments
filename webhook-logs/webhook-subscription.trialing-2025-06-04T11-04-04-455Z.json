@@ -1,0 +1,107 @@
+{
+  "timestamp": "2025-06-04T11:04:04.455Z",
+  "event_type": "subscription.trialing",
+  "event_id": "evt_01jwx9sk3jzfmhny5hqzh6xg9s",
+  "headers": {
+    "paddle-signature": "ts=1749035044;h1=c1f023f8fb18d7856e20be9d22b9ffc82094dc271f71214bb0b1d0d9f47125dd",
+    "content-type": "application/json",
+    "user-agent": "Paddle"
+  },
+  "payload": {
+    "data": {
+      "id": "sub_01jwx9sj91p05rpvr78frcvcnd",
+      "items": [
+        {
+          "price": {
+            "id": "pri_01jvm82rmxj6rtdwb2cptj6bam",
+            "name": "Starter",
+            "type": "standard",
+            "status": "active",
+            "quantity": {
+              "maximum": 1,
+              "minimum": 1
+            },
+            "tax_mode": "account_setting",
+            "seller_id": "31565",
+            "created_at": "2025-05-19T12:25:15.677881Z",
+            "product_id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+            "unit_price": {
+              "amount": "399",
+              "currency_code": "USD"
+            },
+            "updated_at": "2025-05-22T23:31:06.944914Z",
+            "custom_data": null,
+            "description": "Everything is included in this plan",
+            "import_meta": null,
+            "trial_period": {
+              "interval": "day",
+              "frequency": 3
+            },
+            "billing_cycle": {
+              "interval": "month",
+              "frequency": 1
+            },
+            "unit_price_overrides": []
+          },
+          "status": "trialing",
+          "product": {
+            "id": "pro_01jvm7jva8xejzhnsmmwgy9dcv",
+            "name": "Neuron Mail Subscription",
+            "type": "standard",
+            "status": "active",
+            "image_url": null,
+            "seller_id": "31565",
+            "created_at": "2025-05-19T12:16:34.12Z",
+            "updated_at": "2025-05-19T12:16:34.12Z",
+            "custom_data": null,
+            "description": "Ai Powered Neuron Mail that gives you control over how your AI helps you write emails reply to them etc",
+            "tax_category": "standard"
+          },
+          "quantity": 1,
+          "recurring": true,
+          "created_at": "2025-06-04T11:04:03.105Z",
+          "updated_at": "2025-06-04T11:04:03.105Z",
+          "trial_dates": {
+            "ends_at": "2025-06-07T11:04:03.096Z",
+            "starts_at": "2025-06-04T11:04:03.096Z"
+          },
+          "next_billed_at": "2025-06-07T11:04:03.096Z",
+          "previously_billed_at": null
+        }
+      ],
+      "status": "trialing",
+      "discount": null,
+      "paused_at": null,
+      "address_id": "add_01jwx9s133syzbgxj35hstc6xj",
+      "created_at": "2025-06-04T11:04:03.105Z",
+      "started_at": "2025-06-04T11:04:03.096Z",
+      "updated_at": "2025-06-04T11:04:03.105Z",
+      "business_id": null,
+      "canceled_at": null,
+      "custom_data": {
+        "email": "rahulmishra7802@gmail.com",
+        "userId": "d556c082-1697-4731-b8e0-db58ec8a5ef9"
+      },
+      "customer_id": "ctm_01jvptkxnp16mxw2jeh3md8npa",
+      "import_meta": null,
+      "billing_cycle": {
+        "interval": "month",
+        "frequency": 1
+      },
+      "currency_code": "USD",
+      "next_billed_at": "2025-06-07T11:04:03.096Z",
+      "billing_details": null,
+      "collection_mode": "automatic",
+      "first_billed_at": null,
+      "scheduled_change": null,
+      "current_billing_period": {
+        "ends_at": "2025-06-07T11:04:03.096Z",
+        "starts_at": "2025-06-04T11:04:03.096Z"
+      }
+    },
+    "event_id": "evt_01jwx9sk3jzfmhny5hqzh6xg9s",
+    "event_type": "subscription.trialing",
+    "occurred_at": "2025-06-04T11:04:03.509312Z",
+    "notification_id": "ntf_01jwx9sk77h7x0peen138t0vx5"
+  }
+}

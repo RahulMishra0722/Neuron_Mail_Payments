@@ -24,7 +24,7 @@ export const siteConfig: SiteConfig = {
     twitter: "https://twitter.com/paymenthub",
     github: "https://github.com/paymenthub",
   },
-  contactEmail: "support@paymenthub.com",
+  contactEmail: "rahulmishra7802@gmail.com",
   logo: {
     light: "/logo-light.svg",
     dark: "/logo-dark.svg",
